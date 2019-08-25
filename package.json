@@ -66,9 +66,13 @@
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "@openmrs/react-root-decorator": "^1.0.0",
+    "@types/react-router": "^5.0.3",
     "kremling": "^2.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "single-spa-react": "^2.10.2"
   }
 }
