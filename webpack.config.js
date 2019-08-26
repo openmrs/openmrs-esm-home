@@ -44,14 +44,7 @@ module.exports = {
     },
     disableHostCheck: true
   },
-  externals: [
-    "react",
-    "react-dom",
-    "react-router",
-    "react-router-dom",
-    "single-spa-react",
-    /^@openmrs\//
-  ],
+  externals: ["react", "react-dom", /^@openmrs\/esm/],
   plugins: [new ForkTsCheckerWebpackPlugin(), new CleanWebpackPlugin()],
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"]

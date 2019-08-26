@@ -1,26 +1,14 @@
 import React from "react";
+import openmrsRootDecorator from "@openmrs/react-root-decorator";
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./home.component";
 
-export default class Root extends React.Component {
-  state = {
-    catastrophicError: false
-  };
-  render() {
-    return this.state.catastrophicError
-      ? this.errorHasOccurred()
-      : this.loadHomepage();
-  }
-  componentDidCatch() {
-    this.setState({ catastrophicError: true });
-  }
-  errorHasOccurred = () => {
-    // TO-DO have a good UX for catastrophic errors
-    return null;
-  };
-  loadHomepage = () => {
-    return (
-      <div>
-        <h1>Home Page</h1>
-      </div>
-    );
-  };
+function Root(props) {
+  return (
+    <BrowserRouter basename={window["getOpenmrsSpaBase"]()}>
+      <Route path="/home" component={Home} />
+    </BrowserRouter>
+  );
 }
+
+export default openmrsRootDecorator({ featureName: "home" })(Root);
