@@ -1,0 +1,38 @@
+.patientSearchHeader {
+  display: flex;
+  align-items: center;
+  height: var(--omrs-topnav-height);
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(24px);
+  background-color: var(--omrs-color-bg-medium-contrast);
+}
+
+.patientSearchInput {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  caret-color: var(--omrs-color-interaction);
+  padding: 0;
+}
+
+.patientSearchInput:focus {
+  outline: none;
+}
+
+.patientSearchInput::placeholder {
+  color: var(--omrs-color-ink-medium-contrast);
+}
+
+.iconBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.iconBtn:focus {
+  outline: none;
+}
+
+.helperText {
+  color: var(--omrs-color-ink-medium-contrast);
+}
