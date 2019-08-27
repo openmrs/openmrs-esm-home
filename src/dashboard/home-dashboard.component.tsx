@@ -8,7 +8,7 @@ export default function HomeDashboard(props: HomeDashboardProps) {
       <section className={styles.mainSection}>
         <Link
           to={props.match.url + "/patient-search"}
-          className={`omrs-unstyled ${styles.patientSearchLink}`}
+          className="omrs-link omrs-outlined-action omrs-rounded"
         >
           <svg className="omrs-icon" fill="var(--omrs-color-interaction)">
             <use xlinkHref="#omrs-icon-search" />
