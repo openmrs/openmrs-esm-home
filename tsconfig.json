@@ -14,7 +14,8 @@
       "es2016.array.include",
       "es2018"
     ],
-    "noEmit": true
+    "noEmit": true,
+    "target": "esnext"
   },
   "include": ["src/**/*"]
 }
