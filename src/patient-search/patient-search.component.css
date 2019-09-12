@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/** Desktop **/
+@media screen and (min-width: 769px) {
+  .patientSearchHeader {
+    background-color: var(--omrs-color-bg-high-contrast);
+    display: flex;
+    justify-content: center;
+  }
+
+  .searchResults {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .searchHelper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .resultsCount {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/** Tablet/Mobile **/
+@media screen and (max-width: 769px) {
+  .patientSearchHeader {
+    background-color: var(--omrs-color-bg-medium-contrast);
+  }
+}
+
+.resultsCount {
+  font-size: 17px;
+  line-height: 147.6%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0.5rem;
+}
+
+.patientSearchHeader {
+  display: flex;
+  height: var(--omrs-topnav-height);
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(24px);
+}
+
+.patientSearchInput {
+  background: transparent;
+  border: none;
+  caret-color: var(--omrs-color-interaction);
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.patientSearchInput:focus {
+  outline: none;
+}
+
+.patientSearchInput::placeholder {
+  color: var(--omrs-color-ink-medium-contrast);
+}
+
+.helperText {
+  color: var(--omrs-color-ink-medium-contrast);
+  margin-left: 2.375rem;
+}
+
+.searchResults {
+  background-color: var(--omrs-color-background-canvas);
+}
+
+.resultsText {
+  color: var(--omrs-color-ink-medium-contrast);
+}
+
+.emptyResultContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.emptyResultCard {
+  border: 1px solid var(--omrs-color-ink-lowest-contrast);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.emptyResultText {
+  margin-top: 1rem;
+}
+
+ul.dash {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1rem;
+}
+ul.dash > li:before {
+  display: inline-block;
+  content: "-";
+  width: 1rem;
+  margin-left: -1rem;
+}
+
+.patientSearchHeader {
+  margin-top: var(--omrs-topnav-height);
+}
+
+.pagination {
+  display: flex;
+  margin: 1rem;
+  justify-content: space-evenly;
+}

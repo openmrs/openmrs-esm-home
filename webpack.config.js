@@ -30,7 +30,9 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true
+              modules: {
+                localIdentName: "esm-home__[name]__[local]___[hash:base64:5]"
+              }
             }
           }
         ]

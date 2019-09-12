@@ -1,5 +1,6 @@
 import React from "react";
 import { match, Route } from "react-router";
+import { maybe } from "kremling";
 import HomeDashboard from "./dashboard/home-dashboard.component";
 import PatientSearch from "./patient-search/patient-search.component";
 
@@ -17,4 +18,5 @@ export default function Home(props: HomeProps) {
 
 type HomeProps = {
   match: match;
+  location: any;
 };
