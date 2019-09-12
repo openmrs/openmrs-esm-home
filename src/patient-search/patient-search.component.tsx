@@ -27,7 +27,7 @@ export default function PatientSearch(props: PatientSearchProps) {
     currentPage !== 1
       ? setShowPreviousButton(true)
       : setShowPreviousButton(false);
-  }, [pagedResults, currentPage]);
+  }, [pagedResults, currentPage, resultsPerPage]);
 
   useEffect(() => {
     const ac = new AbortController();

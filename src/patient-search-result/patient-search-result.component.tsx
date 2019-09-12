@@ -5,14 +5,11 @@ import { always } from "kremling";
 import { Link, match } from "react-router-dom";
 
 export default function PatientSearchResults(props: PatientSearchResultsProps) {
-  const highlight = property => {
-    if (property.toLowerCase().includes(props.searchTerm.toLowerCase())) {
-      return true;
-    }
-    return false;
-  };
-
   return props.patients.map(patient => renderPatient(patient));
+
+  function highlight(property) {
+    return property.toLowerCase().includes(props.searchTerm.toLowerCase());
+  }
 
   function renderPatient(patient) {
     const preferredIdentifier =
