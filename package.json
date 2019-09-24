@@ -21,6 +21,7 @@
       "pre-commit": "pretty-quick --staged && npm run lint && npm test && npm run typescript"
     }
   },
+  "types": "src/openmrs-esm-home.tsx",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/openmrs/openmrs-esm-home.git"
@@ -67,6 +68,7 @@
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
+    "@openmrs/esm-api": "^1.0.3",
     "@openmrs/react-root-decorator": "^1.0.0",
     "@types/react-router": "^5.0.3",
     "dayjs": "^1.8.16",
