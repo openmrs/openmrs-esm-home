@@ -19,7 +19,7 @@ export default function PatientSearchResults(props: PatientSearchResultsProps) {
       <Link
         key={patient.display}
         className={styles.patientResult}
-        to={props.match.url + `/patient/${patient.uuid}`}
+        to={`/patient/${patient.uuid}/chart`}
       >
         <span className={styles.resultNumber}>{patient.index}</span>
         <div className={styles.patientCard}>
