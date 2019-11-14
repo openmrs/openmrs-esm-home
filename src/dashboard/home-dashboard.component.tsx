@@ -8,7 +8,9 @@ export default function HomeDashboard(props: HomeDashboardProps) {
     <>
       <div className={styles.homeDashboard}>
         <section className={styles.mainSection}>
-          <UserHasAccessReact privilege="View Patients">
+          <UserHasAccessReact
+            privileges={["View Patients", "Super User", "System Developer"]}
+          >
             <Link
               to={props.match.url + "/patient-search"}
               className={`omrs-link omrs-outlined-action omrs-rounded ${styles.dashboardLink}`}
