@@ -12,6 +12,7 @@
   }
   .patientCard {
     border-radius: 0.75rem;
+    width: 44rem;
   }
   .tile {
     padding: 0.625rem 1.5rem;
