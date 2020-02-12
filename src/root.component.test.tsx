@@ -7,6 +7,7 @@ afterAll(cleanup);
 window["getOpenmrsSpaBase"] = jest.fn().mockImplementation(() => "/");
 
 describe(`<Root />`, () => {
+  afterEach(cleanup);
   it(`renders without dying`, () => {
     const wrapper = render(<Root />);
   });

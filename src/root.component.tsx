@@ -1,7 +1,16 @@
 import React from "react";
+import { defineConfigSchema } from "@openmrs/esm-module-config";
 import openmrsRootDecorator from "@openmrs/react-root-decorator";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./home.component";
+
+defineConfigSchema("@openmrs/esm-home", {
+  buttons: {
+    enabled: {
+      default: false
+    }
+  }
+});
 
 function Root(props) {
   return (
@@ -11,4 +20,7 @@ function Root(props) {
   );
 }
 
-export default openmrsRootDecorator({ featureName: "home" })(Root);
+export default openmrsRootDecorator({
+  featureName: "home",
+  moduleName: "@openmrs/esm-home"
+})(Root);

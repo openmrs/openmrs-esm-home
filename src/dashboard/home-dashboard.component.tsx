@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./home-dashboard.component.css";
 import { Link, match } from "react-router-dom";
 import { UserHasAccessReact } from "@openmrs/esm-api";
+import { useConfig } from "@openmrs/esm-module-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
 
 const buttonDefs = [
@@ -66,6 +67,7 @@ const buttonDefs = [
 ];
 
 export default function HomeDashboard(props: HomeDashboardProps) {
+  const config = useConfig();
   const buttons = buttonDefs.map(def => (
     <DashboardButton {...def} key={def.label} />
   ));
@@ -85,7 +87,9 @@ export default function HomeDashboard(props: HomeDashboardProps) {
                 <span className={styles.label}>Search for patient</span>
               </Link>
             </div>
-            <div className={styles.buttonArea}>{buttons}</div>
+            {config.buttons.enabled && (
+              <div className={styles.buttonArea}>{buttons}</div>
+            )}
           </UserHasAccessReact>
         </section>
       </div>
