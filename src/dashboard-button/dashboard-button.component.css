@@ -1,7 +1,7 @@
 /* Variables defined in home-dashboard.component.css */
 
 .link {
-  height: 112px;
+  height: 7rem;
   width: var(--dashboard-button-width);
   margin: var(--dashboard-button-margin);
   justify-content: center;

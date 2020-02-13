@@ -1,6 +1,6 @@
 :root {
-  --dashboard-button-width: 156px;
-  --dashboard-button-margin: 4px;
+  --dashboard-button-width: 10rem;
+  --dashboard-button-margin: 0.25rem;
 }
 
 .homeDashboard {
@@ -23,7 +23,7 @@
   display: flex;
   flex-basis: 100%;
   justify-content: center;
-  margin: 36px auto;
+  margin: 2rem auto;
 }
 
 .buttonArea {
@@ -53,15 +53,15 @@
   flex-basis: 100%;
 }
 
-.dashboardLink {
+:global(.omrs-breakpoint-lt-tablet) .dashboardLink {
   width: 80%;
 }
 
 :global(.omrs-breakpoint-gt-phone) .dashboardLink {
-  width: 350px;
+  width: 22rem;
 }
 
-.buttonArea {
+:global(.omrs-breakpoint-lt-tablet) .buttonArea {
   max-width: calc(
     var(--dashboard-button-width) * 2 + var(--dashboard-button-margin) * 4
   );
