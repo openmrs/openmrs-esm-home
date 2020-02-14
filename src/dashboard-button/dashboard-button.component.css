@@ -1,0 +1,15 @@
+/* Variables defined in home-dashboard.component.css */
+
+.link {
+  height: 7rem;
+  width: var(--dashboard-button-width);
+  margin: var(--dashboard-button-margin);
+  justify-content: center;
+}
+
+.textContainer {
+  display: inline-flex;
+  min-width: 0;
+  white-space: normal;
+  line-height: 1.5;
+}
