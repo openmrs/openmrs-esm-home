@@ -7,8 +7,26 @@ export const validators = {
   isString: jest.fn()
 };
 
-export const useConfig = jest
-  .fn()
-  .mockReturnValue({ buttons: { enabled: true, list: [] } });
+export const useConfig = jest.fn().mockReturnValue({
+  buttons: {
+    enabled: true,
+    list: [
+      {
+        label: "SPA Page",
+        link: {
+          spa: true,
+          url: "/some/route"
+        }
+      },
+      {
+        label: "RefApp Page",
+        link: {
+          spa: false,
+          url: "/openmrs/some/route"
+        }
+      }
+    ]
+  }
+});
 
 export const ModuleNameContext = React.createContext("fake-module-config");

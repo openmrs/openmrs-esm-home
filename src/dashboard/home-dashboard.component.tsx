@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./home-dashboard.component.css";
-import { Link, match } from "react-router-dom";
+import { Link, match, RouteComponentProps } from "react-router-dom";
 import { UserHasAccessReact } from "@openmrs/esm-api";
 import { useConfig } from "@openmrs/esm-module-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
@@ -41,6 +41,6 @@ export default function HomeDashboard(props: HomeDashboardProps) {
   );
 }
 
-type HomeDashboardProps = {
+interface HomeDashboardProps {
   match: match;
-};
+}

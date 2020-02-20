@@ -1,32 +1,36 @@
 import React from "react";
 import styles from "./dashboard-button.component.css";
+import { RouteComponentProps } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function DashboardButton(props: DashboardButtonProps) {
-  return (
+  const className = `omrs-link omrs-filled-neutral ${styles.link}`;
+  const label = <div className={styles.textContainer}>{props.label}</div>;
+  return props.link.spa ? (
+    <Link to={props.link.url} className={className}>
+      {label}
+    </Link>
+  ) : (
     <a
-      className={`omrs-link omrs-filled-neutral ${styles.link}`}
-      onClick={event => navigate(event, props, props.link)}
+      className={className}
+      onClick={event => nonSpaNavigate(event, props.link.url)}
       href={props.link.url}
     >
-      <div className={styles.textContainer}>{props.label}</div>
+      {label}
     </a>
   );
 }
 
-function navigate(event, props, urlConfig: UrlConfig) {
+function nonSpaNavigate(event, url: string) {
   if (!event.ctrlKey && event.which != 2 && event.which != 3) {
-    if (urlConfig.spa) {
-      props.history.push(urlConfig.url);
-    } else {
-      window.location.href = urlConfig.url;
-    }
+    window.location.href = url;
   }
 }
 
-type DashboardButtonProps = {
+interface DashboardButtonProps extends RouteComponentProps {
   label: string;
   link: UrlConfig;
-};
+}
 
 type UrlConfig = {
   spa: boolean;
