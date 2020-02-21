@@ -3,7 +3,6 @@ import { fireEvent, render } from "@testing-library/react";
 import HomeDashboard from "./home-dashboard.component";
 
 import { useConfig as mockUseConfig } from "@openmrs/esm-module-config";
-import { MemoryRouter, Route } from "react-router";
 import renderWithRouter from "../helpers/render-with-router";
 
 const match = { params: { id: 1 }, isExact: true, path: "", url: "" };
