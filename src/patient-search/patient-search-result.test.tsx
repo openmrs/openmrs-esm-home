@@ -1,9 +1,9 @@
 import React from "react";
-import { fireEvent, wait, cleanup } from "@testing-library/react";
+import { fireEvent, wait, cleanup, render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-import renderWithRouter from "../helpers/render-with-router";
 import PatientSearch from "./patient-search.component";
 import { performPatientSearch } from "./patient-search.resource";
+import renderWithRouter from "../helpers/render-with-router";
 
 const mockSearch = performPatientSearch as jest.Mock;
 const match = { params: {}, isExact: true, path: "", url: "" };
@@ -49,7 +49,7 @@ afterEach(cleanup);
 
 describe("<PatientSearch/>", () => {
   it("renders without failing", () => {
-    renderWithRouter(<PatientSearch />);
+    render(<PatientSearch />);
   });
 
   it("triggers search on typing", async () => {
@@ -78,9 +78,7 @@ describe("<PatientSearch/>", () => {
 
   it("renders no patients found message when no patients are found", async () => {
     mockSearch.mockResolvedValue({ data: { results: [] } });
-    const { container, getByText } = renderWithRouter(
-      <PatientSearch match={match} />
-    );
+    const { container, getByText } = render(<PatientSearch match={match} />);
     const searchInput = container.querySelector("input");
     act(() => {
       fireEvent.change(searchInput, { target: { value: "John" } });
@@ -96,7 +94,7 @@ describe("<PatientSearch/>", () => {
     let manyResults = Array(20).map(fill);
     const mockResp = { data: { results: manyResults } };
     mockSearch.mockResolvedValue(mockResp);
-    const { container, getByText, queryByText } = renderWithRouter(
+    const { container, getByText, queryByText } = render(
       <PatientSearch match={match} />
     );
     expect(queryByText(/next/i)).toBeNull;
