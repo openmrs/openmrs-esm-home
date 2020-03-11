@@ -7,7 +7,7 @@ import Home from "./home.component";
 defineConfigSchema("@openmrs/esm-home", {
   buttons: {
     enabled: {
-      default: false
+      default: true
     },
     list: {
       arrayElements: {
