@@ -23,7 +23,8 @@ defineConfigSchema("@openmrs/esm-home", {
           link: {
             spa: false,
             url: "/openmrs/coreapps/activeVisits.page?app=coreapps.activeVisits"
-          }
+          },
+          requiredPrivilege: "App: coreapps.activeVisits"
         },
         {
           label: "Register Patient",
@@ -31,7 +32,8 @@ defineConfigSchema("@openmrs/esm-home", {
             spa: false,
             url:
               "/openmrs/registrationapp/registerPatient.page?appId=referenceapplication.registrationapp.registerPatient"
-          }
+          },
+          requiredPrivilege: "App: registrationapp.registerPatient"
         },
         {
           label: "Capture Vitals",
@@ -39,35 +41,40 @@ defineConfigSchema("@openmrs/esm-home", {
             spa: false,
             url:
               "/openmrs/coreapps/findpatient/findPatient.page?app=referenceapplication.vitals"
-          }
+          },
+          requiredPrivilege: "App: referenceapplication.vitals"
         },
         {
           label: "Appointment Scheduling",
           link: {
             spa: false,
             url: "/openmrs/appointmentschedulingui/home.page"
-          }
+          },
+          requiredPrivilege: "App: appointmentschedulingui.home"
         },
         {
           label: "Reports",
           link: {
             spa: false,
             url: "/openmrs/reportingui/reportsapp/home.page"
-          }
+          },
+          requiredPrivilege: "View Reports"
         },
         {
           label: "Data Management",
           link: {
             spa: false,
             url: "/openmrs/coreapps/datamanagement/dataManagement.page"
-          }
+          },
+          requiredPrivilege: "App: coreapps.dataManagement"
         },
         {
           label: "Configure Metadata",
           link: {
             spa: false,
             url: "/openmrs/adminui/metadata/configureMetadata.page"
-          }
+          },
+          requiredPrivilege: "App: coreapps.configuremetadata"
         },
         {
           label: "System Administration",
@@ -75,7 +82,8 @@ defineConfigSchema("@openmrs/esm-home", {
             spa: false,
             url:
               "/openmrs/coreapps/systemadministration/systemAdministration.page"
-          }
+          },
+          requiredPrivilege: "App: coreapps.systemAdministration"
         }
       ]
     }

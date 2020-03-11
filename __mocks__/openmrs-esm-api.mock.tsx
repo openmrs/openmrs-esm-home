@@ -2,6 +2,6 @@ export function openmrsFetch() {
   return new Promise(() => {});
 }
 
-export function UserHasAccessReact(props: any) {
+export const UserHasAccessReact = jest.fn().mockImplementation((props: any) => {
   return props.children;
-}
+});

@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./dashboard-button.component.css";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
+import { UserHasAccessReact } from "@openmrs/esm-api";
 
 export default function DashboardButton(props: DashboardButtonProps) {
   const className = `omrs-link omrs-filled-neutral ${styles.link}`;
   const label = <div className={styles.textContainer}>{props.label}</div>;
-  return props.link.spa ? (
+  const button = props.link.spa ? (
     <Link to={props.link.url} className={className}>
       {label}
     </Link>
@@ -19,6 +20,13 @@ export default function DashboardButton(props: DashboardButtonProps) {
       {label}
     </a>
   );
+  return props.requiredPrivilege ? (
+    <UserHasAccessReact privilege={props.requiredPrivilege}>
+      {button}
+    </UserHasAccessReact>
+  ) : (
+    button
+  );
 }
 
 function nonSpaNavigate(event, url: string) {
@@ -27,9 +35,10 @@ function nonSpaNavigate(event, url: string) {
   }
 }
 
-interface DashboardButtonProps extends RouteComponentProps {
+interface DashboardButtonProps {
   label: string;
   link: UrlConfig;
+  requiredPrivilege: string | void;
 }
 
 type UrlConfig = {
