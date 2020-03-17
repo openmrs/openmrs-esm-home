@@ -3,6 +3,7 @@ import { match, Route } from "react-router";
 import { maybe } from "kremling";
 import HomeDashboard from "./dashboard/home-dashboard.component";
 import PatientSearch from "./patient-search/patient-search.component";
+import { PatientRegistration } from "./patient-registration/patient-registration.component";
 
 export default function Home(props: HomeProps) {
   return (
@@ -11,6 +12,10 @@ export default function Home(props: HomeProps) {
       <Route
         path={props.match.url + "/patient-search"}
         component={PatientSearch}
+      />
+      <Route
+        path={props.match.url + "/patient-registration"}
+        component={PatientRegistration}
       />
     </main>
   );

@@ -29,11 +29,9 @@ defineConfigSchema("@openmrs/esm-home", {
         {
           label: "Register Patient",
           link: {
-            spa: false,
-            url:
-              "/openmrs/registrationapp/registerPatient.page?appId=referenceapplication.registrationapp.registerPatient"
-          },
-          requiredPrivilege: "App: registrationapp.registerPatient"
+            spa: true,
+            url: "/home/patient-registration"
+          }
         },
         {
           label: "Capture Vitals",
