@@ -9,6 +9,8 @@ import { object } from "prop-types";
 export default function PatientSearch(props: PatientSearchProps) {
   const searchTimeout = 300;
   const resultsPerPage = 10;
+  const customReprestation =
+    "custom:(patientId,uuid,identifiers,display,patientIdentifier:(uuid,identifier),person:(gender,age,birthdate,birthdateEstimated,personName,display),attributes:(value,attributeType:(name)))";
 
   const [searchResults, setSearchResults] = useState([]);
   const [emptyResult, setEmptyResult] = useState(false);
@@ -32,7 +34,7 @@ export default function PatientSearch(props: PatientSearchProps) {
   useEffect(() => {
     const ac = new AbortController();
     if (searchTerm) {
-      performPatientSearch(searchTerm, "full").then(({ data }) => {
+      performPatientSearch(searchTerm, customReprestation).then(({ data }) => {
         const results = data.results.map((res, i) => ({
           ...res,
           index: i + 1
