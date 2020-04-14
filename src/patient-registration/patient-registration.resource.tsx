@@ -6,6 +6,9 @@ export function savePatient(
   patient: Patient
 ) {
   return openmrsFetch("/ws/rest/v1/patient", {
+    headers: {
+      "Content-Type": "application/json"
+    },
     method: "POST",
     body: { ...patient },
     signal: abortController.signal

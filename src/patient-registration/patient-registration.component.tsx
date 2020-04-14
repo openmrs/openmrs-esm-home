@@ -79,7 +79,14 @@ export function PatientRegistration(props: PatientRegistrationProps) {
       }
     };
     const abortController = new AbortController();
-    savePatient(abortController, patient).then(createErrorHandler());
+    savePatient(abortController, patient).then(
+      response => response.status == 201 && navigate(response.data.uuid),
+      createErrorHandler()
+    );
+  };
+
+  const navigate = (patientUuid: string) => {
+    window.location.href = `/openmrs/spa/patient/${patientUuid}/chart`;
   };
 
   return (
