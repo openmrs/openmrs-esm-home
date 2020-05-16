@@ -15,7 +15,8 @@
       "es2018"
     ],
     "noEmit": true,
-    "target": "esnext"
+    "target": "esnext",
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"]
 }

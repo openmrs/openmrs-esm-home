@@ -5,13 +5,14 @@ import { performPatientSearch } from "./patient-search.resource";
 import styles from "./patient-search.component.css";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";
 import { object } from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export default function PatientSearch(props: PatientSearchProps) {
   const searchTimeout = 300;
   const resultsPerPage = 10;
   const customReprestation =
     "custom:(patientId,uuid,identifiers,display,patientIdentifier:(uuid,identifier),person:(gender,age,birthdate,birthdateEstimated,personName,display),attributes:(value,attributeType:(name)))";
-
+  const { t } = useTranslation();
   const [searchResults, setSearchResults] = useState([]);
   const [emptyResult, setEmptyResult] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -87,7 +88,7 @@ export default function PatientSearch(props: PatientSearchProps) {
       <div className={styles.patientSearchHeader}>
         <input
           className={`omrs-type-title-5 ${styles.patientSearchInput}`}
-          placeholder="Search for patient"
+          placeholder={t("Search for patient", "Search for patient")}
           aria-label="Search for patient"
           onChange={$event => handleChange($event.target.value)}
           autoFocus

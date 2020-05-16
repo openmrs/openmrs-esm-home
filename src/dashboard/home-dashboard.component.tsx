@@ -4,8 +4,10 @@ import { Link, match, RouteComponentProps } from "react-router-dom";
 import { UserHasAccessReact } from "@openmrs/esm-api";
 import { useConfig } from "@openmrs/esm-module-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
+import { useTranslation, Trans } from "react-i18next";
 
 export default function HomeDashboard(props: HomeDashboardProps) {
+  const { t } = useTranslation();
   const config = useConfig();
   const buttons = config.buttons.list.map(def => (
     <DashboardButton {...def} key={def.label} />
@@ -23,7 +25,9 @@ export default function HomeDashboard(props: HomeDashboardProps) {
                 <svg className="omrs-icon" fill="var(--omrs-color-interaction)">
                   <use xlinkHref="#omrs-icon-search" />
                 </svg>
-                <span className={styles.label}>Search for patient</span>
+                <span className={styles.label}>
+                  {t("Search for patient", "Search for patient")}
+                </span>
               </Link>
             </div>
             {config.buttons.enabled && (
