@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/openmrs-esm-home.tsx"),
+  entry: path.resolve(__dirname, "src/index.ts"),
   output: {
     filename: "openmrs-esm-home.js",
     libraryTarget: "system",
@@ -47,7 +47,7 @@ module.exports = {
     },
     disableHostCheck: true
   },
-  externals: ["react", "react-dom", /^@openmrs\/esm/],
+  externals: ["single-spa", "react", "react-dom", /^@openmrs\/esm/],
   plugins: [new ForkTsCheckerWebpackPlugin(), new CleanWebpackPlugin()],
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"]
