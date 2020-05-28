@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./dashboard-button.component.css";
-import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { UserHasAccessReact } from "@openmrs/esm-api";
 

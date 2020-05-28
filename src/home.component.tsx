@@ -1,5 +1,5 @@
 import React from "react";
-import { match, Route } from "react-router";
+import { match, Route } from "react-router-dom";
 import HomeDashboard from "./dashboard/home-dashboard.component";
 import PatientSearch from "./patient-search/patient-search.component";
 
