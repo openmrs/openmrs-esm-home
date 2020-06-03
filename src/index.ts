@@ -1,11 +1,18 @@
 import "./set-public-path";
-import { registerApplication } from "single-spa";
-import { routePrefix } from '@openmrs/esm-root-config';
+import { backendDependencies } from "./openmrs-backend-dependencies";
 
-registerApplication(
-  "@openmrs/esm-home",
-  () => import('./openmrs-esm-home'),
-  location => routePrefix("home", location),
+const importTranslation = require.context(
+  "../translations",
+  false,
+  /.json$/,
+  "lazy"
 );
 
-export { backendDependencies } from "./openmrs-backend-dependencies";
+function setupOpenMRS() {
+  return {
+    lifecycle: () => import("./openmrs-esm-home"),
+    activate: "home",
+  };
+}
+
+export { backendDependencies, importTranslation, setupOpenMRS };
