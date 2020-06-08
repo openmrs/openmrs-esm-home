@@ -3,26 +3,26 @@ const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/openmrs-esm-home.tsx"),
+  entry: path.resolve(__dirname, "src/index.ts"),
   output: {
     filename: "openmrs-esm-home.js",
     libraryTarget: "system",
     path: path.resolve(__dirname, "dist"),
-    jsonpFunction: "webpackJsonp_openmrs_esm_home"
+    jsonpFunction: "webpackJsonp_openmrs_esm_home",
   },
   module: {
     rules: [
       {
         parser: {
-          system: false
-        }
+          system: false,
+        },
       },
       {
         test: /\.m?(js|ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.css$/,
@@ -32,24 +32,32 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: {
-                localIdentName: "esm-home__[name]__[local]___[hash:base64:5]"
-              }
-            }
-          }
-        ]
-      }
-    ]
+                localIdentName: "esm-home__[name]__[local]___[hash:base64:5]",
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   devtool: "sourcemap",
   devServer: {
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
     },
-    disableHostCheck: true
+    disableHostCheck: true,
   },
-  externals: ["react", "react-dom", /^@openmrs\/esm/],
+  externals: [
+    /^@openmrs\/esm.*/,
+    "i18next",
+    "single-spa",
+    "react",
+    "react-dom",
+    "react-i18next",
+    "react-router-dom",
+  ],
   plugins: [new ForkTsCheckerWebpackPlugin(), new CleanWebpackPlugin()],
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js"]
-  }
+    extensions: [".tsx", ".ts", ".jsx", ".js"],
+  },
 };

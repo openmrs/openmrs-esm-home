@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { match } from "react-router";
+import { match } from "react-router-dom";
 import { debounce, isEmpty } from "lodash";
 import { performPatientSearch } from "./patient-search.resource";
 import styles from "./patient-search.component.css";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";
-import { object } from "prop-types";
 
 export default function PatientSearch(props: PatientSearchProps) {
   const searchTimeout = 300;

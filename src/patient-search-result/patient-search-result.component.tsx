@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./patient-search-result.component.css";
 import dayjs from "dayjs";
+import styles from "./patient-search-result.component.css";
 import { always } from "kremling";
 import { Link, match } from "react-router-dom";
 
