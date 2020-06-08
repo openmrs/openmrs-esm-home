@@ -98,5 +98,5 @@ function Root(props) {
 
 export default openmrsRootDecorator({
   featureName: "home",
-  moduleName: "@openmrs/esm-home"
+  moduleName: "@openmrs/esm-home-app"
 })(Root);
