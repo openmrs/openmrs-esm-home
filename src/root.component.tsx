@@ -4,7 +4,7 @@ import openmrsRootDecorator from "@openmrs/react-root-decorator";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./home.component";
 
-defineConfigSchema("@openmrs/esm-home", {
+defineConfigSchema("@openmrs/esm-home-app", {
   buttons: {
     enabled: {
       default: true
@@ -98,5 +98,5 @@ function Root(props) {
 
 export default openmrsRootDecorator({
   featureName: "home",
-  moduleName: "@openmrs/esm-home"
+  moduleName: "@openmrs/esm-home-app"
 })(Root);
