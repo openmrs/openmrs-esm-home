@@ -26,6 +26,11 @@ export const useConfig = jest.fn().mockReturnValue({
         }
       }
     ]
+  },
+  search: {
+    links: {
+      patientResult: "${openmrsSpaBase}/${patientUuid}/chart"
+    }
   }
 });
 

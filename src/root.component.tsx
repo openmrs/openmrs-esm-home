@@ -85,6 +85,14 @@ defineConfigSchema("@openmrs/esm-home-app", {
         }
       ]
     }
+  },
+  search: {
+    patientResultUrl: {
+      default: "${openmrsSpaBase}/patient/${patientUuid}/chart",
+      description:
+        "Where clicking a patient result takes the user. Accepts template parameter ${patientUuid}",
+      validators: [validators.isUrlWithTemplateParameters(["patientUuid"])]
+    }
   }
 });
 
