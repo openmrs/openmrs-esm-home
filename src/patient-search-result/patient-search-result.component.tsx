@@ -1,10 +1,16 @@
 import React from "react";
+import { match } from "react-router-dom";
 import dayjs from "dayjs";
-import styles from "./patient-search-result.component.css";
 import { always } from "kremling";
-import { Link, match } from "react-router-dom";
+import {
+  ConfigurableLink,
+  useConfig,
+  interpolateString
+} from "@openmrs/esm-module-config";
+import styles from "./patient-search-result.component.css";
 
 export default function PatientSearchResults(props: PatientSearchResultsProps) {
+  const config = useConfig();
   return props.patients.map(patient => renderPatient(patient));
 
   function highlight(property) {
@@ -16,10 +22,12 @@ export default function PatientSearchResults(props: PatientSearchResultsProps) {
       patient.identifiers.find(i => i.preferred) || patient.identifiers[0];
 
     return (
-      <Link
+      <ConfigurableLink
         key={patient.display}
         className={styles.patientResult}
-        to={`/patient/${patient.uuid}/chart`}
+        to={interpolateString(config.search.patientResultUrl, {
+          patientUuid: patient.uuid
+        })}
       >
         <span className={styles.resultNumber}>{patient.index}</span>
         <div className={styles.patientCard}>
@@ -67,7 +75,7 @@ export default function PatientSearchResults(props: PatientSearchResultsProps) {
             </div>
           </div>
         </div>
-      </Link>
+      </ConfigurableLink>
     );
   }
 }
