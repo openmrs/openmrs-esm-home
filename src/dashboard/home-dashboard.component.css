@@ -4,10 +4,13 @@
 }
 
 .homeDashboard {
-  height: calc(100vh - var(--omrs-topnav-height) - 10rem);
   display: flex;
   justify-content: center;
   margin: 0 auto;
+}
+
+:global(.omrs-breakpoint-gt-phone) .homeDashboard {
+  height: calc(100vh - var(--omrs-topnav-height) - 10rem);
 }
 
 .mainSection {
