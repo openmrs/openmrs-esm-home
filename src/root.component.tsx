@@ -90,6 +90,7 @@ defineConfigSchema("@openmrs/esm-home-app", {
     patientResultUrl: {
       default:
         "${openmrsBase}/coreapps/clinicianfacing/patient.page?patientId=${patientUuid}",
+      devDefault: "${openmrsSpaBase}/patient/${patientUuid}/chart",
       description:
         "Where clicking a patient result takes the user. Accepts template parameter ${patientUuid}",
       validators: [validators.isUrlWithTemplateParameters(["patientUuid"])]
