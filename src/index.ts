@@ -1,5 +1,8 @@
 import "./set-public-path";
-import { backendDependencies } from "./openmrs-backend-dependencies";
+
+const backendDependencies = {
+  "webservices.rest": "2.24.0"
+};
 
 const importTranslation = require.context(
   "../translations",
@@ -11,7 +14,7 @@ const importTranslation = require.context(
 function setupOpenMRS() {
   return {
     lifecycle: () => import("./openmrs-esm-home"),
-    activate: "home",
+    activate: "home"
   };
 }
 
