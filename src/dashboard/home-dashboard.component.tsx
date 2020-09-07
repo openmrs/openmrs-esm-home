@@ -2,6 +2,10 @@ import React from "react";
 import { Link, match } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import { UserHasAccessReact } from "@openmrs/esm-api";
+import {
+  ExtensionSlotReact,
+  ExtensionReact
+} from "@openmrs/esm-extension-manager";
 import { useConfig } from "@openmrs/esm-module-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
 import styles from "./home-dashboard.component.css";
@@ -32,7 +36,14 @@ export default function HomeDashboard(props: HomeDashboardProps) {
               </Link>
             </div>
             {config.buttons.enabled && (
-              <div className={styles.buttonArea}>{buttons}</div>
+              <div className={styles.buttonArea}>
+                <ExtensionSlotReact extensionSlotName="home-page-buttons">
+                  <div className={styles.homeButton}>
+                    <ExtensionReact />
+                  </div>
+                </ExtensionSlotReact>
+                {buttons}
+              </div>
             )}
           </UserHasAccessReact>
         </section>

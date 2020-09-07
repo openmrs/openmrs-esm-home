@@ -27,13 +27,6 @@ defineConfigSchema("@openmrs/esm-home-app", {
           requiredPrivilege: "App: coreapps.activeVisits"
         },
         {
-          label: "Patient Registration",
-          link: {
-            spa: true,
-            url: "/patient-registration"
-          }
-        },
-        {
           label: "Capture Vitals",
           link: {
             spa: false,

@@ -81,3 +81,10 @@
     var(--dashboard-button-width) * 4 + var(--dashboard-button-margin) * 8
   );
 }
+
+.homeButton a {
+  height: 7rem;
+  width: var(--dashboard-button-width);
+  margin: var(--dashboard-button-margin);
+  justify-content: center;
+}
