@@ -1,12 +1,15 @@
 import React from "react";
-import styles from "./home-dashboard.component.css";
 import { Link, match } from "react-router-dom";
+import { Trans, useTranslation } from "react-i18next";
 import { UserHasAccessReact } from "@openmrs/esm-api";
 import { useConfig } from "@openmrs/esm-module-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
+import styles from "./home-dashboard.component.css";
 
 export default function HomeDashboard(props: HomeDashboardProps) {
   const config = useConfig();
+  const { t } = useTranslation();
+
   const buttons = config.buttons.list.map(def => (
     <DashboardButton {...def} key={def.label} />
   ));
@@ -23,7 +26,9 @@ export default function HomeDashboard(props: HomeDashboardProps) {
                 <svg className="omrs-icon" fill="var(--omrs-color-interaction)">
                   <use xlinkHref="#omrs-icon-search" />
                 </svg>
-                <span className={styles.label}>Search for patient</span>
+                <span className={styles.label}>
+                  {t("patientSearchPrompt", "Search for patient")}
+                </span>
               </Link>
             </div>
             {config.buttons.enabled && (

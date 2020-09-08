@@ -8,6 +8,7 @@ module.exports = {
     "@openmrs/esm-error-handling":
       "<rootDir>/__mocks__/openmrs-esm-error-handling.mock.tsx",
     "@openmrs/esm-module-config":
-      "<rootDir>/__mocks__/openmrs-esm-module-config.mock.tsx"
+      "<rootDir>/__mocks__/openmrs-esm-module-config.mock.tsx",
+    "react-i18next": "<rootDir>/__mocks__/react-i18next.mock.js"
   }
 };
