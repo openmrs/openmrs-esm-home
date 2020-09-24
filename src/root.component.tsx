@@ -24,28 +24,6 @@ defineConfigSchema("@openmrs/esm-home-app", {
       },
       _default: [
         {
-          label: "Active Visits",
-          link:
-            "${openmrsBase}/coreapps/activeVisits.page?app=coreapps.activeVisits",
-          requiredPrivilege: "App: coreapps.activeVisits"
-        },
-        {
-          label: "Capture Vitals",
-          link:
-            "${openmrsBase}/coreapps/findpatient/findPatient.page?app=referenceapplication.vitals",
-          requiredPrivilege: "App: referenceapplication.vitals"
-        },
-        {
-          label: "Appointment Scheduling",
-          link: "${openmrsBase}/appointmentschedulingui/home.page",
-          requiredPrivilege: "App: appointmentschedulingui.home"
-        },
-        {
-          label: "Reports",
-          link: "${openmrsBase}/reportingui/reportsapp/home.page",
-          requiredPrivilege: "View Reports"
-        },
-        {
           label: "Data Management",
           link: "${openmrsBase}/coreapps/datamanagement/dataManagement.page",
           requiredPrivilege: "App: coreapps.dataManagement"
