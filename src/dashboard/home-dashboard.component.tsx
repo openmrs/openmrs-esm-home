@@ -5,8 +5,8 @@ import { UserHasAccessReact } from "@openmrs/esm-api";
 import {
   ExtensionSlotReact,
   ExtensionReact
-} from "@openmrs/esm-extension-manager";
-import { useConfig } from "@openmrs/esm-module-config";
+} from "@openmrs/esm-extensions";
+import { useConfig } from "@openmrs/esm-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
 import styles from "./home-dashboard.component.css";
 

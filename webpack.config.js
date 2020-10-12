@@ -2,8 +2,13 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
+const { peerDependencies } = require("./package.json");
+
 module.exports = {
-  entry: path.resolve(__dirname, "src/index.ts"),
+  entry: [
+    path.resolve(__dirname, "src/set-public-path.ts"),
+    path.resolve(__dirname, "src/index.ts"),
+  ],
   output: {
     filename: "openmrs-esm-home.js",
     libraryTarget: "system",
@@ -47,15 +52,7 @@ module.exports = {
     },
     disableHostCheck: true,
   },
-  externals: [
-    /^@openmrs\/esm.*/,
-    "i18next",
-    "single-spa",
-    "react",
-    "react-dom",
-    "react-i18next",
-    "react-router-dom",
-  ],
+  externals: Object.keys(peerDependencies),
   plugins: [new ForkTsCheckerWebpackPlugin(), new CleanWebpackPlugin()],
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],

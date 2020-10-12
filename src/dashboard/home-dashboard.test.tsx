@@ -2,7 +2,7 @@ import React from "react";
 import { fireEvent, render } from "@testing-library/react";
 import HomeDashboard from "./home-dashboard.component";
 
-import { useConfig as mockUseConfig } from "@openmrs/esm-module-config";
+import { useConfig as mockUseConfig } from "@openmrs/esm-config";
 import { UserHasAccessReact as mockUserHasAccessReact } from "@openmrs/esm-api";
 import renderWithRouter from "../helpers/render-with-router";
 

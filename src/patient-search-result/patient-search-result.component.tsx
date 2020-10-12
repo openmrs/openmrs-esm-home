@@ -6,7 +6,7 @@ import {
   ConfigurableLink,
   useConfig,
   interpolateString
-} from "@openmrs/esm-module-config";
+} from "@openmrs/esm-config";
 import styles from "./patient-search-result.component.css";
 
 export default function PatientSearchResults(props: PatientSearchResultsProps) {

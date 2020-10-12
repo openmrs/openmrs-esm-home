@@ -1,5 +1,5 @@
 import React from "react";
-import { defineConfigSchema, validators } from "@openmrs/esm-module-config";
+import { defineConfigSchema, validators } from "@openmrs/esm-config";
 import openmrsRootDecorator from "@openmrs/react-root-decorator";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./home.component";
