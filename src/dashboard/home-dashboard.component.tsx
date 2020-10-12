@@ -2,10 +2,7 @@ import React from "react";
 import { Link, match } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import { UserHasAccessReact } from "@openmrs/esm-api";
-import {
-  ExtensionSlotReact,
-  ExtensionReact
-} from "@openmrs/esm-extensions";
+import { ExtensionSlotReact, ExtensionReact } from "@openmrs/esm-extensions";
 import { useConfig } from "@openmrs/esm-config";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
 import styles from "./home-dashboard.component.css";
