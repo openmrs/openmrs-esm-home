@@ -24,7 +24,7 @@ it("directs to patient search on click", () => {
 });
 
 it("renders buttons declared in config", () => {
-  mockUseConfig.mockReturnValue({
+  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
@@ -44,7 +44,7 @@ it("renders buttons declared in config", () => {
 });
 
 it("clicking buttons takes user to the right places", () => {
-  mockUseConfig.mockReturnValue({
+  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
@@ -71,7 +71,7 @@ it("renders selectively based on privileges", () => {
       return null;
     }
   });
-  mockUseConfig.mockReturnValue({
+  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
