@@ -2,7 +2,7 @@ import React from "react";
 import { fireEvent, render } from "@testing-library/react";
 import HomeDashboard from "./home-dashboard.component";
 
-import { useConfig as mockUseConfig } from "@openmrs/esm-module-config";
+import { useConfig as mockUseConfig } from "@openmrs/esm-config";
 import { UserHasAccessReact as mockUserHasAccessReact } from "@openmrs/esm-api";
 import renderWithRouter from "../helpers/render-with-router";
 
@@ -24,7 +24,7 @@ it("directs to patient search on click", () => {
 });
 
 it("renders buttons declared in config", () => {
-  mockUseConfig.mockReturnValue({
+  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
@@ -44,7 +44,7 @@ it("renders buttons declared in config", () => {
 });
 
 it("clicking buttons takes user to the right places", () => {
-  mockUseConfig.mockReturnValue({
+  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
@@ -71,7 +71,7 @@ it("renders selectively based on privileges", () => {
       return null;
     }
   });
-  mockUseConfig.mockReturnValue({
+  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
