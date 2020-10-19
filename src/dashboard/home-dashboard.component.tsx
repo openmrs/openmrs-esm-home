@@ -33,14 +33,14 @@ export default function HomeDashboard(props: HomeDashboardProps) {
               </Link>
             </div>
             {config.buttons.enabled && (
-              <div className={styles.buttonArea}>
-                <ExtensionSlotReact extensionSlotName="home-page-buttons">
-                  <div className={styles.homeButton}>
-                    <ExtensionReact />
-                  </div>
-                </ExtensionSlotReact>
-                {buttons}
-              </div>
+              <ExtensionSlotReact
+                extensionSlotName="home-page-buttons"
+                className={styles.buttonArea}
+              >
+                <div className={styles.homeButton}>
+                  <ExtensionReact />
+                </div>
+              </ExtensionSlotReact>
             )}
           </UserHasAccessReact>
         </section>
