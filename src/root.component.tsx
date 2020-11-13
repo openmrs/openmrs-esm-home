@@ -1,79 +1,64 @@
 import React from "react";
 import openmrsRootDecorator from "@openmrs/react-root-decorator";
-import { defineConfigSchema, validators } from "@openmrs/esm-config";
+import { defineConfigSchema, validators, Type } from "@openmrs/esm-config";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./home.component";
 
 defineConfigSchema("@openmrs/esm-home-app", {
   buttons: {
     enabled: {
-      default: true
+      _type: Type.Boolean,
+      _default: true
     },
     list: {
-      arrayElements: {
-        label: { validators: [validators.isString] },
+      _type: Type.Array,
+      _elements: {
+        label: { _type: Type.String },
         link: {
-          spa: { validators: [validators.isBoolean] },
-          url: { validators: [validators.isString] }
+          _type: Type.String,
+          _validators: [validators.isUrl]
+        },
+        requiredPrivilege: {
+          _type: Type.String
         }
       },
-      default: [
+      _default: [
         {
           label: "Active Visits",
-          link: {
-            spa: false,
-            url: "/openmrs/coreapps/activeVisits.page?app=coreapps.activeVisits"
-          },
+          link:
+            "${openmrsBase}/coreapps/activeVisits.page?app=coreapps.activeVisits",
           requiredPrivilege: "App: coreapps.activeVisits"
         },
         {
           label: "Capture Vitals",
-          link: {
-            spa: false,
-            url:
-              "/openmrs/coreapps/findpatient/findPatient.page?app=referenceapplication.vitals"
-          },
+          link:
+            "${openmrsBase}/coreapps/findpatient/findPatient.page?app=referenceapplication.vitals",
           requiredPrivilege: "App: referenceapplication.vitals"
         },
         {
           label: "Appointment Scheduling",
-          link: {
-            spa: false,
-            url: "/openmrs/appointmentschedulingui/home.page"
-          },
+          link: "${openmrsBase}/appointmentschedulingui/home.page",
           requiredPrivilege: "App: appointmentschedulingui.home"
         },
         {
           label: "Reports",
-          link: {
-            spa: false,
-            url: "/openmrs/reportingui/reportsapp/home.page"
-          },
+          link: "${openmrsBase}/reportingui/reportsapp/home.page",
           requiredPrivilege: "View Reports"
         },
         {
           label: "Data Management",
-          link: {
-            spa: false,
-            url: "/openmrs/coreapps/datamanagement/dataManagement.page"
-          },
+          link: "${openmrsBase}/coreapps/datamanagement/dataManagement.page",
           requiredPrivilege: "App: coreapps.dataManagement"
         },
         {
           label: "Configure Metadata",
-          link: {
-            spa: false,
-            url: "/openmrs/adminui/metadata/configureMetadata.page"
-          },
+          link: "${openmrsBase}/adminui/metadata/configureMetadata.page",
           requiredPrivilege: "App: coreapps.configuremetadata"
         },
         {
           label: "System Administration",
-          link: {
-            spa: false,
-            url:
-              "/openmrs/coreapps/systemadministration/systemAdministration.page"
-          },
+          link:
+            "${openmrsBase}/coreapps/systemadministration/systemAdministration.page",
           requiredPrivilege: "App: coreapps.systemAdministration"
         }
       ]
@@ -81,12 +66,12 @@ defineConfigSchema("@openmrs/esm-home-app", {
   },
   search: {
     patientResultUrl: {
-      default:
+      _default:
         "${openmrsBase}/coreapps/clinicianfacing/patient.page?patientId=${patientUuid}",
-      devDefault: "${openmrsSpaBase}/patient/${patientUuid}/chart",
-      description:
+      _devDefault: "${openmrsSpaBase}/patient/${patientUuid}/chart",
+      _description:
         "Where clicking a patient result takes the user. Accepts template parameter ${patientUuid}",
-      validators: [validators.isUrlWithTemplateParameters(["patientUuid"])]
+      _validators: [validators.isUrlWithTemplateParameters(["patientUuid"])]
     }
   }
 });
