@@ -20,6 +20,10 @@ defineConfigSchema("@openmrs/esm-home-app", {
         },
         requiredPrivilege: {
           _type: Type.String
+        },
+        spa: {
+          _type: Type.Boolean,
+          _default: false
         }
       },
       _default: [
