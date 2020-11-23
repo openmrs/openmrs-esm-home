@@ -1,4 +1,5 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import { fireEvent, render } from "@testing-library/react";
 import HomeDashboard from "./home-dashboard.component";
 
@@ -30,10 +31,7 @@ it("renders buttons declared in config", () => {
       list: [
         {
           label: "Foo",
-          link: {
-            spa: true,
-            url: "/some/route"
-          }
+          link: "/some/route"
         }
       ]
     }
@@ -43,24 +41,20 @@ it("renders buttons declared in config", () => {
   expect(fooButton).not.toBeNull();
 });
 
-it("clicking buttons takes user to the right places", () => {
+it("clicking buttons takes user to the right places", async () => {
   (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
       enabled: true,
       list: [
         {
           label: "Foo",
-          link: {
-            spa: true,
-            url: "/some/route"
-          }
+          link: "/some/route"
         }
       ]
     }
   });
   const { getByText, history } = renderHome();
-  fireEvent.click(getByText("Foo"));
-  expect(history.location.pathname).toBe("/some/route");
+  expect(getByText("Foo").closest("a")).toHaveAttribute("href", "/some/route");
 });
 
 it("renders selectively based on privileges", () => {
@@ -77,18 +71,12 @@ it("renders selectively based on privileges", () => {
       list: [
         {
           label: "Foo",
-          link: {
-            spa: true,
-            url: "foo"
-          },
+          link: "foo",
           requiredPrivilege: "Can Foo"
         },
         {
           label: "Bar",
-          link: {
-            spa: true,
-            url: "bar"
-          },
+          link: "bar",
           requiredPrivilege: "Can Bar"
         }
       ]

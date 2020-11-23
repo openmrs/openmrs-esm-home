@@ -30,7 +30,7 @@ after_deploy:
   - >
     if [[ "$TRAVIS_BRANCH" == "master" ]]; then
       echo "Updating import map to point to new version of @openmrs/esm-home-app"
-      statuscode=$(curl --output /dev/null --write-out %{http_code} -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD -d '{ "service":"@openmrs/esm-home-app","url":"https://spa-modules.nyc3.digitaloceanspaces.com/@openmrs/esm-home-app/'$TRAVIS_COMMIT'/openmrs-esm-home.js" }' -X PATCH $DEPLOYER_HOST/services\?env=prod -H "Accept:application/json" -H "Content-Type:application/json")
+      statuscode=$(curl --output /dev/null --write-out %{http_code} -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD -d '{ "service":"@openmrs/esm-home-app","url":"https://spa-modules.nyc3.digitaloceanspaces.com/@openmrs/esm-home-app/'$TRAVIS_COMMIT'/openmrs-esm-home-app.js" }' -X PATCH $DEPLOYER_HOST/services\?env=prod -H "Accept:application/json" -H "Content-Type:application/json")
       echo "Deployment Status Code --> ${statuscode}"
       if [ "$statuscode" -ne 200 ]; then travis_terminate "$statuscode"; fi
     fi
