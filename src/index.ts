@@ -26,12 +26,24 @@ function setupOpenMRS() {
         load: () => import("./refapp-links/capture-vitals")
       },
       {
+        name: "appointment-scheduling-link",
+        load: () => import("./refapp-links/appointment-scheduling")
+      },
+      {
         name: "reports-link",
         load: () => import("./refapp-links/reports")
       },
       {
-        name: "appointment-scheduling",
-        load: () => import("./refapp-links/appointment-scheduling")
+        name: "data-management-link",
+        load: () => import("./refapp-links/data-management")
+      },
+      {
+        name: "configure-metadata-link",
+        load: () => import("./refapp-links/configure-metadata")
+      },
+      {
+        name: "system-administration-link",
+        load: () => import("./refapp-links/system-administration")
       }
     ]
   };
@@ -39,7 +51,10 @@ function setupOpenMRS() {
 
 attach("home-page-buttons", "active-visits-link");
 attach("home-page-buttons", "capture-vitals-link");
+attach("home-page-buttons", "appointment-scheduling-link");
 attach("home-page-buttons", "reports-link");
-attach("home-page-buttons", "appointment-scheduling");
+attach("home-page-buttons", "data-management-link");
+attach("home-page-buttons", "configure-metadata-link");
+attach("home-page-buttons", "system-administration-link");
 
 export { backendDependencies, importTranslation, setupOpenMRS };

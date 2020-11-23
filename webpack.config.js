@@ -7,27 +7,27 @@ const { peerDependencies } = require("./package.json");
 module.exports = {
   entry: [
     path.resolve(__dirname, "src/set-public-path.ts"),
-    path.resolve(__dirname, "src/index.ts"),
+    path.resolve(__dirname, "src/index.ts")
   ],
   output: {
-    filename: "openmrs-esm-home.js",
+    filename: "openmrs-esm-home-app.js",
     libraryTarget: "system",
     path: path.resolve(__dirname, "dist"),
-    jsonpFunction: "webpackJsonp_openmrs_esm_home",
+    jsonpFunction: "webpackJsonp_openmrs_esm_home"
   },
   module: {
     rules: [
       {
         parser: {
-          system: false,
-        },
+          system: false
+        }
       },
       {
         test: /\.m?(js|ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
-        },
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.css$/,
@@ -37,24 +37,24 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: {
-                localIdentName: "esm-home__[name]__[local]___[hash:base64:5]",
-              },
-            },
-          },
-        ],
-      },
-    ],
+                localIdentName: "esm-home__[name]__[local]___[hash:base64:5]"
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   devtool: "sourcemap",
   devServer: {
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*"
     },
-    disableHostCheck: true,
+    disableHostCheck: true
   },
   externals: Object.keys(peerDependencies),
   plugins: [new ForkTsCheckerWebpackPlugin(), new CleanWebpackPlugin()],
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js"],
-  },
+    extensions: [".tsx", ".ts", ".jsx", ".js"]
+  }
 };

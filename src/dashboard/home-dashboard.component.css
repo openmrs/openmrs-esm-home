@@ -29,7 +29,7 @@
   margin: 2rem auto;
 }
 
-.buttonArea {
+.buttonArea > div {
   min-height: 1vh;
   display: flex;
   flex-wrap: wrap;

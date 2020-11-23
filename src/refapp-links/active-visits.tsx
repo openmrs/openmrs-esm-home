@@ -1,21 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import singleSpaReact from "single-spa-react";
-import { ConfigurableLink } from "@openmrs/esm-module-config";
+import { RefAppLink } from "./refapp-link";
+
+const Root = () => (
+  <RefAppLink
+    label="Active Visits"
+    to="${openmrsBase}/coreapps/activeVisits.page?app=coreapps.activeVisits"
+    privilege="App: coreapps.activeVisits"
+  />
+);
 
 export default singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: RefAppLink
+  rootComponent: Root
 });
-
-export function RefAppLink(props) {
-  return (
-    <ConfigurableLink
-      className={`omrs-link omrs-filled-neutral`}
-      to={"${openmrsBase}/coreapps/activeVisits.page?app=coreapps.activeVisits"}
-    >
-      Active Visits
-    </ConfigurableLink>
-  );
-}

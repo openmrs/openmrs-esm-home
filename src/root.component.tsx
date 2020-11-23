@@ -8,7 +8,9 @@ defineConfigSchema("@openmrs/esm-home-app", {
   buttons: {
     enabled: {
       _type: Type.Boolean,
-      _default: true
+      _default: true,
+      _description:
+        "Whether to show big buttons on the home page (including extensions)"
     },
     list: {
       _type: Type.Array,
@@ -22,24 +24,9 @@ defineConfigSchema("@openmrs/esm-home-app", {
           _type: Type.String
         }
       },
-      _default: [
-        {
-          label: "Data Management",
-          link: "${openmrsBase}/coreapps/datamanagement/dataManagement.page",
-          requiredPrivilege: "App: coreapps.dataManagement"
-        },
-        {
-          label: "Configure Metadata",
-          link: "${openmrsBase}/adminui/metadata/configureMetadata.page",
-          requiredPrivilege: "App: coreapps.configuremetadata"
-        },
-        {
-          label: "System Administration",
-          link:
-            "${openmrsBase}/coreapps/systemadministration/systemAdministration.page",
-          requiredPrivilege: "App: coreapps.systemAdministration"
-        }
-      ]
+      _default: [],
+      _description:
+        "Custom buttons to add, which will come after the button extensions"
     }
   },
   search: {

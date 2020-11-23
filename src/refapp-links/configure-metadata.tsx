@@ -5,9 +5,9 @@ import { RefAppLink } from "./refapp-link";
 
 const Root = () => (
   <RefAppLink
-    label="Appointment Scheduling"
-    to="${openmrsBase}/appointmentschedulingui/home.page"
-    privilege="App: appointmentschedulingui.home"
+    label="Configure Metadata"
+    to="${openmrsBase}/adminui/metadata/configureMetadata.page"
+    privilege="App: coreapps.configuremetadata"
   />
 );
 
