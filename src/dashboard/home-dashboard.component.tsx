@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, match } from "react-router-dom";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { UserHasAccessReact } from "@openmrs/esm-api";
 import { ExtensionSlotReact, ExtensionReact } from "@openmrs/esm-extensions";
 import { useConfig } from "@openmrs/esm-config";
@@ -11,9 +11,6 @@ export default function HomeDashboard(props: HomeDashboardProps) {
   const config = useConfig();
   const { t } = useTranslation();
 
-  const buttons = config.buttons.list.map(def => (
-    <DashboardButton {...def} key={def.label} />
-  ));
   return (
     <>
       <div className={styles.homeDashboard}>
@@ -39,7 +36,11 @@ export default function HomeDashboard(props: HomeDashboardProps) {
                     <ExtensionReact />
                   </div>
                 </ExtensionSlotReact>
-                {buttons}
+                <div>
+                  {config.buttons.list.map(def => (
+                    <DashboardButton {...def} key={def.label} />
+                  ))}
+                </div>
               </div>
             )}
           </UserHasAccessReact>

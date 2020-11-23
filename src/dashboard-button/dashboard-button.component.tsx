@@ -1,23 +1,15 @@
 import React from "react";
-import styles from "./dashboard-button.component.css";
-import { Link } from "react-router-dom";
 import { UserHasAccessReact } from "@openmrs/esm-api";
+import { ConfigurableLink } from "@openmrs/esm-config";
+import styles from "./dashboard-button.component.css";
 
 export default function DashboardButton(props: DashboardButtonProps) {
   const className = `omrs-link omrs-filled-neutral ${styles.link}`;
   const label = <div className={styles.textContainer}>{props.label}</div>;
-  const button = props.link.spa ? (
-    <Link to={props.link.url} className={className}>
+  const button = (
+    <ConfigurableLink className={className} to={props.link}>
       {label}
-    </Link>
-  ) : (
-    <a
-      className={className}
-      onClick={event => nonSpaNavigate(event, props.link.url)}
-      href={props.link.url}
-    >
-      {label}
-    </a>
+    </ConfigurableLink>
   );
   return props.requiredPrivilege ? (
     <UserHasAccessReact privilege={props.requiredPrivilege}>
@@ -28,19 +20,8 @@ export default function DashboardButton(props: DashboardButtonProps) {
   );
 }
 
-function nonSpaNavigate(event, url: string) {
-  if (!event.ctrlKey && event.which != 2 && event.which != 3) {
-    window.location.href = url;
-  }
-}
-
 interface DashboardButtonProps {
   label: string;
-  link: UrlConfig;
+  link: string;
   requiredPrivilege: string | void;
 }
-
-type UrlConfig = {
-  spa: boolean;
-  url: string;
-};
