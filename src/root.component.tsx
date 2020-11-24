@@ -35,9 +35,7 @@ defineConfigSchema("@openmrs/esm-home-app", {
   },
   search: {
     patientResultUrl: {
-      _default:
-        "${openmrsBase}/coreapps/clinicianfacing/patient.page?patientId=${patientUuid}",
-      _devDefault: "${openmrsSpaBase}/patient/${patientUuid}/chart",
+      _default: "${openmrsSpaBase}/patient/${patientUuid}/chart",
       _description:
         "Where clicking a patient result takes the user. Accepts template parameter ${patientUuid}",
       _validators: [validators.isUrlWithTemplateParameters(["patientUuid"])]
