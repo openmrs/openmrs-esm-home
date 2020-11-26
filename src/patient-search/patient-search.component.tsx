@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { match } from "react-router-dom";
-import { debounce, isEmpty } from "lodash";
+import debounce from "lodash-es/debounce";
+import isEmpty from "lodash-es/isEmpty";
 import { performPatientSearch } from "./patient-search.resource";
 import styles from "./patient-search.component.css";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";

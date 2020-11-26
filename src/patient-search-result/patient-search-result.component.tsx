@@ -2,12 +2,15 @@ import React from "react";
 import { match } from "react-router-dom";
 import dayjs from "dayjs";
 import { always } from "kremling";
-import {
-  ConfigurableLink,
-  useConfig,
-  interpolateString
-} from "@openmrs/esm-config";
+import { interpolateString } from "@openmrs/esm-config";
+import { ConfigurableLink, useConfig } from "@openmrs/esm-react-utils";
 import styles from "./patient-search-result.component.css";
+
+export interface PatientSearchResultsProps {
+  patients: any;
+  searchTerm: string;
+  match: match;
+}
 
 export default function PatientSearchResults(props: PatientSearchResultsProps) {
   const config = useConfig();
@@ -79,9 +82,3 @@ export default function PatientSearchResults(props: PatientSearchResultsProps) {
     );
   }
 }
-
-type PatientSearchResultsProps = {
-  patients: any;
-  searchTerm: string;
-  match: match;
-};

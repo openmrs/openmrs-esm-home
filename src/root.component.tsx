@@ -1,5 +1,4 @@
 import React from "react";
-import { openmrsRootDecorator } from "@openmrs/esm-context";
 import { defineConfigSchema, validators, Type } from "@openmrs/esm-config";
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from "./home.component";
@@ -43,15 +42,10 @@ defineConfigSchema("@openmrs/esm-home-app", {
   }
 });
 
-function Root(props) {
+export default function Root() {
   return (
     <BrowserRouter basename={window["getOpenmrsSpaBase"]()}>
       <Route path="/home" component={Home} />
     </BrowserRouter>
   );
 }
-
-export default openmrsRootDecorator({
-  featureName: "home",
-  moduleName: "@openmrs/esm-home-app"
-})(Root);

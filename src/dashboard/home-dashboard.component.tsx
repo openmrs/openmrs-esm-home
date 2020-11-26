@@ -1,9 +1,12 @@
 import React from "react";
 import { Link, match } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { UserHasAccessReact } from "@openmrs/esm-api";
-import { ExtensionSlotReact, ExtensionReact } from "@openmrs/esm-extensions";
-import { useConfig } from "@openmrs/esm-config";
+import {
+  useConfig,
+  UserHasAccess,
+  ExtensionSlot,
+  Extension
+} from "@openmrs/esm-react-utils";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
 import styles from "./home-dashboard.component.css";
 
@@ -19,7 +22,7 @@ export default function HomeDashboard(props: HomeDashboardProps) {
     <>
       <div className={styles.homeDashboard}>
         <section className={styles.mainSection}>
-          <UserHasAccessReact privilege="View Patients">
+          <UserHasAccess privilege="View Patients">
             <div className={styles.searchLinkArea}>
               <Link
                 to={props.match.url + "/patient-search"}
@@ -33,14 +36,14 @@ export default function HomeDashboard(props: HomeDashboardProps) {
                 </span>
               </Link>
             </div>
-          </UserHasAccessReact>
+          </UserHasAccess>
           {config.buttons.enabled && (
             <div className={styles.buttonArea}>
-              <ExtensionSlotReact extensionSlotName="home-page-buttons">
+              <ExtensionSlot extensionSlotName="home-page-buttons">
                 <div className={styles.homeButton}>
-                  <ExtensionReact />
+                  <Extension />
                 </div>
-              </ExtensionSlotReact>
+              </ExtensionSlot>
               {config.buttons.list.map(def => (
                 <DashboardButton {...def} key={def.label} />
               ))}

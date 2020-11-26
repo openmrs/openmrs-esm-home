@@ -1,6 +1,5 @@
 import React from "react";
-import { UserHasAccessReact } from "@openmrs/esm-api";
-import { ConfigurableLink } from "@openmrs/esm-config";
+import { ConfigurableLink, UserHasAccess } from "@openmrs/esm-react-utils";
 import styles from "./dashboard-button.component.css";
 
 export interface DashboardButtonProps {
@@ -19,9 +18,7 @@ export default function DashboardButton(props: DashboardButtonProps) {
   );
 
   return props.requiredPrivilege ? (
-    <UserHasAccessReact privilege={props.requiredPrivilege}>
-      {button}
-    </UserHasAccessReact>
+    <UserHasAccess privilege={props.requiredPrivilege}>{button}</UserHasAccess>
   ) : (
     button
   );

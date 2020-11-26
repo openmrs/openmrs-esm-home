@@ -1,10 +1,11 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent } from "@testing-library/react";
+import {
+  useConfig as mockUseConfig,
+  UserHasAccess as mockUserHasAccessReact
+} from "@openmrs/esm-react-utils";
 import HomeDashboard from "./home-dashboard.component";
-
-import { useConfig as mockUseConfig } from "@openmrs/esm-config";
-import { UserHasAccessReact as mockUserHasAccessReact } from "@openmrs/esm-api";
 import renderWithRouter from "../helpers/render-with-router";
 
 const match = { params: { id: 1 }, isExact: true, path: "", url: "" };

@@ -1,5 +1,5 @@
 import "./set-public-path";
-import { attach } from "@openmrs/esm-extensions";
+import { getAsyncLifecycle } from "@openmrs/esm-react-utils";
 
 const backendDependencies = {
   "webservices.rest": "2.24.0"
@@ -14,47 +14,49 @@ const importTranslation = require.context(
 
 function setupOpenMRS() {
   return {
-    lifecycle: () => import("./openmrs-esm-home"),
+    lifecycle: getAsyncLifecycle(() => import("./root.component"), {
+      featureName: "home",
+      moduleName: "@openmrs/esm-home-app"
+    }),
     activate: "home",
     extensions: [
       {
-        name: "active-visits-link",
+        id: "active-visits-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/active-visits")
       },
       {
-        name: "capture-vitals-link",
+        id: "capture-vitals-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/capture-vitals")
       },
       {
-        name: "appointment-scheduling-link",
+        id: "appointment-scheduling-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/appointment-scheduling")
       },
       {
-        name: "reports-link",
+        id: "reports-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/reports")
       },
       {
-        name: "data-management-link",
+        id: "data-management-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/data-management")
       },
       {
-        name: "configure-metadata-link",
+        id: "configure-metadata-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/configure-metadata")
       },
       {
-        name: "system-administration-link",
+        id: "system-administration-link",
+        slot: "home-page-buttons",
         load: () => import("./refapp-links/system-administration")
       }
     ]
   };
 }
-
-attach("home-page-buttons", "active-visits-link");
-attach("home-page-buttons", "capture-vitals-link");
-attach("home-page-buttons", "appointment-scheduling-link");
-attach("home-page-buttons", "reports-link");
-attach("home-page-buttons", "data-management-link");
-attach("home-page-buttons", "configure-metadata-link");
-attach("home-page-buttons", "system-administration-link");
 
 export { backendDependencies, importTranslation, setupOpenMRS };

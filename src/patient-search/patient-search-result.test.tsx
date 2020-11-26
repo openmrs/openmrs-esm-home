@@ -40,11 +40,6 @@ jest.mock("./patient-search.resource", () => ({
   })
 }));
 
-jest.mock("lodash", () => ({
-  debounce: jest.fn(fn => fn),
-  isEmpty: jest.fn(arr => arr.length === 0)
-}));
-
 afterEach(cleanup);
 
 describe("<PatientSearch/>", () => {
