@@ -12,48 +12,68 @@ const importTranslation = require.context(
   "lazy"
 );
 
+const options = {
+  featureName: "home",
+  moduleName: "@openmrs/esm-home-app"
+};
+
 function setupOpenMRS() {
   return {
-    lifecycle: getAsyncLifecycle(() => import("./root.component"), {
-      featureName: "home",
-      moduleName: "@openmrs/esm-home-app"
-    }),
+    lifecycle: getAsyncLifecycle(() => import("./root.component"), options),
     activate: "home",
     extensions: [
       {
         id: "active-visits-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/active-visits")
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/active-visits"),
+          options
+        )
       },
       {
         id: "capture-vitals-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/capture-vitals")
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/capture-vitals"),
+          options
+        )
       },
       {
         id: "appointment-scheduling-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/appointment-scheduling")
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/appointment-scheduling"),
+          options
+        )
       },
       {
         id: "reports-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/reports")
+        load: getAsyncLifecycle(() => import("./refapp-links/reports"), options)
       },
       {
         id: "data-management-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/data-management")
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/data-management"),
+          options
+        )
       },
       {
         id: "configure-metadata-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/configure-metadata")
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/configure-metadata"),
+          options
+        )
       },
       {
         id: "system-administration-link",
         slot: "home-page-buttons",
-        load: () => import("./refapp-links/system-administration")
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/system-administration"),
+          options
+        )
       }
     ]
   };
