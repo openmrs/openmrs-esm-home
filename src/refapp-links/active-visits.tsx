@@ -1,7 +1,7 @@
 import React from "react";
 import { RefAppLink } from "./refapp-link";
 
-export default function Root() {
+export default function ActiveVisits() {
   return (
     <RefAppLink
       label="Active Visits"
