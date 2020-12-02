@@ -1,5 +1,5 @@
 # openmrs-esm-home
-[![Build Status](https://travis-ci.org/openmrs/openmrs-esm-home.svg?branch=master)](https://travis-ci.org/openmrs/openmrs-esm-home)
+[![Build Status](https://travis-ci.com/openmrs/openmrs-esm-home.svg?branch=master)](https://travis-ci.com/openmrs/openmrs-esm-home)
 
 An [OpenMRS Microfrontend](https://wiki.openmrs.org/display/projects/Frontend+-+SPA+and+Microfrontends).
 
