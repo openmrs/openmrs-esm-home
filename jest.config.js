@@ -3,7 +3,8 @@ module.exports = {
     "^.+\\.tsx?$": "babel-jest"
   },
   moduleNameMapper: {
-    "\\.(css)$": "identity-obj-proxy",
+    "\\.(s?css)$": "identity-obj-proxy",
+    "\\.(jpg|jpeg|png)$": "<rootDir>/__mocks__/file.mock.ts",
     "lodash-es/debounce": "<rootDir>/__mocks__/debounce.mock.ts",
     "lodash-es/isEmpty": "<rootDir>/__mocks__/isEmpty.mock.ts",
     "@openmrs/esm-api": "<rootDir>/__mocks__/openmrs-esm-api.mock.tsx",
