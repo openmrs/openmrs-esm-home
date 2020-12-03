@@ -1,47 +1,18 @@
-body {
-  margin: 0;
-  padding: 0;
+@import "../root.scss";
+
+.searchResults {
+  margin: 1rem;
 }
 
-/** Desktop **/
-@media screen and (min-width: 769px) {
-  .patientSearchHeader {
-    background-color: var(--omrs-color-bg-high-contrast);
-    display: flex;
-    justify-content: center;
-  }
-
-  .searchResults {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .searchHelper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .resultsCount {
-    display: flex;
-    justify-content: space-between;
-  }
+.searchTerm {
+  @include carbon--type-style("productive-heading-03");
+  color: $text-01;
+  margin-top: 0.375rem;
 }
 
-/** Tablet/Mobile **/
-@media screen and (max-width: 769px) {
-  .patientSearchHeader {
-    background-color: var(--omrs-color-bg-medium-contrast);
-  }
-}
-
-.resultsCount {
-  font-size: 17px;
-  line-height: 147.6%;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0.5rem;
+.resultsText {
+  @include carbon--type-style("label-01");
+  color: $text-02;
 }
 
 .patientSearchHeader {
@@ -73,14 +44,6 @@ body {
   margin-left: 2.375rem;
 }
 
-.searchResults {
-  background-color: var(--omrs-color-background-canvas);
-}
-
-.resultsText {
-  color: var(--omrs-color-ink-medium-contrast);
-}
-
 .emptyResultContainer {
   display: flex;
   align-items: center;
@@ -103,6 +66,7 @@ ul.dash {
   margin-left: 0;
   padding-left: 1rem;
 }
+
 ul.dash > li:before {
   display: inline-block;
   content: "-";
