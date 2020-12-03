@@ -20,6 +20,7 @@
   height: var(--omrs-topnav-height);
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(24px);
+  margin-top: var(--omrs-topnav-height);
 }
 
 .patientSearchInput {
@@ -44,38 +45,17 @@
   margin-left: 2.375rem;
 }
 
-.emptyResultContainer {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 4rem;
-}
-
-.emptyResultCard {
-  border: 1px solid var(--omrs-color-ink-lowest-contrast);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-}
-
 .emptyResultText {
   margin-top: 1rem;
+  margin-bottom: 0.313rem;
+  @include carbon--type-style("productive-heading-01");
+  color: $text-02;
 }
 
-ul.dash {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 1rem;
-}
-
-ul.dash > li:before {
-  display: inline-block;
-  content: "-";
-  width: 1rem;
-  margin-left: -1rem;
-}
-
-.patientSearchHeader {
-  margin-top: var(--omrs-topnav-height);
+.actionText {
+  @include carbon--type-style("body-long-01");
+  color: $text-02;
+  margin-bottom: 1rem;
 }
 
 .pagination {

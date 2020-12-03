@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { match } from "react-router-dom";
+import { Link, Tile } from "carbon-components-react";
 import debounce from "lodash-es/debounce";
 import isEmpty from "lodash-es/isEmpty";
+import { match } from "react-router-dom";
 
 import { performPatientSearch } from "./patient-search.resource";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";
-import styles from "./patient-search.scss";
+import EmptyDataIllustration from "./empty-data-illustration.component";
 import { SearchedPatient } from "../types";
+import styles from "./patient-search.scss";
 
-export default function PatientSearch(props: PatientSearchProps) {
+function PatientSearch(props: PatientSearchProps) {
   const searchTimeout = 300;
   const resultsPerPage = 10;
   const customReprestation =
     "custom:(patientId,uuid,identifiers,display,patientIdentifier:(uuid,identifier),person:(gender,age,birthdate,birthdateEstimated,personName,display),attributes:(value,attributeType:(name)))";
 
-  const [searchResults, setSearchResults] = useState<Array<SearchedPatient>>(
-    []
-  );
-  const [emptyResult, setEmptyResult] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = React.useState<
+    Array<SearchedPatient>
+  >([]);
+  const [emptyResult, setEmptyResult] = React.useState(false);
+  const [searchTerm, setSearchTerm] = React.useState("");
 
-  const [pagedResults, setPagedResults] = useState<Array<SearchedPatient>>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [showNextButton, setShowNextButton] = useState(false);
-  const [showPreviousButton, setShowPreviousButton] = useState(false);
+  const [pagedResults, setPagedResults] = React.useState<
+    Array<SearchedPatient>
+  >([]);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState(1);
+  const [showNextButton, setShowNextButton] = React.useState(false);
+  const [showPreviousButton, setShowPreviousButton] = React.useState(false);
+  const searchInput = React.useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     currentPage * resultsPerPage > searchResults.length
       ? setShowNextButton(false)
       : setShowNextButton(true);
@@ -36,7 +41,7 @@ export default function PatientSearch(props: PatientSearchProps) {
       : setShowPreviousButton(false);
   }, [pagedResults, currentPage, resultsPerPage, searchResults]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const ac = new AbortController();
     if (searchTerm) {
       performPatientSearch(searchTerm, customReprestation).then(({ data }) => {
@@ -87,10 +92,15 @@ export default function PatientSearch(props: PatientSearchProps) {
     setCurrentPage(currentPage - 1);
   };
 
+  const handleFocus = () => {
+    searchInput.current.focus();
+  };
+
   return (
     <React.Fragment>
       <div className={styles.patientSearchHeader}>
         <input
+          ref={searchInput}
           className={`omrs-type-title-5 ${styles.patientSearchInput}`}
           placeholder="Search for patient"
           aria-label="Search for patient"
@@ -129,19 +139,25 @@ export default function PatientSearch(props: PatientSearchProps) {
         </div>
       )}
       {emptyResult && (
-        <div className={styles.emptyResultContainer}>
-          <div className={styles.emptyResultCard}>
-            <div className={styles.emptyResultText}>
-              Sorry, no patient has been found.
-            </div>
-            <div className={styles.emptyResultText}>
-              Try to search with one of:
-              <ul className={styles.dash}>
-                <li>patient unique ID number</li>
-                <li>patient name(s)</li>
-              </ul>
-            </div>
+        <div className={styles.searchResults}>
+          <div>
+            <p>
+              <span className={styles.resultsText}>Search results for:</span>
+            </p>
+            <p className={styles.searchTerm}>"{searchTerm}"</p>
           </div>
+          <Tile light style={{ textAlign: "center" }}>
+            <EmptyDataIllustration />
+            <p className={styles.emptyResultText}>
+              Sorry, no patient charts have been found
+            </p>
+            <p className={styles.actionText}>
+              <span>Try searching with the patient's unique ID number</span>
+              <br />
+              <span>OR the patient's name(s)</span>
+            </p>
+            <Link onClick={handleFocus}>Search Again</Link>
+          </Tile>
         </div>
       )}
       <div className={styles.pagination}>
@@ -165,6 +181,8 @@ export default function PatientSearch(props: PatientSearchProps) {
     </React.Fragment>
   );
 }
+
+export default PatientSearch;
 
 type PatientSearchProps = {
   match?: match;
