@@ -1,9 +1,9 @@
 import React from "react";
 
+import { match } from "react-router-dom";
 import { Link, Tile } from "carbon-components-react";
 import debounce from "lodash-es/debounce";
 import isEmpty from "lodash-es/isEmpty";
-import { match } from "react-router-dom";
 
 import { performPatientSearch } from "./patient-search.resource";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";
@@ -12,34 +12,25 @@ import { SearchedPatient } from "../types";
 import styles from "./patient-search.scss";
 
 function PatientSearch(props: PatientSearchProps) {
-  const searchTimeout = 300;
-  const resultsPerPage = 10;
   const customReprestation =
-    "custom:(patientId,uuid,identifiers,display,patientIdentifier:(uuid,identifier),person:(gender,age,birthdate,birthdateEstimated,personName,display),attributes:(value,attributeType:(name)))";
+    "custom:(patientId,uuid,identifiers,display," +
+    "patientIdentifier:(uuid,identifier)," +
+    "person:(gender,age,birthdate,birthdateEstimated,personName,display)," +
+    "attributes:(value,attributeType:(name)))";
+  const searchTimeout = 300;
+  const resultsPerPage = 5;
 
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [emptyResult, setEmptyResult] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState<
     Array<SearchedPatient>
   >([]);
-  const [emptyResult, setEmptyResult] = React.useState(false);
-  const [searchTerm, setSearchTerm] = React.useState("");
-
   const [pagedResults, setPagedResults] = React.useState<
     Array<SearchedPatient>
   >([]);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [totalPages, setTotalPages] = React.useState(1);
-  const [showNextButton, setShowNextButton] = React.useState(false);
-  const [showPreviousButton, setShowPreviousButton] = React.useState(false);
+  const [totalPages, setTotalPages] = React.useState(10);
   const searchInput = React.useRef<HTMLInputElement>(null);
-
-  React.useEffect(() => {
-    currentPage * resultsPerPage > searchResults.length
-      ? setShowNextButton(false)
-      : setShowNextButton(true);
-    currentPage !== 1
-      ? setShowPreviousButton(true)
-      : setShowPreviousButton(false);
-  }, [pagedResults, currentPage, resultsPerPage, searchResults]);
 
   React.useEffect(() => {
     const ac = new AbortController();
@@ -49,19 +40,19 @@ function PatientSearch(props: PatientSearchProps) {
           ...res,
           index: i + 1
         }));
+
         const pagedResults = results.slice(0, resultsPerPage);
         setSearchResults(results);
         setPagedResults(pagedResults);
-        setTotalPages(Math.ceil(results.length / 10));
+        setTotalPages(Math.ceil(results.length) / totalPages);
+
         if (isEmpty(data.results)) {
-          setCurrentPage(1);
           setEmptyResult(true);
         } else {
           setEmptyResult(false);
         }
       });
     } else {
-      setCurrentPage(1);
       setEmptyResult(false);
       setSearchResults([]);
       setPagedResults([]);
@@ -72,25 +63,6 @@ function PatientSearch(props: PatientSearchProps) {
   const handleChange = debounce(searchTerm => {
     setSearchTerm(searchTerm);
   }, searchTimeout);
-
-  const nextPage = () => {
-    let upperBound = currentPage * resultsPerPage + resultsPerPage;
-    const lowerBound = currentPage * resultsPerPage;
-    if (upperBound > searchResults.length) {
-      upperBound = searchResults.length;
-    }
-    const pageResults = searchResults.slice(lowerBound, upperBound);
-    setPagedResults(pageResults);
-    setCurrentPage(currentPage + 1);
-  };
-
-  const previousPage = () => {
-    const lowerBound = currentPage * resultsPerPage - resultsPerPage * 2;
-    const upperBound = currentPage * resultsPerPage - resultsPerPage;
-    const pageResults = searchResults.slice(lowerBound, upperBound);
-    setPagedResults(pageResults);
-    setCurrentPage(currentPage - 1);
-  };
 
   const handleFocus = () => {
     searchInput.current.focus();
@@ -111,15 +83,13 @@ function PatientSearch(props: PatientSearchProps) {
       <div className={styles.searchResults}>
         {!isEmpty(searchResults) && (
           <div>
-            <div>
-              <p>
-                <span className={styles.resultsText}>
-                  {searchResults.length} patient{" "}
-                  {searchResults.length === 1 ? "chart" : "charts"} containing
-                </span>
-              </p>
-              <p className={styles.searchTerm}>"{searchTerm}"</p>
-            </div>
+            <p>
+              <span className={styles.resultsText}>
+                Found {searchResults.length} patient{" "}
+                {searchResults.length === 1 ? "chart" : "charts"} containing
+              </span>
+            </p>
+            <p className={styles.searchTerm}>"{searchTerm}"</p>
             <PatientSearchResults
               match={props.match}
               searchTerm={searchTerm}
@@ -129,23 +99,22 @@ function PatientSearch(props: PatientSearchProps) {
         )}
       </div>
       {isEmpty(searchResults) && !emptyResult && (
-        <div className={styles.searchHelper}>
-          <p className={`omrs-type-body-regular ${styles.helperText}`}>
-            Search by <span className="omrs-bold">patient number</span>
+        <Tile light style={{ textAlign: "center" }}>
+          <p className={styles.actionText}>
+            <span>
+              Search by <b>patient number</b>
+            </span>
+            <br />
+            <span>OR the patient's name(s)</span>
           </p>
-          <p className={`omrs-type-body-regular ${styles.helperText}`}>
-            If unsuccessful, try patient name
-          </p>
-        </div>
+        </Tile>
       )}
       {emptyResult && (
         <div className={styles.searchResults}>
-          <div>
-            <p>
-              <span className={styles.resultsText}>Search results for:</span>
-            </p>
-            <p className={styles.searchTerm}>"{searchTerm}"</p>
-          </div>
+          <p>
+            <span className={styles.resultsText}>Search results for:</span>
+          </p>
+          <p className={styles.searchTerm}>"{searchTerm}"</p>
           <Tile light style={{ textAlign: "center" }}>
             <EmptyDataIllustration />
             <p className={styles.emptyResultText}>
@@ -160,24 +129,6 @@ function PatientSearch(props: PatientSearchProps) {
           </Tile>
         </div>
       )}
-      <div className={styles.pagination}>
-        {showPreviousButton && (
-          <button
-            onClick={previousPage}
-            className={`omrs-btn omrs-outlined-action omrs-rounded ${styles.prevBtn}`}
-          >
-            Previous
-          </button>
-        )}
-        {showNextButton && (
-          <button
-            onClick={nextPage}
-            className={`omrs-btn omrs-outlined-action omrs-rounded ${styles.nextBtn}`}
-          >
-            Next
-          </button>
-        )}
-      </div>
     </React.Fragment>
   );
 }

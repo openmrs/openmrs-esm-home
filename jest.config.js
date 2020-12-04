@@ -16,5 +16,6 @@ module.exports = {
     "react-i18next": "<rootDir>/__mocks__/react-i18next.mock.js",
     "@openmrs/esm-extensions":
       "<rootDir>/__mocks__/openmrs-esm-extensions.mock.tsx"
-  }
+  },
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"]
 };

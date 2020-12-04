@@ -1,10 +1,10 @@
 export interface SearchedPatient {
-  patientId: string;
+  patientId: number;
   uuid: string;
   identifiers: Array<Identifier>;
   person: {
     age: number;
-    birthdate: Date;
+    birthdate: string;
     display: string;
     gender: string;
   };
@@ -18,34 +18,11 @@ export type Identifier = {
   identifierType: {
     uuid: string;
     display: string;
-    links: [
-      {
-        rel: string;
-        uri: string;
-      }
-    ];
   };
   location: {
     uuid: string;
     display: string;
-    links: [
-      {
-        rel: string;
-        uri: string;
-      }
-    ];
   };
-  preferred: string;
-  voided: string;
-  links: [
-    {
-      rel: string;
-      uri: string;
-    },
-    {
-      rel: string;
-      uri: string;
-    }
-  ];
-  resourceVersion: string;
+  preferred: boolean;
+  voided: boolean;
 };
