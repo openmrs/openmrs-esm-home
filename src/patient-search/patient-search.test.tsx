@@ -70,11 +70,19 @@ describe("<PatientSearch/>", () => {
     fireEvent.change(searchInput, { target: { value: "John" } });
 
     await screen.findByText(/Found 1 patient chart/);
+    expect(
+      screen.getByRole("img", { name: "Patient avatar" })
+    ).toBeInTheDocument();
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("Male")).toBeInTheDocument();
     expect(screen.getByText("32 years")).toBeInTheDocument();
     expect(screen.getByText(/01 - Jan - 2009/)).toBeInTheDocument();
     expect(screen.getByText("94004EH")).toBeInTheDocument();
+    expect(
+      screen.getByRole("navigation", { name: "pagination" })
+    ).toBeInTheDocument();
+    expect(screen.getByText("Previous")).toBeInTheDocument();
+    expect(screen.getByText("Next")).toBeInTheDocument();
   });
 
   it("renders an empty results UI when no matching patients are found", async () => {
@@ -102,6 +110,4 @@ describe("<PatientSearch/>", () => {
     await screen.findByRole("textbox", { name: "Search for patient" });
     expect(searchInput).toHaveFocus();
   });
-
-  // Test for pagination controls
 });

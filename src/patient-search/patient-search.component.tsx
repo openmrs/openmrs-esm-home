@@ -1,7 +1,7 @@
 import React from "react";
 
 import { match } from "react-router-dom";
-import { Link, Tile } from "carbon-components-react";
+import { Link, PaginationNav, Tile } from "carbon-components-react";
 import debounce from "lodash-es/debounce";
 import isEmpty from "lodash-es/isEmpty";
 
@@ -30,7 +30,7 @@ function PatientSearch(props: PatientSearchProps) {
   >([]);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(10);
-  const searchInput = React.useRef<HTMLInputElement>(null);
+  const searchInput = React.useRef<HTMLInputElement | null>(null);
 
   React.useEffect(() => {
     const ac = new AbortController();
@@ -44,7 +44,7 @@ function PatientSearch(props: PatientSearchProps) {
         const pagedResults = results.slice(0, resultsPerPage);
         setSearchResults(results);
         setPagedResults(pagedResults);
-        setTotalPages(Math.ceil(results.length) / totalPages);
+        setTotalPages(Math.ceil(results.length / resultsPerPage));
 
         if (isEmpty(data.results)) {
           setEmptyResult(true);
@@ -58,7 +58,7 @@ function PatientSearch(props: PatientSearchProps) {
       setPagedResults([]);
     }
     return () => ac.abort();
-  }, [searchTerm]);
+  }, [searchTerm, customReprestation]);
 
   const handleChange = debounce(searchTerm => {
     setSearchTerm(searchTerm);
@@ -66,6 +66,35 @@ function PatientSearch(props: PatientSearchProps) {
 
   const handleFocus = () => {
     searchInput.current.focus();
+  };
+
+  const nextPage = () => {
+    let upperBound = currentPage * resultsPerPage + resultsPerPage;
+    const lowerBound = currentPage * resultsPerPage;
+    if (upperBound > searchResults.length) {
+      upperBound = searchResults.length;
+    }
+    const pageResults = searchResults.slice(lowerBound, upperBound);
+    setPagedResults(pageResults);
+    setCurrentPage(currentPage + 1);
+  };
+
+  const previousPage = () => {
+    const lowerBound = currentPage * resultsPerPage - resultsPerPage * 2;
+    const upperBound = currentPage * resultsPerPage - resultsPerPage;
+    const pageResults = searchResults.slice(lowerBound, upperBound);
+    setPagedResults(pageResults);
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handlePageChange = page => {
+    if (page === 0 && currentPage === 0) {
+      nextPage();
+    } else if (page + 1 > currentPage) {
+      nextPage();
+    } else if (page + 1 < currentPage) {
+      previousPage();
+    }
   };
 
   return (
@@ -95,6 +124,13 @@ function PatientSearch(props: PatientSearchProps) {
               searchTerm={searchTerm}
               patients={pagedResults}
             />
+            <div className={styles.pagination}>
+              <PaginationNav
+                itemsShown={resultsPerPage}
+                totalItems={totalPages}
+                onChange={handlePageChange}
+              />
+            </div>
           </div>
         )}
       </div>
