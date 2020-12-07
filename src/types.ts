@@ -11,7 +11,7 @@ export interface SearchedPatient {
   display: string;
 }
 
-export type Identifier = {
+export interface Identifier {
   display: string;
   uuid: string;
   identifier: string;
@@ -25,4 +25,4 @@ export type Identifier = {
   };
   preferred: boolean;
   voided: boolean;
-};
+}
