@@ -109,33 +109,31 @@ function PatientSearch(props: PatientSearchProps) {
           autoFocus
         />
       </div>
-      <div className={styles.searchResults}>
-        {!isEmpty(searchResults) && (
-          <div>
-            <p>
-              <span className={styles.resultsText}>
-                Found {searchResults.length} patient{" "}
-                {searchResults.length === 1 ? "chart" : "charts"} containing
-              </span>
-            </p>
-            <p className={styles.searchTerm}>"{searchTerm}"</p>
-            <PatientSearchResults
-              match={props.match}
-              searchTerm={searchTerm}
-              patients={pagedResults}
+      {!isEmpty(searchResults) && (
+        <div className={styles.searchResults}>
+          <p>
+            <span className={styles.resultsText}>
+              Found {searchResults.length} patient{" "}
+              {searchResults.length === 1 ? "chart" : "charts"} containing
+            </span>
+          </p>
+          <p className={styles.searchTerm}>"{searchTerm}"</p>
+          <PatientSearchResults
+            match={props.match}
+            searchTerm={searchTerm}
+            patients={pagedResults}
+          />
+          <div className={styles.pagination}>
+            <PaginationNav
+              itemsShown={resultsPerPage}
+              totalItems={totalPages}
+              onChange={handlePageChange}
             />
-            <div className={styles.pagination}>
-              <PaginationNav
-                itemsShown={resultsPerPage}
-                totalItems={totalPages}
-                onChange={handlePageChange}
-              />
-            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
       {isEmpty(searchResults) && !emptyResult && (
-        <Tile light style={{ textAlign: "center" }}>
+        <Tile style={{ textAlign: "center" }}>
           <p className={styles.actionText}>
             <span>
               Search by <b>patient number</b>
@@ -151,7 +149,7 @@ function PatientSearch(props: PatientSearchProps) {
             <span className={styles.resultsText}>Search results for:</span>
           </p>
           <p className={styles.searchTerm}>"{searchTerm}"</p>
-          <Tile light style={{ textAlign: "center" }}>
+          <Tile style={{ textAlign: "center" }}>
             <EmptyDataIllustration />
             <p className={styles.emptyResultText}>
               Sorry, no patient charts have been found
