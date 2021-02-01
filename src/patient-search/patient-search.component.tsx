@@ -10,6 +10,7 @@ import PatientSearchResults from "../patient-search-result/patient-search-result
 import EmptyDataIllustration from "./empty-data-illustration.component";
 import { SearchedPatient } from "../types";
 import styles from "./patient-search.scss";
+import { useTranslation } from "react-i18next";
 
 function PatientSearch(props: PatientSearchProps) {
   const customReprestation =
@@ -31,6 +32,7 @@ function PatientSearch(props: PatientSearchProps) {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(10);
   const searchInput = React.useRef<HTMLInputElement | null>(null);
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     const ac = new AbortController();
@@ -113,8 +115,10 @@ function PatientSearch(props: PatientSearchProps) {
         <div className={styles.searchResults}>
           <p>
             <span className={styles.resultsText}>
-              Found {searchResults.length} patient{" "}
-              {searchResults.length === 1 ? "chart" : "charts"} containing
+              {t("found", "Found")} {searchResults.length}{" "}
+              {t("patient", "patient")}{" "}
+              {searchResults.length === 1 ? "chart" : "charts"}{" "}
+              {t("containing", "containing")}
             </span>
           </p>
           <p className={styles.searchTerm}>"{searchTerm}"</p>
@@ -136,30 +140,40 @@ function PatientSearch(props: PatientSearchProps) {
         <Tile style={{ textAlign: "center" }}>
           <p className={styles.actionText}>
             <span>
-              Search by <b>patient number</b>
+              {t("patientSearchText", "Search by patient name OR identifier")}
             </span>
-            <br />
-            <span>OR the patient's name(s)</span>
           </p>
         </Tile>
       )}
       {emptyResult && (
         <div className={styles.searchResults}>
           <p>
-            <span className={styles.resultsText}>Search results for:</span>
+            <span className={styles.resultsText}>
+              {t("searchResultsFor", "Search results for:")}
+            </span>
           </p>
           <p className={styles.searchTerm}>"{searchTerm}"</p>
           <Tile style={{ textAlign: "center" }}>
             <EmptyDataIllustration />
             <p className={styles.emptyResultText}>
-              Sorry, no patient charts have been found
+              {t(
+                "noPatientChartsFoundMessage",
+                "Sorry, no patient charts have been found"
+              )}
             </p>
             <p className={styles.actionText}>
-              <span>Try searching with the patient's unique ID number</span>
+              <span>
+                {t(
+                  "trySearchWithPatientUniqueID",
+                  "Try searching with the patient's unique ID number"
+                )}
+              </span>
               <br />
-              <span>OR the patient's name(s)</span>
+              <span>{t("orPatientName", "OR the patient's name(s)")}</span>
             </p>
-            <Link onClick={handleFocus}>Search Again</Link>
+            <Link onClick={handleFocus}>
+              {t("searchAgain", "Search Again")}
+            </Link>
           </Tile>
         </div>
       )}
