@@ -16,9 +16,10 @@ const importTranslation = require.context(
 
 function setupOpenMRS() {
   const moduleName = "@openmrs/esm-home-app";
+  const pageName = "home";
 
   const options = {
-    featureName: "home",
+    featureName: pageName,
     moduleName
   };
 
@@ -26,14 +27,14 @@ function setupOpenMRS() {
 
   registerBreadcrumbs([
     {
-      path: "/openmrs/spa/home",
+      path: `${window.spaBase}/${pageName}`,
       title: "Home"
     }
   ]);
 
   return {
     lifecycle: getAsyncLifecycle(() => import("./root.component"), options),
-    activate: "home",
+    activate: pageName,
     extensions: [
       {
         id: "active-visits-link",
