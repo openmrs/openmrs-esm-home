@@ -40,9 +40,7 @@
     "url": "https://github.com/openmrs/openmrs-esm-home/issues"
   },
   "dependencies": {
-    "carbon-components-react": "^7.24.0",
-    "dayjs": "^1.8.16",
-    "kremling": "^2.0.1",
+    "carbon-components-react": "^7.25.0",
     "lodash-es": "^4.17.15",
     "single-spa-react": "^2.10.2",
     "systemjs-webpack-interop": "^1.1.0"
@@ -53,6 +51,7 @@
     "@openmrs/esm-error-handling": "3.x",
     "@openmrs/esm-extensions": "3.x",
     "@openmrs/esm-react-utils": "3.x",
+    "dayjs": "^1.8.16",
     "i18next": "^19.6.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -86,6 +85,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^5.2.0",
     "css-loader": "^3.2.0",
+    "dayjs": "^1.8.16",
     "eslint": "^6.2.1",
     "eslint-config-prettier": "^6.1.0",
     "eslint-config-ts-react-important-stuff": "^1.0.0",

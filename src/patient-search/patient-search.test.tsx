@@ -1,6 +1,5 @@
 import React from "react";
 import { fireEvent, screen } from "@testing-library/react";
-
 import PatientSearch from "./patient-search.component";
 import { performPatientSearch } from "./patient-search.resource";
 import renderWithRouter from "../helpers/render-with-router";

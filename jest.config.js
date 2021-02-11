@@ -5,6 +5,8 @@ module.exports = {
   moduleNameMapper: {
     "\\.(s?css)$": "identity-obj-proxy",
     "\\.(jpg|jpeg|png)$": "<rootDir>/__mocks__/file.mock.ts",
+    "^@carbon/icons-react/es/(.*)$": "@carbon/icons-react/lib/$1",
+    "^carbon-components-react/es/(.*)$": "carbon-components-react/lib/$1",
     "lodash-es/debounce": "<rootDir>/__mocks__/debounce.mock.ts",
     "lodash-es/isEmpty": "<rootDir>/__mocks__/isEmpty.mock.ts",
     "@openmrs/esm-api": "<rootDir>/__mocks__/openmrs-esm-api.mock.tsx",

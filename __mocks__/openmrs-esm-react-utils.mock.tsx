@@ -1,6 +1,8 @@
 import React from "react";
 
-export const openmrsRootDecorator = jest.fn().mockImplementation(() => f => f);
+export const openmrsComponentDecorator = jest
+  .fn()
+  .mockImplementation(() => f => f);
 
 export const UserHasAccess = jest.fn().mockImplementation((props: any) => {
   return props.children;
@@ -41,4 +43,4 @@ export const ConfigurableLink = props => (
   </a>
 );
 
-export const ModuleNameContext = React.createContext("fake-module-config");
+export const ComponentContext = React.createContext("fake-module-config");
