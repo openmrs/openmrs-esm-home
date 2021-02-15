@@ -4,7 +4,7 @@ import { fireEvent } from "@testing-library/react";
 import {
   useConfig as mockUseConfig,
   UserHasAccess as mockUserHasAccessReact
-} from "@openmrs/esm-react-utils";
+} from "@openmrs/esm-framework";
 import HomeDashboard from "./home-dashboard.component";
 import renderWithRouter from "../helpers/render-with-router";
 

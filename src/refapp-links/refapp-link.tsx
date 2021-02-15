@@ -1,5 +1,5 @@
 import React from "react";
-import { ConfigurableLink, UserHasAccess } from "@openmrs/esm-react-utils";
+import { ConfigurableLink, UserHasAccess } from "@openmrs/esm-framework";
 
 interface RefAppLinkProps {
   label: string;

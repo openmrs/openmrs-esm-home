@@ -1,10 +1,12 @@
-import { registerBreadcrumbs } from "@openmrs/esm-api";
-import { defineConfigSchema } from "@openmrs/esm-config";
-import { getAsyncLifecycle } from "@openmrs/esm-react-utils";
+import {
+  registerBreadcrumbs,
+  defineConfigSchema,
+  getAsyncLifecycle,
+} from "@openmrs/esm-framework";
 import { esmHomeSchema } from "./openmrs-esm-home-schema";
 
 const backendDependencies = {
-  "webservices.rest": "2.24.0"
+  "webservices.rest": "2.24.0",
 };
 
 const importTranslation = require.context(
@@ -20,7 +22,7 @@ function setupOpenMRS() {
 
   const options = {
     featureName: pageName,
-    moduleName
+    moduleName,
   };
 
   defineConfigSchema(moduleName, esmHomeSchema);
@@ -28,8 +30,8 @@ function setupOpenMRS() {
   registerBreadcrumbs([
     {
       path: `${window.spaBase}/${pageName}`,
-      title: "Home"
-    }
+      title: "Home",
+    },
   ]);
 
   return {
@@ -42,7 +44,7 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/active-visits"),
           options
-        )
+        ),
       },
       {
         id: "capture-vitals-link",
@@ -50,7 +52,7 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/capture-vitals"),
           options
-        )
+        ),
       },
       {
         id: "appointment-scheduling-link",
@@ -58,12 +60,15 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/appointment-scheduling"),
           options
-        )
+        ),
       },
       {
         id: "reports-link",
         slot: "home-page-buttons",
-        load: getAsyncLifecycle(() => import("./refapp-links/reports"), options)
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/reports"),
+          options
+        ),
       },
       {
         id: "data-management-link",
@@ -71,7 +76,7 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/data-management"),
           options
-        )
+        ),
       },
       {
         id: "configure-metadata-link",
@@ -79,7 +84,7 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/configure-metadata"),
           options
-        )
+        ),
       },
       {
         id: "system-administration-link",
@@ -87,9 +92,9 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/system-administration"),
           options
-        )
-      }
-    ]
+        ),
+      },
+    ],
   };
 }
 

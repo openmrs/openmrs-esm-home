@@ -1,4 +1,4 @@
-import { Type, validators } from "@openmrs/esm-config";
+import { Type, validators } from "@openmrs/esm-framework";
 
 export const esmHomeSchema = {
   buttons: {

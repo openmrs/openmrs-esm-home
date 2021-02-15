@@ -1,5 +1,5 @@
 import React from "react";
-import { ConfigurableLink, UserHasAccess } from "@openmrs/esm-react-utils";
+import { ConfigurableLink, UserHasAccess } from "@openmrs/esm-framework";
 import styles from "./dashboard-button.component.css";
 
 export interface DashboardButtonProps {
