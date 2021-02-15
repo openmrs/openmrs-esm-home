@@ -1,6 +1,6 @@
 {
   "name": "@openmrs/esm-home-app",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Homepage microfrontend for the OpenMRS SPA",
   "main": "dist/openmrs-esm-home-app.js",
   "types": "src/index.ts",
