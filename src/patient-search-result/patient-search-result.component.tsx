@@ -6,25 +6,25 @@ import { match } from "react-router-dom";
 import {
   interpolateString,
   ConfigurableLink,
-  useConfig,
+  useConfig
 } from "@openmrs/esm-framework";
 import { SearchedPatient } from "../types";
 
 const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
-  patients,
+  patients
 }) => {
   const config = useConfig();
 
   function renderPatient(patient: SearchedPatient) {
     const preferredIdentifier =
-      patient.identifiers.find((i) => i.preferred) || patient.identifiers[0];
+      patient.identifiers.find(i => i.preferred) || patient.identifiers[0];
 
     return (
       <ConfigurableLink
         key={patient.display}
         className={styles.patientCharts}
         to={interpolateString(config.search.patientResultUrl, {
-          patientUuid: patient.uuid,
+          patientUuid: patient.uuid
         })}
       >
         <div className={styles.container}>
@@ -62,7 +62,7 @@ const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
     );
   }
 
-  return <>{patients.map((patient) => renderPatient(patient))}</>;
+  return <>{patients.map(patient => renderPatient(patient))}</>;
 };
 
 interface PatientSearchResultsProps {
