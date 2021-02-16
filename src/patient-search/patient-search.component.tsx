@@ -6,7 +6,7 @@ import debounce from "lodash-es/debounce";
 import isEmpty from "lodash-es/isEmpty";
 
 import { performPatientSearch } from "./patient-search.resource";
-import PatientSearchResults from "../patient-search-result/patient-search-result.component";
+import PatientSearchResults from "../patient-search-result/patient-search-results.component";
 import EmptyDataIllustration from "./empty-data-illustration.component";
 import { SearchedPatient } from "../types";
 import styles from "./patient-search.scss";
@@ -122,11 +122,7 @@ function PatientSearch(props: PatientSearchProps) {
             </span>
           </p>
           <p className={styles.searchTerm}>"{searchTerm}"</p>
-          <PatientSearchResults
-            match={props.match}
-            searchTerm={searchTerm}
-            patients={pagedResults}
-          />
+          <PatientSearchResults patients={pagedResults} />
           <div className={styles.pagination}>
             <PaginationNav
               itemsShown={resultsPerPage}

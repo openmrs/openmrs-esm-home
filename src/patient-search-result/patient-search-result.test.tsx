@@ -1,9 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 
-import PatientSearchResult from "./patient-search-result.component";
+import PatientSearchResults from "./patient-search-results.component";
 
-const match = { params: {}, isExact: true, path: "", url: "" };
 const patients = [
   {
     patientId: 5555555,
@@ -45,14 +44,12 @@ const patients = [
   }
 ];
 
-const renderPatientSearchResult = () =>
-  render(
-    <PatientSearchResult patients={patients} match={match} searchTerm="" />
-  );
+const renderPatientSearchResults = () =>
+  render(<PatientSearchResults patients={patients} />);
 
-describe("<PatientSearchResult />", () => {
+describe("<PatientSearchResults />", () => {
   it("renders a clickable card showing the patient's information", () => {
-    renderPatientSearchResult();
+    renderPatientSearchResults();
 
     expect(screen.getByText("Smith John Mark")).toBeInTheDocument();
     expect(screen.getByText("Male")).toBeInTheDocument();
