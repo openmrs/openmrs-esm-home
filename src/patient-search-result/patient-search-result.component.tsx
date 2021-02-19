@@ -32,7 +32,7 @@ const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
           <div className={styles.patientBanner}>
             <div className={styles.patientAvatar}>
               <ExtensionSlot
-                extensionSlotName="patient-avatar-search"
+                extensionSlotName="patient-photo"
                 state={{ patientUuid: patient.uuid }}
               />
             </div>
