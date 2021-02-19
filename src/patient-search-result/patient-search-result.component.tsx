@@ -1,13 +1,14 @@
 import React from "react";
 
 import dayjs from "dayjs";
-import { match } from "react-router-dom";
-
-import { interpolateString } from "@openmrs/esm-config";
-import { ConfigurableLink, useConfig } from "@openmrs/esm-react-utils";
-
-import placeholder from "../assets/placeholder.png";
 import styles from "./patient-search-result.scss";
+import { match } from "react-router-dom";
+import { interpolateString } from "@openmrs/esm-config";
+import {
+  ConfigurableLink,
+  ExtensionSlot,
+  useConfig
+} from "@openmrs/esm-react-utils";
 import { SearchedPatient } from "../types";
 
 const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
@@ -30,7 +31,10 @@ const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
         <div className={styles.container}>
           <div className={styles.patientBanner}>
             <div className={styles.patientAvatar}>
-              <img src={placeholder} alt="Patient avatar" />
+              <ExtensionSlot
+                extensionSlotName="patient-photo"
+                state={{ patientUuid: patient.uuid }}
+              />
             </div>
             <div className={styles.patientInfo}>
               <div>
