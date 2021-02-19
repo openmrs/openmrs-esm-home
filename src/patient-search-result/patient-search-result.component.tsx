@@ -2,8 +2,8 @@ import React from "react";
 import dayjs from "dayjs";
 import styles from "./patient-search-result.scss";
 import { match } from "react-router-dom";
-import { interpolateString } from "@openmrs/esm-config";
 import {
+  interpolateString,
   ConfigurableLink,
   ExtensionSlot,
   useConfig
