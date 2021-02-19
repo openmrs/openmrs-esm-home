@@ -56,9 +56,7 @@ export const useConfig = jest.fn().mockReturnValue({
   }
 });
 
-export const ExtensionSlot = jest.fn().mockImplementation((props: any) => {
-  return props.children;
-});
+export const ExtensionSlot = ({ children }) => <>{children}</>;
 
 export const Extension = jest.fn().mockImplementation((props: any) => {
   return <slot />;

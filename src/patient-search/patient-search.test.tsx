@@ -69,9 +69,6 @@ describe("<PatientSearch/>", () => {
     fireEvent.change(searchInput, { target: { value: "John" } });
 
     await screen.findByText(/Found 1 patient chart/);
-    expect(
-      screen.getByRole("img", { name: "Patient avatar" })
-    ).toBeInTheDocument();
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("Male")).toBeInTheDocument();
     expect(screen.getByText("32 years")).toBeInTheDocument();
