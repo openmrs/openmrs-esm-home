@@ -1,16 +1,16 @@
 import React from "react";
-
-import { match } from "react-router-dom";
-import { Link, PaginationNav, Tile } from "carbon-components-react";
 import debounce from "lodash-es/debounce";
 import isEmpty from "lodash-es/isEmpty";
-
-import { performPatientSearch } from "./patient-search.resource";
+import Link from "carbon-components-react/es/components/Link";
+import PaginationNav from "carbon-components-react/es/components/PaginationNav";
+import { Tile } from "carbon-components-react/es/components/Tile";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";
 import EmptyDataIllustration from "./empty-data-illustration.component";
+import { match } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { performPatientSearch } from "./patient-search.resource";
 import { SearchedPatient } from "../types";
 import styles from "./patient-search.scss";
-import { useTranslation } from "react-i18next";
 
 function PatientSearch(props: PatientSearchProps) {
   const customReprestation =

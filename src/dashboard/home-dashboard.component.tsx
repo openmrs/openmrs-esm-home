@@ -6,7 +6,7 @@ import {
   UserHasAccess,
   ExtensionSlot,
   Extension
-} from "@openmrs/esm-react-utils";
+} from "@openmrs/esm-framework";
 import DashboardButton from "../dashboard-button/dashboard-button.component";
 import styles from "./home-dashboard.component.css";
 

@@ -1,6 +1,8 @@
-import { registerBreadcrumbs } from "@openmrs/esm-api";
-import { defineConfigSchema } from "@openmrs/esm-config";
-import { getAsyncLifecycle } from "@openmrs/esm-react-utils";
+import {
+  registerBreadcrumbs,
+  defineConfigSchema,
+  getAsyncLifecycle
+} from "@openmrs/esm-framework";
 import { esmHomeSchema } from "./openmrs-esm-home-schema";
 
 const backendDependencies = {

@@ -1,6 +1,35 @@
+import { never } from "rxjs";
 import React from "react";
 
-export const openmrsRootDecorator = jest.fn().mockImplementation(() => f => f);
+export function openmrsFetch() {
+  return new Promise(() => {});
+}
+
+export const defineConfigSchema = jest.fn();
+
+export const validators = {
+  isUrlWithTemplateParameters: jest.fn()
+};
+
+export const interpolateString = jest.fn().mockImplementation(s => s);
+
+export const Type = {
+  Array: "Array",
+  Boolean: "Boolean",
+  ConceptUuid: "ConceptUuid",
+  Number: "Number",
+  Object: "Object",
+  String: "String",
+  UUID: "UUID"
+};
+
+export function createErrorHandler() {
+  return jest.fn().mockReturnValue(never());
+}
+
+export const openmrsComponentDecorator = jest
+  .fn()
+  .mockImplementation(() => f => f);
 
 export const UserHasAccess = jest.fn().mockImplementation((props: any) => {
   return props.children;
@@ -39,4 +68,4 @@ export const ConfigurableLink = props => (
   </a>
 );
 
-export const ModuleNameContext = React.createContext("fake-module-config");
+export const ComponentContext = React.createContext("fake-module-config");
