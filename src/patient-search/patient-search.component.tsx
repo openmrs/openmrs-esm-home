@@ -3,14 +3,19 @@ import debounce from "lodash-es/debounce";
 import isEmpty from "lodash-es/isEmpty";
 import Link from "carbon-components-react/es/components/Link";
 import PaginationNav from "carbon-components-react/es/components/PaginationNav";
-import { Tile } from "carbon-components-react/es/components/Tile";
 import PatientSearchResults from "../patient-search-result/patient-search-result.component";
 import EmptyDataIllustration from "./empty-data-illustration.component";
+import { Tile } from "carbon-components-react/es/components/Tile";
 import { match } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { performPatientSearch } from "./patient-search.resource";
 import { SearchedPatient } from "../types";
 import styles from "./patient-search.scss";
+
+interface PatientSearchProps {
+  match?: match;
+  history?: any;
+}
 
 function PatientSearch(props: PatientSearchProps) {
   const customReprestation =
@@ -182,8 +187,3 @@ function PatientSearch(props: PatientSearchProps) {
 }
 
 export default PatientSearch;
-
-type PatientSearchProps = {
-  match?: match;
-  history?: any;
-};
