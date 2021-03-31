@@ -9,7 +9,6 @@ import { Tile } from "carbon-components-react/es/components/Tile";
 import { match } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { performPatientSearch } from "./patient-search.resource";
-import { SearchedPatient } from "../types";
 import styles from "./patient-search.scss";
 
 interface PatientSearchProps {
@@ -18,22 +17,18 @@ interface PatientSearchProps {
 }
 
 function PatientSearch(props: PatientSearchProps) {
-  const customReprestation =
-    "custom:(patientId,uuid,identifiers,display," +
-    "patientIdentifier:(uuid,identifier)," +
-    "person:(gender,age,birthdate,birthdateEstimated,personName,display)," +
-    "attributes:(value,attributeType:(name)))";
   const searchTimeout = 300;
   const resultsPerPage = 5;
 
+  const [totalRecords, setTotalRecords] = React.useState(0);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [emptyResult, setEmptyResult] = React.useState(false);
-  const [searchResults, setSearchResults] = React.useState<
-    Array<SearchedPatient>
-  >([]);
-  const [pagedResults, setPagedResults] = React.useState<
-    Array<SearchedPatient>
-  >([]);
+  const [searchResults, setSearchResults] = React.useState<Array<fhir.Patient>>(
+    []
+  );
+  const [pagedResults, setPagedResults] = React.useState<Array<fhir.Patient>>(
+    []
+  );
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(10);
   const searchInput = React.useRef<HTMLInputElement | null>(null);
@@ -42,18 +37,29 @@ function PatientSearch(props: PatientSearchProps) {
   React.useEffect(() => {
     const ac = new AbortController();
     if (searchTerm) {
-      performPatientSearch(searchTerm, customReprestation).then(({ data }) => {
-        const results: Array<SearchedPatient> = data.results.map((res, i) => ({
-          ...res,
-          index: i + 1
-        }));
+      performPatientSearch(searchTerm).then(({ data }) => {
+        const results: Array<fhir.Patient> = data.entry.map(e => {
+          return {
+            identifier: e.resource["identifier"],
+            active: e.resource["active"],
+            name: e.resource["name"],
+            telecom: e.resource["telecom"],
+            gender: e.resource["gender"],
+            birthDate: e.resource["birthDate"],
+            deceasedBoolean: e.resource["deceasedBoolean"],
+            deceasedDateTime: e.resource["deceasedDateTime"],
+            address: e.resource["address"]
+          };
+        });
 
         const pagedResults = results.slice(0, resultsPerPage);
+
         setSearchResults(results);
         setPagedResults(pagedResults);
-        setTotalPages(Math.ceil(results.length / resultsPerPage));
+        setTotalRecords(data.total);
+        setTotalPages(Math.ceil(data.total / resultsPerPage));
 
-        if (isEmpty(data.results)) {
+        if (isEmpty(data)) {
           setEmptyResult(true);
         } else {
           setEmptyResult(false);
@@ -65,7 +71,7 @@ function PatientSearch(props: PatientSearchProps) {
       setPagedResults([]);
     }
     return () => ac.abort();
-  }, [searchTerm, customReprestation]);
+  }, [searchTerm]);
 
   const handleChange = debounce(searchTerm => {
     setSearchTerm(searchTerm);
@@ -78,8 +84,8 @@ function PatientSearch(props: PatientSearchProps) {
   const nextPage = () => {
     let upperBound = currentPage * resultsPerPage + resultsPerPage;
     const lowerBound = currentPage * resultsPerPage;
-    if (upperBound > searchResults.length) {
-      upperBound = searchResults.length;
+    if (upperBound > totalRecords) {
+      upperBound = totalRecords;
     }
     const pageResults = searchResults.slice(lowerBound, upperBound);
     setPagedResults(pageResults);
@@ -120,9 +126,8 @@ function PatientSearch(props: PatientSearchProps) {
         <div className={styles.searchResults}>
           <p>
             <span className={styles.resultsText}>
-              {t("found", "Found")} {searchResults.length}{" "}
-              {t("patient", "patient")}{" "}
-              {searchResults.length === 1 ? "chart" : "charts"}{" "}
+              {t("found", "Found")} {totalRecords} {t("patient", "patient")}{" "}
+              {totalRecords === 1 ? "chart" : "charts"}{" "}
               {t("containing", "containing")}
             </span>
           </p>
