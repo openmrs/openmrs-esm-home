@@ -39,7 +39,7 @@ export default function HomeDashboard(props: HomeDashboardProps) {
           </UserHasAccess>
           {config.buttons.enabled && (
             <div className={styles.buttonArea}>
-              <ExtensionSlot extensionSlotName="home-page-buttons">
+              <ExtensionSlot extensionSlotName="homepage-dashboard-slot">
                 <div className={styles.homeButton}>
                   <Extension />
                 </div>
