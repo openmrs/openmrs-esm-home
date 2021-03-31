@@ -38,18 +38,8 @@ function PatientSearch(props: PatientSearchProps) {
     const ac = new AbortController();
     if (searchTerm) {
       performPatientSearch(searchTerm).then(({ data }) => {
-        const results: Array<fhir.Patient> = data.entry.map(e => {
-          return {
-            identifier: e.resource["identifier"],
-            active: e.resource["active"],
-            name: e.resource["name"],
-            telecom: e.resource["telecom"],
-            gender: e.resource["gender"],
-            birthDate: e.resource["birthDate"],
-            deceasedBoolean: e.resource["deceasedBoolean"],
-            deceasedDateTime: e.resource["deceasedDateTime"],
-            address: e.resource["address"]
-          };
+        const results = data.entry.map(e => {
+          return e.resource as fhir.Patient;
         });
 
         const pagedResults = results.slice(0, resultsPerPage);
