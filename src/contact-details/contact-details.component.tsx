@@ -25,7 +25,7 @@ const Address: React.FC<{ address: fhir.Address }> = ({ address }) => {
   );
 };
 
-const Contact: React.FC<{ telecom: fhir.ContactPoint[] }> = ({ telecom }) => {
+const Contact: React.FC<{ telecom: Array<fhir.ContactPoint> }> = ({ telecom }) => {
   const value = telecom ? telecom[0].value : "-";
   const { t } = useTranslation();
   return (
@@ -40,13 +40,13 @@ const Contact: React.FC<{ telecom: fhir.ContactPoint[] }> = ({ telecom }) => {
 
 const Relationships: React.FC<{ patientId: string }> = ({ patientId }) => {
   const [relationships, setRelationships] = React.useState<
-    ExtractedRelationship[]
+    Array<ExtractedRelationship>
   >(null);
 
   React.useEffect(() => {
     function extractRelationshipData(
-      relationships: Relationship[]
-    ): ExtractedRelationship[] {
+      relationships: Array<Relationship>
+    ): Array<ExtractedRelationship> {
       const relationshipsData = [];
       for (const r of relationships) {
         if (patientId === r.personA.uuid) {
@@ -134,8 +134,8 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({
 export default ContactDetails;
 
 interface ContactDetailsProps {
-  address: fhir.Address[];
-  telecom: fhir.ContactPoint[];
+  address: Array<fhir.Address>;
+  telecom: Array<fhir.ContactPoint>;
   patientId: string;
 }
 
