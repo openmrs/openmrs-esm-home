@@ -5,6 +5,7 @@ import { ConfigurableLink, ExtensionSlot } from "@openmrs/esm-framework";
 import CaretDown16 from "@carbon/icons-react/es/caret--down/16";
 import CaretUp16 from "@carbon/icons-react/es/caret--up/16";
 import ContactDetails from "../contact-details/contact-details.component";
+import { useTranslation } from "react-i18next";
 
 export interface PatientCardProps {
   patientUuid: string;
@@ -33,13 +34,14 @@ const PatientCard: React.FC<PatientCardProps> = ({
   const toggleContactDetails = () => {
     setShowContactDetails(!showContactDetails);
   };
+  const avatarState = React.useMemo(() => {
+    return { patientUuid: patientUuid };
+  }, [patientUuid]);
+  const { t } = useTranslation();
 
   const patientAvatar = (
     <div className={styles.patientAvatar}>
-      <ExtensionSlot
-        extensionSlotName="patient-photo"
-        state={{ patientUuid: patientUuid }}
-      />
+      <ExtensionSlot extensionSlotName="patient-photo" state={avatarState} />
     </div>
   );
 
@@ -49,9 +51,12 @@ const PatientCard: React.FC<PatientCardProps> = ({
         <span className={styles.patientName}>{displayName}</span>
       </div>
       <div className={styles.demographics}>
-        <span>{gender === "M" ? "Male" : "Female"}</span> &middot;{" "}
         <span>
-          {age} {age === "1" ? "year" : "years"}
+          {gender === "M" ? t("male", "Male") : t("female", "Female")}
+        </span>{" "}
+        &middot;{" "}
+        <span>
+          {age} {age === "1" ? t("year", "year") : t("years", "years")}
         </span>{" "}
         &middot; <span>{birthDate}</span>
       </div>
@@ -84,12 +89,15 @@ const PatientCard: React.FC<PatientCardProps> = ({
           <Button
             kind="ghost"
             renderIcon={showContactDetails ? CaretUp16 : CaretDown16}
-            iconDescription="Toggle contact details"
+            iconDescription={t(
+              "toggleContactDetails",
+              "Toggle contact details"
+            )}
             onClick={toggleContactDetails}
           >
             {showContactDetails
-              ? "Hide Contact Details"
-              : "Show Contact Details"}
+              ? t("hideContactDetails", "Hide Contact Details")
+              : t("showContactDetails", "Show Contact Details")}
           </Button>
         </div>
       </div>

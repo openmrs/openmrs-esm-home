@@ -6,12 +6,15 @@ import {
   Relationship
 } from "./relationships.resource";
 import styles from "./contact-details.scss";
+import { useTranslation } from "react-i18next";
 
 const Address: React.FC<{ address: fhir.Address }> = ({ address }) => {
   const { city, country, postalCode, state } = address;
+  const { t } = useTranslation();
+
   return (
     <div className={styles.col}>
-      <p className={styles.heading}>Address</p>
+      <p className={styles.heading}>{t("address", "Address")}</p>
       <ul>
         <li>{postalCode}</li>
         <li>{city}</li>
@@ -24,10 +27,10 @@ const Address: React.FC<{ address: fhir.Address }> = ({ address }) => {
 
 const Contact: React.FC<{ telecom: fhir.ContactPoint[] }> = ({ telecom }) => {
   const value = telecom ? telecom[0].value : "-";
-
+  const { t } = useTranslation();
   return (
     <div className={styles.col}>
-      <p className={styles.heading}>Contact Details</p>
+      <p className={styles.heading}>{t("contactDetails", "Contact Details")}</p>
       <ul>
         <li>{value}</li>
       </ul>
@@ -130,16 +133,16 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({
 
 export default ContactDetails;
 
-type ContactDetailsProps = {
+interface ContactDetailsProps {
   address: fhir.Address[];
   telecom: fhir.ContactPoint[];
   patientId: string;
-};
+}
 
-type ExtractedRelationship = {
+interface ExtractedRelationship {
   uuid: string;
   display: string;
   relativeAge: number;
   relativeUuid: string;
   relationshipType: string;
-};
+}

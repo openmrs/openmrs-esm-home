@@ -38,9 +38,11 @@ function PatientSearch(props: PatientSearchProps) {
     const ac = new AbortController();
     if (searchTerm) {
       performPatientSearch(searchTerm).then(({ data }) => {
-        const results = data.entry.map(e => {
-          return e.resource as fhir.Patient;
-        });
+        const results: Array<any> = data.entry
+          ? data.entry.map(e => {
+              return e.resource;
+            })
+          : Array<any>();
 
         const pagedResults = results.slice(0, resultsPerPage);
 

@@ -4,12 +4,9 @@ import styles from "./patient-search-result.scss";
 import { match } from "react-router-dom";
 import {
   interpolateString,
-  ConfigurableLink,
   ExtensionSlot,
-  useConfig,
-  fhir
+  useConfig
 } from "@openmrs/esm-framework";
-import { SearchedPatient } from "../types";
 import { age } from "../contact-details/age-helpers";
 import { PatientCardProps } from "../patient-card/patient-card-component";
 
@@ -19,13 +16,11 @@ const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
   const config = useConfig();
 
   function renderPatient(patient: fhir.Patient) {
-    const birthDate = dayjs(patient.birthDate).format("DD - MMM - YYYY");
-
     const state: PatientCardProps = {
       patientUuid: patient.id,
       displayName: getPatientNames(patient),
       gender: patient.gender,
-      birthDate: birthDate,
+      birthDate: dayjs(patient.birthDate).format("DD - MMM - YYYY"),
       identifier: getPatientIdentifiers(patient),
       age: age(patient.birthDate),
       address: patient.address,

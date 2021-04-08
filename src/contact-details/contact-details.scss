@@ -15,14 +15,12 @@
   @include carbon--type-style("body-short-01");
   display: flex;
   margin: 1rem 0;
-}
-
-.row .col {
-  flex: 1;
-}
-
-.row li {
-  margin: 0.5rem 0;
+  .col {
+    flex: 1;
+  }
+  .li {
+    margin: 0.5rem 0;
+  }
 }
 
 .relationship {
