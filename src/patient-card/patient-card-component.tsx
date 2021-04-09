@@ -14,8 +14,8 @@ export interface PatientCardProps {
   birthDate: string;
   identifier: string;
   age: string;
-  address: fhir.Address[];
-  telecom: fhir.ContactPoint[];
+  address: Array<fhir.Address>;
+  telecom: Array<fhir.ContactPoint>;
   patientUrl?: string;
 }
 
@@ -29,7 +29,7 @@ const PatientCard: React.FC<PatientCardProps> = ({
   address,
   telecom,
   patientUrl
-}): JSX.Element => {
+}) => {
   const [showContactDetails, setShowContactDetails] = React.useState(false);
   const toggleContactDetails = () => {
     setShowContactDetails(!showContactDetails);

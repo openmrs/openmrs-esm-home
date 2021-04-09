@@ -25,7 +25,9 @@ const Address: React.FC<{ address: fhir.Address }> = ({ address }) => {
   );
 };
 
-const Contact: React.FC<{ telecom: Array<fhir.ContactPoint> }> = ({ telecom }) => {
+const Contact: React.FC<{ telecom: Array<fhir.ContactPoint> }> = ({
+  telecom
+}) => {
   const value = telecom ? telecom[0].value : "-";
   const { t } = useTranslation();
   return (
@@ -88,7 +90,7 @@ const Relationships: React.FC<{ patientId: string }> = ({ patientId }) => {
             <li key={r.uuid} className={styles.relationship}>
               <div>{r.display}</div>
               <div>{r.relationshipType}</div>
-              <div>{`${r.relativeAge} ${
+              <div>{`${r.relativeAge}${
                 r.relativeAge === 1 ? "yr" : "yrs"
               }`}</div>
             </li>
