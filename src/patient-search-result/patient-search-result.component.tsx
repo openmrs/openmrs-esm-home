@@ -1,77 +1,66 @@
 import React from "react";
 import dayjs from "dayjs";
-import styles from "./patient-search-result.scss";
 import { match } from "react-router-dom";
 import {
   interpolateString,
-  ConfigurableLink,
   ExtensionSlot,
   useConfig
 } from "@openmrs/esm-framework";
-import { SearchedPatient } from "../types";
+import { age } from "../contact-details/age-helpers";
+
+const Patient: React.FC<{
+  patient: fhir.Patient;
+  patientResultUrl: string;
+}> = ({ patient, patientResultUrl }) => {
+  return (
+    <ExtensionSlot
+      key={patient.id}
+      extensionSlotName="patient-card-slot"
+      state={{
+        patientUuid: patient.id,
+        displayName: getPatientNames(patient),
+        gender: patient.gender,
+        birthDate: dayjs(patient.birthDate).format("DD - MMM - YYYY"),
+        identifier: getPatientIdentifiers(patient),
+        age: age(patient.birthDate),
+        address: patient.address,
+        telecom: patient.telecom,
+        patientUrl: interpolateString(patientResultUrl, {
+          patientUuid: patient.id
+        })
+      }}
+    />
+  );
+};
 
 const PatientSearchResults: React.FC<PatientSearchResultsProps> = ({
   patients
 }) => {
   const config = useConfig();
 
-  function renderPatient(patient: SearchedPatient) {
-    const preferredIdentifier =
-      patient.identifiers.find(i => i.preferred) || patient.identifiers[0];
-
-    return (
-      <ConfigurableLink
-        key={patient.display}
-        className={styles.patientCharts}
-        to={interpolateString(config.search.patientResultUrl, {
-          patientUuid: patient.uuid
-        })}
-      >
-        <div className={styles.container}>
-          <div className={styles.patientBanner}>
-            <div className={styles.patientAvatar}>
-              <ExtensionSlot
-                extensionSlotName="patient-photo-slot"
-                state={{ patientUuid: patient.uuid }}
-              />
-            </div>
-            <div className={styles.patientInfo}>
-              <div>
-                <span className={styles.patientName}>
-                  {patient.person.display}
-                </span>
-              </div>
-              <div className={styles.demographics}>
-                <span>{patient.person.gender === "M" ? "Male" : "Female"}</span>{" "}
-                &middot;{" "}
-                <span>
-                  {patient.person.age}{" "}
-                  {patient.person.age === 1 ? "year" : "years"}
-                </span>{" "}
-                &middot;{" "}
-                <span>
-                  {dayjs(patient.person.birthdate).format("DD - MMM - YYYY")}
-                </span>
-              </div>
-              <div>
-                <span className={styles.identifiers}>
-                  {preferredIdentifier.identifier}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ConfigurableLink>
-    );
-  }
-
-  return <>{patients.map(patient => renderPatient(patient))}</>;
+  return (
+    <>
+      {patients.map(patient => (
+        <Patient
+          patient={patient}
+          patientResultUrl={config.search.patientResultUrl}
+        />
+      ))}
+    </>
+  );
 };
 
 interface PatientSearchResultsProps {
-  patients: Array<SearchedPatient>;
+  patients: Array<fhir.Patient>;
   searchTerm: string;
   match: match;
+}
+function getPatientNames(patient: fhir.Patient) {
+  return `${patient.name[0].given.join(" ")} ${patient.name[0].family}`;
+}
+
+function getPatientIdentifiers(patient: fhir.Patient) {
+  return patient.identifier.map(i => i.value);
 }
 
 export default PatientSearchResults;

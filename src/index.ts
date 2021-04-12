@@ -90,6 +90,14 @@ function setupOpenMRS() {
           () => import("./refapp-links/system-administration"),
           options
         )
+      },
+      {
+        id: "patient-card",
+        slot: "patient-card-slot",
+        load: getAsyncLifecycle(
+          () => import("./patient-card/patient-card-component"),
+          options
+        )
       }
     ]
   };
