@@ -87,4 +87,5 @@
   width: var(--dashboard-button-width);
   margin: var(--dashboard-button-margin);
   justify-content: center;
+  white-space: normal;
 }
