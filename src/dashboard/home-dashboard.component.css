@@ -44,6 +44,27 @@
   text-align: center;
 }
 
+a.searchLink {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  font-size: 1rem;
+  letter-spacing: .0125rem;
+  font-weight: 500;
+  font-family: Roboto,sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 6.25rem;
+  line-height: 2.25rem;
+  padding: 0 1.5rem;
+}
+
+a.searchLink:focus {
+  outline: none !important;
+}
+
 .logoSection {
   display: flex;
   justify-content: center;
