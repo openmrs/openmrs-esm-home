@@ -1,11 +1,27 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Home from "./home.component";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import HomeDashboard from "./dashboard/home-dashboard.component";
+import PatientSearch from "./patient-search/patient-search.component";
 
-export default function Root() {
-  return (
-    <BrowserRouter basename={window["getOpenmrsSpaBase"]()}>
-      <Route path="/home" component={Home} />
-    </BrowserRouter>
-  );
+interface RootProps {
+  canSearch: boolean;
 }
+
+const Root: React.FC<RootProps> = ({ canSearch = true }) => (
+  <BrowserRouter basename={window.spaBase}>
+    <main className="omrs-main-content">
+      <Route
+        path="/home"
+        exact
+        component={props => <HomeDashboard canSearch={canSearch} {...props} />}
+      />
+      {canSearch ? (
+        <Route path="/home/patient-search" component={PatientSearch} />
+      ) : (
+        <Redirect from="/home/patient-search" to="/home" />
+      )}
+    </main>
+  </BrowserRouter>
+);
+
+export default Root;

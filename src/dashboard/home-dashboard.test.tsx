@@ -11,7 +11,7 @@ import renderWithRouter from "../helpers/render-with-router";
 const match = { params: { id: 1 }, isExact: true, path: "", url: "" };
 
 function renderHome() {
-  return renderWithRouter(<HomeDashboard match={match} />);
+  return renderWithRouter(<HomeDashboard match={match} canSearch />);
 }
 
 it("renders without failing", () => {

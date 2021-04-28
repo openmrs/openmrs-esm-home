@@ -7,7 +7,7 @@
   "license": "MPL-2.0",
   "homepage": "https://github.com/openmrs/openmrs-esm-home#readme",
   "scripts": {
-    "start": "openmrs debug --run-project",
+    "start": "openmrs develop",
     "serve": "webpack-dev-server",
     "debug": "npm run serve",
     "build": "webpack --mode production",

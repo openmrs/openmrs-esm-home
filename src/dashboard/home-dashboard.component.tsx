@@ -12,9 +12,13 @@ import styles from "./home-dashboard.component.css";
 
 export interface HomeDashboardProps {
   match: match;
+  canSearch: boolean;
 }
 
-export default function HomeDashboard(props: HomeDashboardProps) {
+export default function HomeDashboard({
+  match,
+  canSearch
+}: HomeDashboardProps) {
   const config = useConfig();
   const { t } = useTranslation();
 
@@ -24,17 +28,22 @@ export default function HomeDashboard(props: HomeDashboardProps) {
         <section className={styles.mainSection}>
           <UserHasAccess privilege="View Patients">
             <div className={styles.searchLinkArea}>
-              <Link
-                to={props.match.url + "/patient-search"}
-                className={`omrs-link omrs-outlined-action omrs-rounded ${styles.dashboardLink}`}
-              >
-                <svg className="omrs-icon" fill="var(--omrs-color-interaction)">
-                  <use xlinkHref="#omrs-icon-search" />
-                </svg>
-                <span className={styles.label}>
-                  {t("patientSearchPrompt", "Search for patient")}
-                </span>
-              </Link>
+              {canSearch && (
+                <Link
+                  to={match.url + "/patient-search"}
+                  className={`omrs-link omrs-outlined-action omrs-rounded ${styles.dashboardLink}`}
+                >
+                  <svg
+                    className="omrs-icon"
+                    fill="var(--omrs-color-interaction)"
+                  >
+                    <use xlinkHref="#omrs-icon-search" />
+                  </svg>
+                  <span className={styles.label}>
+                    {t("patientSearchPrompt", "Search for patient")}
+                  </span>
+                </Link>
+              )}
             </div>
           </UserHasAccess>
           {config.buttons.enabled && (

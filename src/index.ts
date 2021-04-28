@@ -35,8 +35,18 @@ function setupOpenMRS() {
   ]);
 
   return {
-    lifecycle: getAsyncLifecycle(() => import("./root.component"), options),
-    activate: pageName,
+    pages: [
+      {
+        load: getAsyncLifecycle(() => import("./root.component"), options),
+        route: pageName,
+        online: {
+          canSearch: true
+        },
+        offline: {
+          canSearch: false
+        }
+      }
+    ],
     extensions: [
       {
         id: "active-visits-link",
@@ -44,7 +54,9 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/active-visits"),
           options
-        )
+        ),
+        online: true,
+        offline: true
       },
       {
         id: "capture-vitals-link",
@@ -52,7 +64,9 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/capture-vitals"),
           options
-        )
+        ),
+        online: true,
+        offline: false
       },
       {
         id: "appointment-scheduling-link",
@@ -60,12 +74,19 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/appointment-scheduling"),
           options
-        )
+        ),
+        online: true,
+        offline: false
       },
       {
         id: "reports-link",
         slot: "homepage-dashboard-slot",
-        load: getAsyncLifecycle(() => import("./refapp-links/reports"), options)
+        load: getAsyncLifecycle(
+          () => import("./refapp-links/reports"),
+          options
+        ),
+        online: true,
+        offline: false
       },
       {
         id: "data-management-link",
@@ -73,7 +94,9 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/data-management"),
           options
-        )
+        ),
+        online: true,
+        offline: false
       },
       {
         id: "configure-metadata-link",
@@ -81,7 +104,9 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/configure-metadata"),
           options
-        )
+        ),
+        online: true,
+        offline: false
       },
       {
         id: "system-administration-link",
@@ -89,7 +114,9 @@ function setupOpenMRS() {
         load: getAsyncLifecycle(
           () => import("./refapp-links/system-administration"),
           options
-        )
+        ),
+        online: true,
+        offline: false
       }
     ]
   };

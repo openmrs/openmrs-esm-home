@@ -4,11 +4,11 @@ import Root from "./root.component";
 
 afterAll(cleanup);
 
-window["getOpenmrsSpaBase"] = jest.fn().mockImplementation(() => "/");
+window.spaBase = "/";
 
 describe(`<Root />`, () => {
   afterEach(cleanup);
   it(`renders without dying`, () => {
-    const wrapper = render(<Root />);
+    const wrapper = render(<Root canSearch />);
   });
 });
