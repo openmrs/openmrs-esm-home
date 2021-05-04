@@ -50,7 +50,7 @@ function setupOpenMRS() {
     extensions: [
       {
         id: "active-visits-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/active-visits"),
           options
@@ -60,7 +60,7 @@ function setupOpenMRS() {
       },
       {
         id: "capture-vitals-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/capture-vitals"),
           options
@@ -70,7 +70,7 @@ function setupOpenMRS() {
       },
       {
         id: "appointment-scheduling-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/appointment-scheduling"),
           options
@@ -80,7 +80,7 @@ function setupOpenMRS() {
       },
       {
         id: "reports-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/reports"),
           options
@@ -90,7 +90,7 @@ function setupOpenMRS() {
       },
       {
         id: "data-management-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/data-management"),
           options
@@ -100,7 +100,7 @@ function setupOpenMRS() {
       },
       {
         id: "configure-metadata-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/configure-metadata"),
           options
@@ -110,7 +110,7 @@ function setupOpenMRS() {
       },
       {
         id: "system-administration-link",
-        slot: "homepage-dashboard-slot",
+        slot: "app-menu-slot",
         load: getAsyncLifecycle(
           () => import("./refapp-links/system-administration"),
           options
