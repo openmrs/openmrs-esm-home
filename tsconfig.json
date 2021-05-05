@@ -4,6 +4,7 @@
     "module": "esnext",
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "lib": [
       "dom",
@@ -15,9 +16,8 @@
       "es2018",
       "es2020"
     ],
+    "resolveJsonModule": true,
     "noEmit": true,
     "target": "esnext"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.test.tsx"]
+  }
 }

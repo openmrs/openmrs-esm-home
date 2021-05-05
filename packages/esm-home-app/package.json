@@ -1,0 +1,57 @@
+{
+  "name": "@openmrs/esm-home-app",
+  "version": "3.1.0",
+  "description": "Homepage microfrontend for the OpenMRS SPA",
+  "main": "dist/openmrs-esm-home-app.js",
+  "types": "src/index.ts",
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/openmrs/openmrs-esm-home#readme",
+  "scripts": {
+    "start": "openmrs develop",
+    "serve": "webpack-dev-server --mode=development",
+    "debug": "npm run serve",
+    "build": "webpack --mode production",
+    "analyze": "webpack --mode=production --env.analyze=true",
+    "lint": "eslint src --ext tsx",
+    "typescript": "tsc",
+    "extract-translations": "i18next 'src/**/*.component.tsx'"
+  },
+  "browserslist": [
+    "extends browserslist-config-openmrs"
+  ],
+  "keywords": [
+    "openmrs"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && concurrently 'npm:test' 'npm:typescript' 'npm:lint'"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openmrs/openmrs-esm-home.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openmrs/openmrs-esm-home/issues"
+  },
+  "dependencies": {
+    "@carbon/icons-react": "^10.18.0",
+    "carbon-components-react": "^7.25.0",
+    "lodash-es": "^4.17.15",
+    "systemjs-webpack-interop": "^1.2.1"
+  },
+  "peerDependencies": {
+    "@openmrs/esm-framework": "3.x",
+    "carbon-components": "10.x",
+    "carbon-icons": "7.x",
+    "dayjs": "1.x",
+    "react": "16.x",
+    "react-i18next": "11.x",
+    "react-router-dom": "5.x",
+    "rxjs": "6.x"
+  },
+  "devDependencies": {}
+}
