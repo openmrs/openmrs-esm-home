@@ -2,8 +2,8 @@
   "name": "@openmrs/esm-home-app",
   "version": "3.1.0",
   "description": "Homepage microfrontend for the OpenMRS SPA",
-  "main": "dist/openmrs-esm-home-app.js",
-  "types": "src/index.ts",
+  "browser": "dist/openmrs-esm-home-app.js",
+  "main": "src/index.ts",
   "license": "MPL-2.0",
   "homepage": "https://github.com/openmrs/openmrs-esm-home#readme",
   "scripts": {
@@ -40,8 +40,7 @@
   "dependencies": {
     "@carbon/icons-react": "^10.18.0",
     "carbon-components-react": "^7.25.0",
-    "lodash-es": "^4.17.15",
-    "systemjs-webpack-interop": "^1.2.1"
+    "lodash-es": "^4.17.15"
   },
   "peerDependencies": {
     "@openmrs/esm-framework": "3.x",
