@@ -15,13 +15,6 @@ it('renders without failing', () => {
   renderHome();
 });
 
-it('directs to patient search on click', () => {
-  const wrapper = renderHome();
-  const patientSearchLink = wrapper.getByText(/Search for patient/i);
-  fireEvent.click(patientSearchLink);
-  expect(wrapper.history.location.pathname).toEqual('/patient-search');
-});
-
 it('renders buttons declared in config', () => {
   (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
     buttons: {
@@ -37,22 +30,6 @@ it('renders buttons declared in config', () => {
   const { getByText } = renderHome();
   const fooButton = getByText('Foo');
   expect(fooButton).not.toBeNull();
-});
-
-it('clicking buttons takes user to the right places', async () => {
-  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
-    buttons: {
-      enabled: true,
-      list: [
-        {
-          label: 'Foo',
-          link: '/some/route',
-        },
-      ],
-    },
-  });
-  const { getByText, history } = renderHome();
-  expect(getByText('Foo').closest('a')).toHaveAttribute('href', '/some/route');
 });
 
 it('renders selectively based on privileges', () => {

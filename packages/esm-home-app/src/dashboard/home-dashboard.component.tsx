@@ -18,20 +18,6 @@ export default function HomeDashboard({ match, canSearch }: HomeDashboardProps) 
     <>
       <div className={styles.homeDashboard}>
         <section className={styles.mainSection}>
-          <UserHasAccess privilege="View Patients">
-            <div className={styles.searchLinkArea}>
-              {canSearch && (
-                <Link
-                  to={match.url + '/patient-search'}
-                  className={`omrs-link omrs-outlined-action omrs-rounded ${styles.dashboardLink}`}>
-                  <svg className="omrs-icon" fill="var(--omrs-color-interaction)">
-                    <use xlinkHref="#omrs-icon-search" />
-                  </svg>
-                  <span className={styles.label}>{t('patientSearchPrompt', 'Search for patient')}</span>
-                </Link>
-              )}
-            </div>
-          </UserHasAccess>
           {config.buttons.enabled && (
             <div className={styles.buttonArea}>
               <ExtensionSlot extensionSlotName="homepage-dashboard-slot">
