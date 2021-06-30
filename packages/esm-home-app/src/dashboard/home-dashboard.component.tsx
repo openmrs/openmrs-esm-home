@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, match } from 'react-router-dom';
+import { match } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useConfig, UserHasAccess, ExtensionSlot, Extension } from '@openmrs/esm-framework';
+import { useConfig, ExtensionSlot, Extension } from '@openmrs/esm-framework';
 import DashboardButton from '../dashboard-button/dashboard-button.component';
 import styles from './home-dashboard.component.css';
 
@@ -25,6 +25,7 @@ export default function HomeDashboard({ match, canSearch }: HomeDashboardProps) 
                   <Extension />
                 </div>
               </ExtensionSlot>
+              <ExtensionSlot extensionSlotName="active-visits-widget" />
               {config.buttons.list.map((def) => (
                 <DashboardButton {...def} key={def.label} />
               ))}
