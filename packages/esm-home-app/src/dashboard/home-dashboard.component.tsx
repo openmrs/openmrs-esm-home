@@ -25,12 +25,12 @@ export default function HomeDashboard({ match, canSearch }: HomeDashboardProps) 
                   <Extension />
                 </div>
               </ExtensionSlot>
-              <ExtensionSlot extensionSlotName="active-visits-widget" />
               {config.buttons.list.map((def) => (
                 <DashboardButton {...def} key={def.label} />
               ))}
             </div>
           )}
+          <ExtensionSlot extensionSlotName="homepage-widgets-slot" />
         </section>
       </div>
       <section className={styles.logoSection}>
