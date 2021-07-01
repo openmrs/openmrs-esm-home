@@ -30,7 +30,7 @@ export default function HomeDashboard({ match, canSearch }: HomeDashboardProps) 
               ))}
             </div>
           )}
-          <ExtensionSlot extensionSlotName="homepage-widgets-slot" />
+          {config.widgets.enabled && <ExtensionSlot extensionSlotName="homepage-widgets-slot" />}
         </section>
       </div>
       <section className={styles.logoSection}>

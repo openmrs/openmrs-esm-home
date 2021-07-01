@@ -34,4 +34,11 @@ export const esmHomeSchema = {
       _validators: [validators.isUrlWithTemplateParameters(['patientUuid'])],
     },
   },
+  widgets: {
+    enabled: {
+      _type: Type.Boolean,
+      _default: true,
+      _description: 'Whether to show widgets on the home page (including extensions)',
+    },
+  },
 };
