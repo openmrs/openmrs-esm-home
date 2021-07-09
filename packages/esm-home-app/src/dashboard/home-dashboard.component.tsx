@@ -31,7 +31,7 @@ export default function HomeDashboard({ match, canSearch }: HomeDashboardProps) 
             </div>
           )}
           {config.widgets.enabled && (
-            <div style={{ marginTop: '2rem' }}>
+            <div className={styles.widgetsArea}>
               <ExtensionSlot extensionSlotName="homepage-widgets-slot" />
             </div>
           )}
