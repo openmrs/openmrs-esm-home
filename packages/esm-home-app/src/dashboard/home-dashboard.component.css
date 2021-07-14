@@ -92,4 +92,6 @@
 
 .widgetsArea {
   margin-top: 2rem;
+  padding: 0 1rem;
+  width: 100%;
 }
