@@ -2,7 +2,7 @@ import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle } from '@ope
 import { esmHomeSchema } from './openmrs-esm-home-schema';
 
 const backendDependencies = {
-  'webservices.rest': '2.24.0',
+  'webservices.rest': '^2.24.0',
 };
 
 const importTranslation = require.context('../translations', false, /.json$/, 'lazy');
