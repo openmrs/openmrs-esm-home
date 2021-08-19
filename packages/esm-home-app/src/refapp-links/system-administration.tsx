@@ -1,12 +1,10 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function SystemAdministration() {
   return (
-    <RefAppLink
-      label="System Administration"
-      to="${openmrsBase}/coreapps/systemadministration/systemAdministration.page"
-      privilege="App: coreapps.systemAdministration"
-    />
+    <ConfigurableLink to="${openmrsBase}/coreapps/systemadministration/systemAdministration.page">
+      System Administration
+    </ConfigurableLink>
   );
 }

@@ -1,12 +1,10 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function CaptureVitals() {
   return (
-    <RefAppLink
-      label="Capture Vitals"
-      to="${openmrsBase}/coreapps/findpatient/findPatient.page?app=referenceapplication.vitals"
-      privilege="App: referenceapplication.vitals"
-    />
+    <ConfigurableLink to="${openmrsBase}/coreapps/findpatient/findPatient.page?app=referenceapplication.vitals">
+      Capture Vitals
+    </ConfigurableLink>
   );
 }

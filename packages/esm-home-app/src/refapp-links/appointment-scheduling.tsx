@@ -1,12 +1,8 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function AppointmentScheduling() {
   return (
-    <RefAppLink
-      label="Appointment Scheduling"
-      to="${openmrsBase}/appointmentschedulingui/home.page"
-      privilege="App: appointmentschedulingui.home"
-    />
+    <ConfigurableLink to="${openmrsBase}/appointmentschedulingui/home.page">Appointment Scheduling</ConfigurableLink>
   );
 }

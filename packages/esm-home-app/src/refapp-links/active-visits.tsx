@@ -1,12 +1,10 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function ActiveVisits() {
   return (
-    <RefAppLink
-      label="Active Visits"
-      to="${openmrsBase}/coreapps/activeVisits.page?app=coreapps.activeVisits"
-      privilege="App: coreapps.activeVisits"
-    />
+    <ConfigurableLink to="${openmrsBase}/coreapps/activeVisits.page?app=coreapps.activeVisits">
+      Active Visits
+    </ConfigurableLink>
   );
 }
