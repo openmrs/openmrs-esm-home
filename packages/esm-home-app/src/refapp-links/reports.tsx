@@ -1,6 +1,6 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function Reports() {
-  return <RefAppLink label="Reports" to="${openmrsBase}/reportingui/reportsapp/home.page" privilege="View Reports" />;
+  return <ConfigurableLink to="${openmrsBase}/reportingui/reportsapp/home.page">Reports</ConfigurableLink>;
 }

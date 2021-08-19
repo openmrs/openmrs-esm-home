@@ -1,12 +1,8 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function DataManagement() {
   return (
-    <RefAppLink
-      label="Data Management"
-      to="${openmrsBase}/coreapps/datamanagement/dataManagement.page"
-      privilege="App: coreapps.dataManagement"
-    />
+    <ConfigurableLink to="${openmrsBase}/coreapps/datamanagement/dataManagement.page">Data Management</ConfigurableLink>
   );
 }

@@ -1,12 +1,8 @@
 import React from 'react';
-import { RefAppLink } from './refapp-link';
+import { ConfigurableLink } from '@openmrs/esm-framework';
 
 export default function ConfigureMetadata() {
   return (
-    <RefAppLink
-      label="Configure Metadata"
-      to="${openmrsBase}/adminui/metadata/configureMetadata.page"
-      privilege="App: coreapps.configuremetadata"
-    />
+    <ConfigurableLink to="${openmrsBase}/adminui/metadata/configureMetadata.page">Configure Metadata</ConfigurableLink>
   );
 }
