@@ -1,1 +1,11 @@
 @import "carbon-components/scss/globals/scss/typography.scss";
+@import "~carbon-components/scss/globals/scss/_spacing.scss";
+@import '~@openmrs/esm-styleguide/src/vars';
+
+.externalLinks {
+  border-top: 1px solid $ui-01;
+}
+
+.topRightArrow {
+  margin-left: $spacing-03;
+}

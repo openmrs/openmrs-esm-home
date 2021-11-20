@@ -95,6 +95,14 @@ function setupOpenMRS() {
         online: true,
         offline: false,
       },
+      {
+        id: 'external-app-menu-links',
+        slot: 'app-menu-external-links-slot',
+        load: getAsyncLifecycle(() => import('./refapp-links/external-ref-links.component'), options),
+        // privelege: '',
+        online: true,
+        offline: true,
+      },
     ],
   };
 }
