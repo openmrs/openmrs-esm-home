@@ -56,7 +56,7 @@ export const esmHomeSchema = {
         },
         redirect: {
           _type: Type.String,
-          _description: 'Link to redirect to',
+          _description: 'Link to redirect to (must be an external link)',
         },
       },
       _default: [
