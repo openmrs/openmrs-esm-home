@@ -41,8 +41,6 @@ function setupOpenMRS() {
     extensions: [
       {
         id: 'active-visits-link',
-        slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/active-visits'), options),
         privilege: 'App: coreapps.activeVisits',
         online: true,
         offline: true,
@@ -50,7 +48,6 @@ function setupOpenMRS() {
       {
         id: 'capture-vitals-link',
         slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/capture-vitals'), options),
         privilege: 'App: referenceapplication.vitals',
         online: true,
         offline: false,
@@ -58,7 +55,6 @@ function setupOpenMRS() {
       {
         id: 'appointment-scheduling-link',
         slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/appointment-scheduling'), options),
         privilege: 'App: appointmentschedulingui.home',
         online: true,
         offline: false,
@@ -66,7 +62,6 @@ function setupOpenMRS() {
       {
         id: 'reports-link',
         slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/reports'), options),
         privilege: 'View Reports',
         online: true,
         offline: false,
@@ -74,7 +69,6 @@ function setupOpenMRS() {
       {
         id: 'data-management-link',
         slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/data-management'), options),
         privilege: 'App: coreapps.dataManagement',
         online: true,
         offline: false,
@@ -82,7 +76,6 @@ function setupOpenMRS() {
       {
         id: 'configure-metadata-link',
         slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/configure-metadata'), options),
         privilege: 'App: coreapps.configuremetadata',
         online: true,
         offline: false,
@@ -90,7 +83,6 @@ function setupOpenMRS() {
       {
         id: 'system-administration-link',
         slot: 'app-menu-slot',
-        load: getAsyncLifecycle(() => import('./refapp-links/system-administration'), options),
         privilege: 'App: coreapps.systemAdministration',
         online: true,
         offline: false,
