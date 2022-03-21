@@ -41,7 +41,7 @@ function setupOpenMRS() {
     extensions: [
       {
         id: 'active-visits-link',
-        slot: 'app-menu-slot',
+        slot: '',
         load: getAsyncLifecycle(() => import('./refapp-links/active-visits'), options),
         privilege: 'App: coreapps.activeVisits',
         online: true,
@@ -49,7 +49,7 @@ function setupOpenMRS() {
       },
       {
         id: 'capture-vitals-link',
-        slot: 'app-menu-slot',
+        slot: '',
         load: getAsyncLifecycle(() => import('./refapp-links/capture-vitals'), options),
         privilege: 'App: referenceapplication.vitals',
         online: true,
@@ -57,7 +57,7 @@ function setupOpenMRS() {
       },
       {
         id: 'appointment-scheduling-link',
-        slot: 'app-menu-slot',
+        slot: '',
         load: getAsyncLifecycle(() => import('./refapp-links/appointment-scheduling'), options),
         privilege: 'App: appointmentschedulingui.home',
         online: true,
@@ -65,7 +65,7 @@ function setupOpenMRS() {
       },
       {
         id: 'reports-link',
-        slot: 'app-menu-slot',
+        slot: '',
         load: getAsyncLifecycle(() => import('./refapp-links/reports'), options),
         privilege: 'View Reports',
         online: true,
@@ -73,7 +73,7 @@ function setupOpenMRS() {
       },
       {
         id: 'data-management-link',
-        slot: 'app-menu-slot',
+        slot: '',
         load: getAsyncLifecycle(() => import('./refapp-links/data-management'), options),
         privilege: 'App: coreapps.dataManagement',
         online: true,
@@ -81,7 +81,7 @@ function setupOpenMRS() {
       },
       {
         id: 'configure-metadata-link',
-        slot: 'app-menu-slot',
+        slot: '',
         load: getAsyncLifecycle(() => import('./refapp-links/configure-metadata'), options),
         privilege: 'App: coreapps.configuremetadata',
         online: true,
