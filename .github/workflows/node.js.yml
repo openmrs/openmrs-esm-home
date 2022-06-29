@@ -70,7 +70,7 @@ jobs:
           method: "PATCH"
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
-          data: '{ "service":"${{ env.ESM_NAME }}","url":"https://spa-modules.nyc3.digitaloceanspaces.com/${{ env.ESM_NAME }}/${{ env.TIMESTAMP }}_${{ github.sha }}/${{ env.JS_NAME }}" }'
+          data: '{ "service":"${{ env.ESM_NAME }}","url":"https://spa-modules.nyc3.cdn.digitaloceanspaces.com/${{ env.ESM_NAME }}/${{ env.TIMESTAMP }}_${{ github.sha }}/${{ env.JS_NAME }}" }'
           customHeaders: '{ "Accept": "application/json", "Content-Type": "application/json" }'
 
   pre_release:
