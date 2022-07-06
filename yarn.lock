@@ -2786,7 +2786,7 @@
   dependencies:
     lodash-es "^4.17.21"
 
-"@openmrs/esm-framework@^4.0.0", "@openmrs/esm-framework@^4.0.0-pre.0":
+"@openmrs/esm-framework@^4.0.0-pre.0":
   version "4.0.0-pre.0"
   resolved "https://registry.yarnpkg.com/@openmrs/esm-framework/-/esm-framework-4.0.0-pre.0.tgz#fb3684b719de9261f1ee8573b79e5d35f183f76c"
   integrity sha512-2aDRDKiW3bYKMxDZFeQXKqLN34upk3Eoxe6iCbMM06+h4LSOMxGahw1qVGm4shr3NYpLjv4L1UL9X3aKSQDGsA==
@@ -10524,7 +10524,7 @@ opener@^1.5.2:
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
   integrity sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==
 
-openmrs@^4.0.0:
+openmrs@^4.0.0-pre.0:
   version "4.0.0-pre.0"
   resolved "https://registry.yarnpkg.com/openmrs/-/openmrs-4.0.0-pre.0.tgz#2568a63a3b7b10915e191620be99432522880dba"
   integrity sha512-cOsjFKYjGlMVEpI3abiYFDMoqmTmcK+hoJBLUpSZYnhUp7TwiR1jcSPw+4xNJc7yt5E0hByMKsHOEypME+f3lg==
