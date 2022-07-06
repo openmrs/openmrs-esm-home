@@ -28,5 +28,9 @@
       "lines": 8
     }
   },
-  "setupFilesAfterEnv": ["<rootDir>/tools/setupTests.ts"]
+  "setupFilesAfterEnv": ["<rootDir>/tools/setupTests.ts"],
+  "testEnvironment": "jsdom",
+  "testEnvironmentOptions": {
+    "url": "http://localhost/"
+  }
 }
