@@ -1851,7 +1851,7 @@
   resolved "https://registry.yarnpkg.com/@jsenv/dynamic-import-worker/-/dynamic-import-worker-1.0.1.tgz#e92ac0bc0dbb30e7e6c9ff06429194aed6f045c3"
   integrity sha512-2GQac9lkM2PMBNKPBq1YmwBucID4SlaDChaa4OYdEbha1hfr+/0bgLV9AHITbJnm4pfVCQfTrBxmz+KOSQTpNQ==
 
-"@jsenv/file-size-impact@^12.1.1":
+"@jsenv/file-size-impact@^12.1.12":
   version "12.2.0"
   resolved "https://registry.yarnpkg.com/@jsenv/file-size-impact/-/file-size-impact-12.2.0.tgz#58137e71e02b2fc52daa788c6b61e7818d4cfe08"
   integrity sha512-O9N8latC/cpCcx+hQCgkBrPbdt+K6v48fPJRiE9V9yewVdM1CKAbQB8eU2nbF2i6rAq+Wk2OA1MFtFLroGiMAA==
