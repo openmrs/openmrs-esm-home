@@ -1,22 +1,22 @@
 import React from 'react';
-import '@testing-library/jest-dom';
-import { fireEvent } from '@testing-library/react';
-import { useConfig as mockUseConfig, UserHasAccess as mockUserHasAccessReact } from '@openmrs/esm-framework';
+import { screen } from '@testing-library/react';
+import { useConfig, UserHasAccess } from '@openmrs/esm-framework';
 import HomeDashboard from './home-dashboard.component';
 import renderWithRouter from '../helpers/render-with-router';
 
-const match = { params: { id: 1 }, isExact: true, path: '', url: '' };
+const mockedUseConfig = useConfig as jest.Mock;
+const mockedUserHasAccess = UserHasAccess as jest.Mock;
 
-function renderHome() {
-  return renderWithRouter(<HomeDashboard match={match} canSearch />);
+function renderHomeDashboard() {
+  return renderWithRouter(<HomeDashboard />);
 }
 
 it('renders without failing', () => {
-  renderHome();
+  renderHomeDashboard();
 });
 
 it('renders buttons declared in config', () => {
-  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
+  mockedUseConfig.mockReturnValue({
     buttons: {
       enabled: true,
       list: [
@@ -27,20 +27,22 @@ it('renders buttons declared in config', () => {
       ],
     },
   });
-  const { getByText } = renderHome();
-  const fooButton = getByText('Foo');
-  expect(fooButton).not.toBeNull();
+
+  renderHomeDashboard();
+
+  expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
 });
 
 it('renders selectively based on privileges', () => {
-  (mockUserHasAccessReact as any).mockImplementation((props) => {
+  mockedUserHasAccess.mockImplementation((props) => {
     if (['View Patients', 'Can Foo'].includes(props.privilege)) {
       return props.children;
     } else {
       return null;
     }
   });
-  (mockUseConfig as jest.MockedFunction<any>).mockReturnValue({
+
+  mockedUseConfig.mockReturnValue({
     buttons: {
       enabled: true,
       list: [
@@ -57,7 +59,9 @@ it('renders selectively based on privileges', () => {
       ],
     },
   });
-  const { queryByText } = renderHome();
-  expect(queryByText('Foo')).not.toBeNull();
-  expect(queryByText('Bar')).toBe(null);
+
+  renderHomeDashboard();
+
+  expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: /Bar/i })).not.toBeInTheDocument();
 });

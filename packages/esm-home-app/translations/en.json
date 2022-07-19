@@ -1,12 +1,9 @@
 {
-  "containing": "containing",
-  "found": "Found",
-  "noPatientChartsFoundMessage": "Sorry, no patient charts have been found",
-  "orPatientName": "OR the patient's name(s)",
-  "patient": "patient",
-  "patientSearchPrompt": "Search for patient",
-  "patientSearchText": "Search by patient name OR identifier",
-  "searchAgain": "Search Again",
-  "searchResultsFor": "Search results for:",
-  "trySearchWithPatientUniqueID": "Try searching with the patient's unique ID number"
+  "activeVisits": "Active Visits",
+  "appointmentScheduling": "Appointment Scheduling",
+  "captureVitals": "Capture Vitals",
+  "configureMetadata": "Configure Metadata",
+  "dataManagement": "Data Management",
+  "reports": "Reports",
+  "systemAdministration": "System Administration"
 }
