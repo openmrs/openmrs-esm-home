@@ -18,7 +18,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "16.15"
       - run: npx lerna bootstrap
       - run: npx lerna run lint
       - run: npx lerna run typescript
@@ -85,7 +85,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "16.15"
           registry-url: "https://registry.npmjs.org"
       - run: npx lerna bootstrap
       - run: npx lerna run build
@@ -108,7 +108,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "16.15"
           registry-url: "https://registry.npmjs.org"
       - run: npx lerna bootstrap
       - run: npx lerna run build
