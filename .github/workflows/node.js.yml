@@ -14,17 +14,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "16.15"
-      - run: npx lerna bootstrap
-      - run: npx lerna run lint
-      - run: npx lerna run typescript
-      - run: npx lerna run test
-      - run: npx lerna run build
-      - name: Upload Artifacts
+          node-version: "16"
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+        
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npx lerna bootstrap
+
+      - name: Setup local cache server for Turborepo
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+      
+      - name: Run tests, lint and typechecking
+        run: yarn turbo run lint test typescript
+      
+      - name: Run build
+        run: yarn turbo run build --color --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="${{ github.repository_owner }}"
+      
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: packages
@@ -46,6 +65,7 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
+
       - name: Compute Timestamp
         run: echo "TIMESTAMP=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Prepare Directory
@@ -81,18 +101,38 @@ jobs:
     if: ${{ github.event_name == 'push' }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "16.15"
+          node-version: "16"
           registry-url: "https://registry.npmjs.org"
-      - run: npx lerna bootstrap
-      - run: npx lerna run build
-      - run: npx lerna version "$(node -e "console.log(require('./lerna.json').version)")-pre.${{ github.run_number }}" --no-git-tag-version --yes
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npx lerna bootstrap
+
+      - name: Build
+        run: yarn turbo run build --color
+
+      - name: Patch
+        run: yarn lerna version patch --no-git-tag-version --no-push --yes
+      
+      - name: Version
+        run: npx lerna version "$(node -e "console.log(require('./lerna.json').version)")-pre.${{ github.run_number }}" --no-git-tag-version --yes
+      
       - run: git config user.email "info@openmrs.org" && git config user.name "OpenMRS CI"
       - run: git add . && git commit -m "Prerelease version" --no-verify
-      - run: npm run ci:prepublish
+
+      - name: Pre-release
+        run: yarn run ci:prepublish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
@@ -104,14 +144,28 @@ jobs:
     if: ${{ github.event_name == 'release' }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "16.15"
+          node-version: "16"
           registry-url: "https://registry.npmjs.org"
-      - run: npx lerna bootstrap
-      - run: npx lerna run build
-      - run: npm run ci:publish
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npx lerna bootstrap
+      
+      - name: Build
+        run: yarn turbo run build --color
+      
+      - name: Publish
+        run: yarn run ci:publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -11,10 +11,6 @@ function renderHomeDashboard() {
   return renderWithRouter(<HomeDashboard />);
 }
 
-it('renders without failing', () => {
-  renderHomeDashboard();
-});
-
 it('renders buttons declared in config', () => {
   mockedUseConfig.mockReturnValue({
     buttons: {
