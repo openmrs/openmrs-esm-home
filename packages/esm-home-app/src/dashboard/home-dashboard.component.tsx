@@ -1,16 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useConfig, ExtensionSlot, Extension } from '@openmrs/esm-framework';
 import DashboardButton from '../dashboard-button/dashboard-button.component';
-import styles from './home-dashboard.component.css';
+import styles from './home-dashboard.css';
 
-export interface HomeDashboardProps {
-  canSearch: boolean;
-}
-
-export default function HomeDashboard({ canSearch }: HomeDashboardProps) {
+export default function HomeDashboard() {
   const config = useConfig();
-  const { t } = useTranslation();
 
   return (
     <>

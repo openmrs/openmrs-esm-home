@@ -1,6 +1,6 @@
 import React from 'react';
 import { ConfigurableLink, UserHasAccess } from '@openmrs/esm-framework';
-import styles from './dashboard-button.component.css';
+import styles from './dashboard-button.css';
 
 export interface DashboardButtonProps {
   label: string;
