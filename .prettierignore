@@ -5,3 +5,4 @@ node_modules/
 **/*.css
 **/*.md
 **/*.json
+yarn.lock
