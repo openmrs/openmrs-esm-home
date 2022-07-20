@@ -32,7 +32,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
-    "@types/carbon-components-react": "^7.10.9",
     "@types/jest": "^27.5.0",
     "@types/lodash-es": "^4.17.3",
     "@types/react": "^18.0.9",
