@@ -64,3 +64,6 @@ dist
 # Intellij integration
 *.iml
 .idea/
+
+# Turborepo
+.turbo

@@ -1,5 +1,8 @@
+.turbo
+.github
 dist/
 node_modules/
 **/*.css
 **/*.md
 **/*.json
+yarn.lock

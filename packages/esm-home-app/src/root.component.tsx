@@ -1,15 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeDashboard from './dashboard/home-dashboard.component';
 
-interface RootProps {
-  canSearch: boolean;
-}
-
-const Root: React.FC<RootProps> = ({ canSearch = true }) => (
+const Root: React.FC = () => (
   <BrowserRouter basename={window.spaBase}>
     <main className="omrs-main-content">
-      <Route path="/home" exact component={(props) => <HomeDashboard canSearch={canSearch} {...props} />} />
+      <Routes>
+        <Route path="/home" element={<HomeDashboard />} />
+      </Routes>
     </main>
   </BrowserRouter>
 );
