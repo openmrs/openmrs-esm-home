@@ -67,3 +67,12 @@ dist
 
 # Turborepo
 .turbo
+
+# yarn 3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
