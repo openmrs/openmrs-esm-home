@@ -3,5 +3,4 @@
 
 set -e  # die on error
 
-yarn run verify
-yarn turbo run test
+yarn verify
