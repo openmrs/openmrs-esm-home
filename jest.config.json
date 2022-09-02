@@ -10,7 +10,7 @@
     "lodash-es": "lodash"
   },
   "collectCoverageFrom": [
-    "**/src/**/*.component.tsx",
+    "**/src/**/*.tsx",
     "!**/node_modules/**",
     "!**/vendor/**",
     "!**/src/**/*.test.*",
@@ -26,9 +26,6 @@
   },
   "setupFilesAfterEnv": [
     "<rootDir>/tools/setupTests.ts"
-  ],
-  "testPathIgnorePatterns": [
-    "<rootDir>/packages/esm-form-entry-app"
   ],
   "testEnvironment": "jsdom",
   "testEnvironmentOptions": {
