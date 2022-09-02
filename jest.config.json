@@ -1,3 +1,4 @@
+
 {
   "transform": {
     "^.+\\.tsx?$": "@swc/jest"
@@ -5,9 +6,8 @@
   "transformIgnorePatterns": ["/node_modules/(?!@openmrs)"],
   "moduleNameMapper": {
     "\\.(s?css)$": "identity-obj-proxy",
-    "^lodash-es/(.*)$": "lodash/$1",
     "@openmrs/esm-framework": "@openmrs/esm-framework/mock",
-    "react-i18next": "<rootDir>/__mocks__/react-i18next.mock.js"
+    "lodash-es": "lodash"
   },
   "collectCoverageFrom": [
     "**/src/**/*.tsx",
@@ -18,13 +18,15 @@
   ],
   "coverageThreshold": {
     "global": {
-      "statements": 8,
-      "branches": 5,
-      "functions": 7,
-      "lines": 8
+      "statements": 80,
+      "branches": 80,
+      "functions": 80,
+      "lines": 80
     }
   },
-  "setupFilesAfterEnv": ["<rootDir>/setupTests.ts"],
+  "setupFilesAfterEnv": [
+    "<rootDir>/tools/setupTests.ts"
+  ],
   "testEnvironment": "jsdom",
   "testEnvironmentOptions": {
     "url": "http://localhost/"
