@@ -39,15 +39,10 @@
   "bugs": {
     "url": "https://github.com/openmrs/openmrs-esm-home/issues"
   },
-  "dependencies": {
-    "lodash-es": "^4.17.15"
-  },
   "peerDependencies": {
-    "@openmrs/esm-framework": "*",
-    "dayjs": "1.x",
+    "@openmrs/esm-framework": "4.x",
     "react": "18.x",
     "react-i18next": "11.x",
-    "react-router-dom": "6.x",
-    "rxjs": "6.x"
+    "react-router-dom": "6.x"
   }
 }
