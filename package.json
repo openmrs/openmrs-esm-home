@@ -25,7 +25,6 @@
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@carbon/react": "^1.8.0",
-    "@jsenv/file-size-impact": "^13.0.1",
     "@openmrs/esm-framework": "next",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.2.218",
