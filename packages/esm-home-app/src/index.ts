@@ -1,6 +1,10 @@
 import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle } from '@openmrs/esm-framework';
 import { esmHomeSchema } from './openmrs-esm-home-schema';
 
+declare var __VERSION__: string;
+// __VERSION__ is replaced by Webpack with the version from package.json
+const version = __VERSION__;
+
 const backendDependencies = {
   'webservices.rest': '^2.24.0',
 };
@@ -93,4 +97,4 @@ function setupOpenMRS() {
   };
 }
 
-export { backendDependencies, importTranslation, setupOpenMRS };
+export { backendDependencies, importTranslation, setupOpenMRS, version };
