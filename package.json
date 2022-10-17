@@ -17,7 +17,7 @@
     "extract-translations": "lerna run extract-translations -- --config ../../tools/i18next-parser.config.js",
     "coverage": "yarn test --coverage",
     "prettier": "prettier --config prettier.config.js --write \"packages/**/*.{ts,tsx}\"",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "start": "openmrs develop --sources 'packages/esm-*-app/'",
     "test": "cross-env TZ=UTC jest --config jest.config.json --verbose false --passWithNoTests",
     "verify": "turbo run lint && yarn test && turbo run typescript"
@@ -45,7 +45,7 @@
     "eslint-config-prettier": "^8.2.0",
     "eslint-config-ts-react-important-stuff": "^3.0.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.0",
+    "husky": "^8.0.1",
     "i18next": "^21.8.14",
     "i18next-parser": "^6.5.0",
     "identity-obj-proxy": "^3.0.0",
