@@ -10,9 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup local cache server for Turborepo
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
+
       - uses: actions/checkout@v3
-      - uses: preactjs/compressed-size-action@v2
+      - name: Compute bundle size changes
+        uses: preactjs/compressed-size-action@v2
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           minimum-change-threshold: 10000 # 10 KB
-          build-script: "turbo run build --color --no-cache"
+          build-script: "turbo run build --color --api='http://127.0.0.1:9080' --token=${{ secrets.TURBO_SERVER_TOKEN }} --team='${{ github.repository_owner }}'" 
+
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: packages
+          path: |
+            packages/**/dist
