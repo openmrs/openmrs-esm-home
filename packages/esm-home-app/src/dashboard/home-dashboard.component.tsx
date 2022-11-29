@@ -25,11 +25,13 @@ export default function HomeDashboard() {
           </div>
         </section>
       </div>
-      <section className={styles.logoSection}>
-        <svg>
-          <use xlinkHref="#omrs-logo-full-mono" />
-        </svg>
-      </section>
+      {config.showOpenMRSLogo && (
+        <section className={styles.logoSection}>
+          <svg>
+            <use xlinkHref="#omrs-logo-full-mono" />
+          </svg>
+        </section>
+      )}
     </>
   );
 }

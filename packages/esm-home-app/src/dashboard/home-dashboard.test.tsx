@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { queryByAttribute, screen } from '@testing-library/react';
 import { useConfig, UserHasAccess } from '@openmrs/esm-framework';
 import HomeDashboard from './home-dashboard.component';
 import renderWithRouter from '../helpers/render-with-router';
@@ -10,54 +10,67 @@ const mockedUserHasAccess = UserHasAccess as jest.Mock;
 function renderHomeDashboard() {
   return renderWithRouter(<HomeDashboard />);
 }
+describe('Home Dashboard', () => {
+  it('renders buttons declared in config', () => {
+    mockedUseConfig.mockReturnValue({
+      buttons: {
+        enabled: true,
+        list: [
+          {
+            label: 'Foo',
+            link: '/some/route',
+          },
+        ],
+      },
+    });
 
-it('renders buttons declared in config', () => {
-  mockedUseConfig.mockReturnValue({
-    buttons: {
-      enabled: true,
-      list: [
-        {
-          label: 'Foo',
-          link: '/some/route',
-        },
-      ],
-    },
+    renderHomeDashboard();
+
+    expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
   });
 
-  renderHomeDashboard();
+  it('renders selectively based on privileges', () => {
+    mockedUserHasAccess.mockImplementation((props) => {
+      if (['View Patients', 'Can Foo'].includes(props.privilege)) {
+        return props.children;
+      } else {
+        return null;
+      }
+    });
 
-  expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
-});
+    mockedUseConfig.mockReturnValueOnce({
+      buttons: {
+        enabled: true,
+        list: [
+          {
+            label: 'Foo',
+            link: 'foo',
+            requiredPrivilege: 'Can Foo',
+          },
+          {
+            label: 'Bar',
+            link: 'bar',
+            requiredPrivilege: 'Can Bar',
+          },
+        ],
+      },
+    });
 
-it('renders selectively based on privileges', () => {
-  mockedUserHasAccess.mockImplementation((props) => {
-    if (['View Patients', 'Can Foo'].includes(props.privilege)) {
-      return props.children;
-    } else {
-      return null;
-    }
+    renderHomeDashboard();
+
+    expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /Bar/i })).not.toBeInTheDocument();
   });
 
-  mockedUseConfig.mockReturnValue({
-    buttons: {
-      enabled: true,
-      list: [
-        {
-          label: 'Foo',
-          link: 'foo',
-          requiredPrivilege: 'Can Foo',
-        },
-        {
-          label: 'Bar',
-          link: 'bar',
-          requiredPrivilege: 'Can Bar',
-        },
-      ],
-    },
+  it('should hide OpenMRS logo,when config is set to `false`', () => {
+    mockedUseConfig.mockReturnValueOnce({ showOpenMRSLogo: false, buttons: { list: [] } });
+    const { container } = renderHomeDashboard();
+    expect(container.querySelectorAll('section')[0]).not.toHaveClass('logoSection');
   });
 
-  renderHomeDashboard();
-
-  expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
-  expect(screen.queryByRole('link', { name: /Bar/i })).not.toBeInTheDocument();
+  it('should display OpenMRS logo,by default', () => {
+    mockedUseConfig.mockReturnValueOnce({ showOpenMRSLogo: true, buttons: { list: [] } });
+    const { container } = renderHomeDashboard();
+    expect(container.querySelectorAll('section')[1]).toHaveClass('logoSection');
+  });
 });
