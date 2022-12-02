@@ -14,7 +14,9 @@
     "analyze": "webpack --mode=production --env.analyze=true",
     "lint": "eslint src --ext tsx",
     "typescript": "tsc",
-    "extract-translations": "i18next 'src/**/*.{component.tsx,tsx}' --config ../../tools/i18next-parser.config.js"
+    "extract-translations": "i18next 'src/**/*.{component.tsx,tsx}' --config ../../tools/i18next-parser.config.js",
+    "test": "cross-env TZ=UTC jest --config jest.config.js --verbose false --passWithNoTests",
+    "coverage": "yarn test --coverage"
   },
   "browserslist": [
     "extends browserslist-config-openmrs"
