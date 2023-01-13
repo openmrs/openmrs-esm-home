@@ -15,4 +15,4 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           minimum-change-threshold: 10000 # 10 KB
-          build-script: "turbo run build --color --no-cache"
+          build-script: "turbo build --color"
