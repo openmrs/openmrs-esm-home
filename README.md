@@ -16,3 +16,7 @@ It is responsible for rendering the UI for the landing page after the user logs 
 ## Contributing / Development
 
 [Setup local development environment for OpenMRS SPA](https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA)
+
+## Design Patterns
+
+For documentation about our design patterns, please visit our [design system](https://zeroheight.com/23a080e38/p/880723--introduction) documentation website.
