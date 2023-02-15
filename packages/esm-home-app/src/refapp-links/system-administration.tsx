@@ -6,6 +6,6 @@ export default function SystemAdministration() {
   const { t } = useTranslation();
 
   return (
-    <ConfigurableLink to="${openmrsBase}/admin">{t('systemAdministration', 'System Administration')}</ConfigurableLink>
+    <ConfigurableLink to="${openmrsBase}/admin/index.htm">{t('systemAdministration', 'System Administration')}</ConfigurableLink>
   );
 }
