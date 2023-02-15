@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 export default function SystemAdministration() {
   const { t } = useTranslation();
+  
+  return (
 
-  return <ConfigurableLink to="${openmrsBase}/">{t('systemAdministration', 'System Administration')}</ConfigurableLink>;
+  return <ConfigurableLink to="${openmrsBase}/">{t('systemAdministration', 'System Administration')}</ConfigurableLink>
+  );
 }
