@@ -1,37 +1,35 @@
 import React from 'react';
-import { useConfig, ExtensionSlot, Extension } from '@openmrs/esm-framework';
-import DashboardButton from '../dashboard-button/dashboard-button.component';
-import styles from './home-dashboard.css';
+import { useLayoutType, isDesktop, useExtensionStore, ExtensionSlot, useConfig } from '@openmrs/esm-framework';
+import styles from './home-dashboard.scss';
+import { useParams } from 'react-router-dom';
+import { DashboardConfig } from '../types/index';
+import DashboardView from './dashboard-view.component';
 
 export default function HomeDashboard() {
   const config = useConfig();
+  const params = useParams();
+  const extensionStore = useExtensionStore();
+  const layout = useLayoutType();
+  const ungroupedDashboards =
+    extensionStore.slots['homepage-dashboard-slot']?.assignedExtensions
+      .map((e) => e.meta)
+      .filter((e) => Object.keys(e).length) || [];
+  const dashboards = ungroupedDashboards as Array<DashboardConfig>;
+  const currentDashboard = dashboards.find((dashboard) => dashboard.name === params?.view) || dashboards[0];
 
   return (
     <>
-      <div className={styles.homeDashboard}>
-        <section className={styles.mainSection}>
-          <div className={styles.buttonArea}>
-            <ExtensionSlot extensionSlotName="homepage-dashboard-slot">
-              <div className={styles.homeButton}>
-                <Extension />
-              </div>
-            </ExtensionSlot>
-            {config.buttons.list.map((def) => (
-              <DashboardButton {...def} key={def.label} />
-            ))}
-          </div>
-          <div className={styles.widgetsArea}>
-            <ExtensionSlot extensionSlotName="homepage-widgets-slot" />
-          </div>
-        </section>
-      </div>
-      {config.showOpenMRSLogo && (
-        <section className={styles.logoSection}>
-          <svg>
-            <use xlinkHref="#omrs-logo-full-mono" />
-          </svg>
-        </section>
-      )}
+      <section className={isDesktop(layout) && styles.dashboardContainer}>
+        {isDesktop(layout) && <ExtensionSlot extensionSlotName="home-sidebar-slot" key={layout} />}
+        <DashboardView title={currentDashboard?.name} dashboardSlot={currentDashboard?.slot} />
+        {config.showOpenMRSLogo && (
+          <section className={styles.logoSection}>
+            <svg>
+              <use xlinkHref="#omrs-logo-full-mono" />
+            </svg>
+          </section>
+        )}
+      </section>
     </>
   );
 }

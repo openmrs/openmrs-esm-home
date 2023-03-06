@@ -93,6 +93,13 @@ function setupOpenMRS() {
         online: true,
         offline: false,
       },
+      {
+        id: 'home-sidebar-slot-ext',
+        slot: 'home-sidebar-slot',
+        load: getAsyncLifecycle(() => import('./sidemenu/sidemenu.component'), options),
+        online: true,
+        offline: true,
+      },
     ],
   };
 }

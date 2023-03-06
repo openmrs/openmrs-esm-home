@@ -1,0 +1,7 @@
+@use '@carbon/colors';
+@use '@carbon/styles/scss/spacing';
+
+.sideMenu {
+    padding-top: spacing.$spacing-05;
+    border-right: 1px solid colors.$cool-gray-10;
+}
