@@ -11,6 +11,7 @@
 
 :global(.omrs-breakpoint-gt-phone) .homeDashboard {
   height: calc(100vh - var(--omrs-topnav-height) - 10rem);
+  max-width: 60rem;
 }
 
 .mainSection {
