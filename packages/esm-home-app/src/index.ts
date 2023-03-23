@@ -1,4 +1,6 @@
-import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle } from '@openmrs/esm-framework';
+import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle, getSyncLifecycle } from '@openmrs/esm-framework';
+import { createDashboardLink } from './createDashboardLink';
+import { homeWidgetDashboardMeta } from './dashboard.meta';
 import { esmHomeSchema } from './openmrs-esm-home-schema';
 
 declare var __VERSION__: string;
@@ -97,6 +99,21 @@ function setupOpenMRS() {
         id: 'home-sidebar-slot-ext',
         slot: 'home-sidebar-slot',
         load: getAsyncLifecycle(() => import('./sidemenu/sidemenu.component'), options),
+        online: true,
+        offline: true,
+      },
+      {
+        id: 'home-widget-db-link',
+        slot: 'homepage-dashboard-slot',
+        load: getSyncLifecycle(createDashboardLink(homeWidgetDashboardMeta), options),
+        meta: homeWidgetDashboardMeta,
+        online: true,
+        offline: true,
+      },
+      {
+        id: 'home-widget-dashboard',
+        slot: 'home-dashboard-slot',
+        load: getAsyncLifecycle(() => import('./home-page-widgets/home-page-widgets.component'), options),
         online: true,
         offline: true,
       },
