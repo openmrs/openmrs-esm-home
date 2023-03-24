@@ -8,6 +8,19 @@
   height: 100vh;
   margin-left: 16rem;
   background-color: colors.$white-0;
+
+  /*TO BE REMOVED ONCE WE IMPROVE LEFT SIDE NAVIGATION*/
+  & li {
+    display: flex;
+  }
+
+  & a {
+    width: 100%;
+  }
+}
+/*TO BE REMOVED ONCE WE IMPROVE LEFT SIDE NAVIGATION*/
+li::marker{
+  font-size: 0px;
 }
 
 .logoSection {

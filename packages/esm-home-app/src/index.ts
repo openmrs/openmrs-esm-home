@@ -109,6 +109,7 @@ function setupOpenMRS() {
         meta: homeWidgetDashboardMeta,
         online: true,
         offline: true,
+        order: 0,
       },
       {
         id: 'home-widget-dashboard',
