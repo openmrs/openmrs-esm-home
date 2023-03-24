@@ -98,7 +98,7 @@ function setupOpenMRS() {
       {
         id: 'home-sidebar-slot-ext',
         slot: 'home-sidebar-slot',
-        load: getAsyncLifecycle(() => import('./sidemenu/sidemenu.component'), options),
+        load: getAsyncLifecycle(() => import('./side-menu/side-menu.component'), options),
         online: true,
         offline: true,
       },
