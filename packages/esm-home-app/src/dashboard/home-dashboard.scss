@@ -1,10 +1,9 @@
 @use '@carbon/colors';
 @use '@carbon/styles/scss/spacing';
 
-.dashboardContainer{
+.dashboardContainer {
   margin-left: 16rem;
   background-color: colors.$white-0;
-  padding: spacing.$spacing-02;
 
   & li {
     display: flex;
@@ -18,7 +17,8 @@
 li::marker{
   font-size: 0px;
 }
-.logoSection{
+
+.logoSection {
   display: flex;
   justify-content: center;
 }
