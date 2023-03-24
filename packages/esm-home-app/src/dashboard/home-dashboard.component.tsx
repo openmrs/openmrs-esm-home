@@ -6,7 +6,6 @@ import { DashboardConfig } from '../types/index';
 import DashboardView from './dashboard-view.component';
 
 export default function HomeDashboard() {
-  const config = useConfig();
   const params = useParams();
   const extensionStore = useExtensionStore();
   const layout = useLayoutType();
