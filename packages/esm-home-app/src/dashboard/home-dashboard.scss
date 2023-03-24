@@ -2,20 +2,12 @@
 @use '@carbon/styles/scss/spacing';
 
 .dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
   margin-left: 16rem;
   background-color: colors.$white-0;
-
-  & li {
-    display: flex;
-  }
-
-  & a {
-    width: 100%;
-  }
-}
-
-li::marker{
-  font-size: 0px;
 }
 
 .logoSection {

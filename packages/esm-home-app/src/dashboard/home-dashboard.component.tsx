@@ -22,13 +22,6 @@ export default function HomeDashboard() {
       <section className={isDesktop(layout) && styles.dashboardContainer}>
         {isDesktop(layout) && <ExtensionSlot extensionSlotName="home-sidebar-slot" key={layout} />}
         <DashboardView title={currentDashboard?.name} dashboardSlot={currentDashboard?.slot} />
-        {config.showOpenMRSLogo && (
-          <section className={styles.logoSection}>
-            <svg>
-              <use xlinkHref="#omrs-logo-full-mono" />
-            </svg>
-          </section>
-        )}
       </section>
     </>
   );

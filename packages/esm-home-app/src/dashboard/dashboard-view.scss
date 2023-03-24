@@ -1,5 +1,6 @@
 @use '@carbon/colors';
 
 .dashboardView {
-    background-color: colors.$white-0;
+  background-color: colors.$white-0;
+  flex: 1;
 }

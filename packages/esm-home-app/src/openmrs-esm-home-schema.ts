@@ -35,9 +35,4 @@ export const esmHomeSchema = {
       _validators: [validators.isUrlWithTemplateParameters(['patientUuid'])],
     },
   },
-  showOpenMRSLogo: {
-    _type: Type.Boolean,
-    _description: 'Whether to display OpenMRS logo on home dashboard',
-    _default: true,
-  },
 };
