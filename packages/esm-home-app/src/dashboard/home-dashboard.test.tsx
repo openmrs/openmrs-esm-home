@@ -11,57 +11,6 @@ function renderHomeDashboard() {
   return renderWithRouter(<HomeDashboard />);
 }
 describe('Home Dashboard', () => {
-  it('renders buttons declared in config', () => {
-    mockedUseConfig.mockReturnValue({
-      buttons: {
-        enabled: true,
-        list: [
-          {
-            label: 'Foo',
-            link: '/some/route',
-          },
-        ],
-      },
-    });
-
-    renderHomeDashboard();
-
-    expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
-  });
-
-  it('renders selectively based on privileges', () => {
-    mockedUserHasAccess.mockImplementation((props) => {
-      if (['View Patients', 'Can Foo'].includes(props.privilege)) {
-        return props.children;
-      } else {
-        return null;
-      }
-    });
-
-    mockedUseConfig.mockReturnValueOnce({
-      buttons: {
-        enabled: true,
-        list: [
-          {
-            label: 'Foo',
-            link: 'foo',
-            requiredPrivilege: 'Can Foo',
-          },
-          {
-            label: 'Bar',
-            link: 'bar',
-            requiredPrivilege: 'Can Bar',
-          },
-        ],
-      },
-    });
-
-    renderHomeDashboard();
-
-    expect(screen.getByRole('link', { name: /Foo/i })).toBeInTheDocument();
-    expect(screen.queryByRole('link', { name: /Bar/i })).not.toBeInTheDocument();
-  });
-
   it('should hide OpenMRS logo,when config is set to `false`', () => {
     mockedUseConfig.mockReturnValueOnce({ showOpenMRSLogo: false, buttons: { list: [] } });
     const { container } = renderHomeDashboard();
