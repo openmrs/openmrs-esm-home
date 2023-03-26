@@ -1,8 +1,0 @@
-@use '@carbon/colors';
-@use '@carbon/styles/scss/spacing';
-@import '~@openmrs/esm-styleguide/src/vars';
-
-.sideMenu {
-  padding-top: spacing.$spacing-05;
-  border-right: 1px solid $ui-03;
-}
