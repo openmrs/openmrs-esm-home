@@ -1,6 +1,6 @@
 import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle, getSyncLifecycle } from '@openmrs/esm-framework';
 import { createDashboardLink } from './createDashboardLink';
-import { homeWidgetDashboardMeta } from './dashboard.meta';
+import { dashboardMeta } from './dashboard.meta';
 import { esmHomeSchema } from './openmrs-esm-home-schema';
 
 declare var __VERSION__: string;
@@ -55,8 +55,8 @@ function setupOpenMRS() {
       {
         id: 'home-widget-db-link',
         slot: 'homepage-dashboard-slot',
-        load: getSyncLifecycle(createDashboardLink(homeWidgetDashboardMeta), options),
-        meta: homeWidgetDashboardMeta,
+        load: getSyncLifecycle(createDashboardLink(dashboardMeta), options),
+        meta: dashboardMeta,
         online: true,
         offline: true,
         order: 0,

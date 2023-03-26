@@ -1,6 +1,6 @@
 import React from 'react';
-import { useLayoutType, isDesktop, useExtensionStore, ExtensionSlot } from '@openmrs/esm-framework';
 import { useParams } from 'react-router-dom';
+import { useLayoutType, isDesktop, useExtensionStore, ExtensionSlot } from '@openmrs/esm-framework';
 import DashboardView from './dashboard-view.component';
 import type { DashboardConfig } from '../types/index';
 import styles from './home-dashboard.scss';
@@ -14,12 +14,12 @@ export default function HomeDashboard() {
       .map((e) => e.meta)
       .filter((e) => Object.keys(e).length) || [];
   const dashboards = ungroupedDashboards as Array<DashboardConfig>;
-  const currentDashboard = dashboards.find((dashboard) => dashboard.name === params?.view) || dashboards[0];
+  const activeDashboard = dashboards.find((dashboard) => dashboard.name === params?.dashboard) || dashboards[0];
 
   return (
     <section className={isDesktop(layout) && styles.dashboardContainer}>
       {isDesktop(layout) && <ExtensionSlot name="home-sidebar-slot" key={layout} />}
-      <DashboardView title={currentDashboard?.name} dashboardSlot={currentDashboard?.slot} />
+      <DashboardView title={activeDashboard?.name} dashboardSlot={activeDashboard?.slot} />
     </section>
   );
 }
