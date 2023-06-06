@@ -38,7 +38,7 @@ jobs:
           server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
       
       - name: Run tests, lint and typechecking
-        run: yarn turbo lint test typescript
+        run: yarn verify
       
       - name: Run build
         run: yarn turbo build --color --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="${{ github.repository_owner }}"
