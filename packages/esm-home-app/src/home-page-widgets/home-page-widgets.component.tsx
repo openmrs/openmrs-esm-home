@@ -5,7 +5,7 @@ import styles from './home-page-widgets.scss';
 interface HomePageWidgetsProps {}
 
 const HomePageWidgets: React.FC<HomePageWidgetsProps> = () => {
-  return <ExtensionSlot className={styles.homePageWidget} extensionSlotName="homepage-widgets-slot" />;
+  return <ExtensionSlot className={styles.homePageWidget} name="homepage-widgets-slot" />;
 };
 
 export default HomePageWidgets;
