@@ -17,7 +17,7 @@ export const root = getAsyncLifecycle(() => import('./root.component'), options)
 
 export const homeNavMenu = getAsyncLifecycle(() => import('./side-menu/side-menu.component'), options);
 
-export const homeWidgetDashboardLink = getSyncLifecycle(createDashboardLink(dashboardMeta), options);
+export const homeWidgetDbLink = getSyncLifecycle(createDashboardLink(dashboardMeta), options);
 
 export const homeWidgetDashboard = getAsyncLifecycle(
   () => import('./home-page-widgets/home-page-widgets.component'),
