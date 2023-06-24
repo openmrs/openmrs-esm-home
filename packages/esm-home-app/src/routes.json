@@ -8,7 +8,7 @@
       "component": "root",
       "route": "home",
       "online": true,
-      "offline": false
+      "offline": true
     }
   ],
   "extensions": [
@@ -23,6 +23,11 @@
       "name": "home-widget-db-link",
       "slot": "homepage-dashboard-slot",
       "component": "homeWidgetDbLink",
+      "meta": {
+        "name": "Home",
+        "slot": "home-dashboard-slot",
+        "title": ""
+      },
       "order": 0,
       "online": true,
       "offline": true

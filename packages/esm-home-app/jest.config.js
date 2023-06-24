@@ -14,7 +14,7 @@ module.exports = {
     '!**/node_modules/**',
     '!**/vendor/**',
     '!**/src/**/*.test.*',
-    '!**/src/declarations.d.tsx',
+    '!**/src/declarations.d.ts',
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   testEnvironment: 'jsdom',
