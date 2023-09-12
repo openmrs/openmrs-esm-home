@@ -6,24 +6,14 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]  
     },
-    "test": {
-      "dependsOn": [],
-      "outputs": []
-    },
+    "test": {},
     "coverage": {
-      "dependsOn": [],
       "outputs": ["coverage/**"]
     },
-    "lint": {
-      "dependsOn": ["^lint"],
-      "outputs": []
-    },
+    "lint": {},
     "typescript": {
-      "dependsOn": ["^typescript"],
-      "outputs": []
+      "dependsOn": ["^typescript"]
     },
-    "extract-translations": {
-      "outputs": []
-    }
+    "extract-translations": {}
   }
 }

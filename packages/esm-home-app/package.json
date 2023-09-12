@@ -12,8 +12,9 @@
     "debug": "npm run serve",
     "build": "webpack --mode production",
     "analyze": "webpack --mode=production --env.analyze=true",
-    "lint": "eslint src --ext tsx",
+    "lint": "cross-env TIMING=1 eslint src --ext ts,tsx --fix --max-warnings=0 --color",
     "typescript": "tsc",
+    "verify": "turbo lint typescript test --color",
     "extract-translations": "i18next 'src/**/*.{component.tsx,tsx}' --config ../../tools/i18next-parser.config.js",
     "test": "cross-env TZ=UTC jest --config jest.config.js --verbose false --passWithNoTests",
     "coverage": "yarn test --coverage"
@@ -26,11 +27,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && concurrently 'npm:test' 'npm:typescript' 'npm:lint'"
-    }
   },
   "repository": {
     "type": "git",
