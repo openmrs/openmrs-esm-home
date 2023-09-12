@@ -11,7 +11,9 @@
       "outputs": ["coverage/**"]
     },
     "lint": {},
-    "typescript": {},
+    "typescript": {
+      "dependsOn": ["^typescript"]
+    },
     "extract-translations": {}
   }
 }
