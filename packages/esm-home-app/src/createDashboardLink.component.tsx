@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import { ConfigurableLink } from '@openmrs/esm-framework';
+import { useTranslation } from 'react-i18next';
 
 export interface DashboardLinkConfig {
   name: string;
@@ -8,6 +9,7 @@ export interface DashboardLinkConfig {
 }
 
 const DashboardLink = ({ dashboardLinkConfig }: { dashboardLinkConfig: DashboardLinkConfig }) => {
+  const { t } = useTranslation();
   const { name } = dashboardLinkConfig;
   const location = useLocation();
   const spaBasePath = `${window.spaBase}/home`;
@@ -23,7 +25,8 @@ const DashboardLink = ({ dashboardLinkConfig }: { dashboardLinkConfig: Dashboard
       to={spaBasePath}
       className={`cds--side-nav__link ${navLink === 'home' && 'active-left-nav-link'}`}
     >
-      {name}
+      {/* t('Home', 'Home') */}
+      {t(name)}
     </ConfigurableLink>
   );
 };

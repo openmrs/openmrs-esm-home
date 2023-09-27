@@ -1,5 +1,5 @@
 import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle, getSyncLifecycle } from '@openmrs/esm-framework';
-import { createDashboardLink } from './createDashboardLink';
+import { createDashboardLink } from './createDashboardLink.component';
 import { dashboardMeta } from './dashboard.meta';
 import { esmHomeSchema } from './openmrs-esm-home-schema';
 
@@ -26,11 +26,12 @@ export const homeWidgetDashboard = getAsyncLifecycle(
 
 export function startupApp() {
   defineConfigSchema(moduleName, esmHomeSchema);
+  // t('Home', 'Home');
 
   registerBreadcrumbs([
     {
       path: `${window.spaBase}/${pageName}`,
-      title: 'Home',
+      title: () => Promise.resolve(window.i18next.t('Home', { defaultValue: 'Home', ns: moduleName })),
     },
   ]);
 }
