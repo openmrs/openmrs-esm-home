@@ -1,9 +1,3 @@
 {
-  "activeVisits": "Visitas Activas",
-  "appointmentScheduling": "Programación de Citas",
-  "captureVitals": "Captura de Signos Vitales",
-  "configureMetadata": "Configuración de Metadatos",
-  "dataManagement": "Gestión de Datos",
-  "reports": "Informes",
-  "systemAdministration": "Administración del Sistema"
+  "Home": "Home"
 }

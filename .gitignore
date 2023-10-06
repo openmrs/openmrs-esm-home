@@ -76,3 +76,6 @@ dist
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# i18next parser creating moduleName folder when parsing index.ts
+moduleName
