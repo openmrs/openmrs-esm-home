@@ -3748,7 +3748,7 @@ __metadata:
     eslint-plugin-prettier: ^5.0.0
     husky: ^8.0.3
     i18next: ^23.5.1
-    i18next-parser: ^8.7.0
+    i18next-parser: ^8.8.0
     identity-obj-proxy: ^3.0.0
     jest: ^29.7.0
     jest-cli: ^29.7.0
@@ -3759,7 +3759,7 @@ __metadata:
     prettier: ^3.0.3
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-i18next: ^13.2.2
+    react-i18next: ^13.3.0
     react-router-dom: ^6.15.0
     sass: ^1.66.1
     sass-loader: ^13.3.2
@@ -11154,9 +11154,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-parser@npm:^8.7.0":
-  version: 8.7.0
-  resolution: "i18next-parser@npm:8.7.0"
+"i18next-parser@npm:^8.8.0":
+  version: 8.8.0
+  resolution: "i18next-parser@npm:8.8.0"
   dependencies:
     broccoli-plugin: ^4.0.7
     cheerio: ^1.0.0-rc.2
@@ -11177,7 +11177,7 @@ __metadata:
     vue-template-compiler: ^2.6.11
   bin:
     i18next: bin/cli.js
-  checksum: 538388483c232a843d103d1da680886738df15d2361ba7b32661cca2a8924ab9c5d845dbf637299ddd0b22fd8a23351ba0593e4def2a5ce0f30b0ce8ec588d69
+  checksum: 1980b6925bd6fd3a47398b1ffa017a329a636bac1c91d3fbb1a7c51dbad06a07330f34596680f4fdd95a667c3bd7134b4123d0f34ee89d9fe32ba1f7514160e6
   languageName: node
   linkType: hard
 
@@ -16160,9 +16160,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^13.2.2":
-  version: 13.2.2
-  resolution: "react-i18next@npm:13.2.2"
+"react-i18next@npm:^13.3.0":
+  version: 13.3.0
+  resolution: "react-i18next@npm:13.3.0"
   dependencies:
     "@babel/runtime": ^7.22.5
     html-parse-stringify: ^3.0.1
@@ -16174,7 +16174,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 2b85bfb347af1a00add1c02901025706f7d2037fade4e8aa08159287ddf012e8cf35626eb9f5c578b9d1c24c065c69f2ad4b5a3087fb5cdbea540f8bc18c0f59
+  checksum: 6c950a4497215df03b6d6f12c63153656cb482ddb15e944c514ae8e85e99ebe80d466aa615abc73d77eac69042eb4559a6f87006f018f433f438d889a22bab01
   languageName: node
   linkType: hard
 
