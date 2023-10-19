@@ -26,7 +26,7 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-        
+
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
@@ -36,15 +36,15 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           server-token: ${{ secrets.TURBO_SERVER_TOKEN }}
-      
+
       - name: Run tests, lint and typechecking
         run: yarn verify
-      
+
       - name: Run build
         run: yarn turbo build --color --api="http://127.0.0.1:9080" --token="${{ secrets.TURBO_SERVER_TOKEN }}" --team="${{ github.repository_owner }}"
-      
+
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: packages
           path: |
@@ -71,7 +71,7 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      
+
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
@@ -81,10 +81,10 @@ jobs:
 
       - name: Patch
         run: yarn lerna version patch --no-git-tag-version --no-push --yes
-      
+
       - name: Version
         run: yarn lerna version "$(node -e "console.log(require('./lerna.json').version)")-pre.${{ github.run_number }}" --no-git-tag-version --yes
-      
+
       - run: git config user.email "info@openmrs.org" && git config user.name "OpenMRS CI"
       - run: git add . && git commit -m "Prerelease version" --no-verify
 
@@ -92,7 +92,7 @@ jobs:
         run: yarn run ci:prepublish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-  
+
   deploy_home_page:
     runs-on: ubuntu-latest
 
@@ -129,14 +129,14 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      
+
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npx lerna bootstrap
-      
+
       - name: Build
         run: yarn turbo build --color
-      
+
       - name: Publish
         run: yarn run ci:publish
         env:
