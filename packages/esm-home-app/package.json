@@ -39,6 +39,7 @@
     "@openmrs/esm-framework": "4.x",
     "react": "18.x",
     "react-i18next": "11.x",
-    "react-router-dom": "6.x"
+    "react-router-dom": "6.x",
+    "swr": "2.x"
   }
 }

@@ -3716,6 +3716,7 @@ __metadata:
     react: 18.x
     react-i18next: 11.x
     react-router-dom: 6.x
+    swr: 2.x
   languageName: unknown
   linkType: soft
 
