@@ -8,7 +8,7 @@
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
   },
   "scripts": {
-    "ci:publish": "yarn workspaces foreach --all --topological --exclude @openmrs-esm-home npm publish --access public --tag latest",
+    "ci:publish": "yarn workspaces foreach --all --topological --exclude @openmrs/esm-home npm publish --access public --tag latest",
     "ci:prepublish": "yarn workspaces foreach --all --topological --exclude @openmrs/esm-home npm publish --access public --tag next",
     "ci:release": "yarn workspaces foreach --all --topological version",
     "prettier": "prettier --config prettier.config.js --write \"packages/**/*.{ts,tsx}\"",
