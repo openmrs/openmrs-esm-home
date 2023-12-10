@@ -79,3 +79,9 @@ dist
 
 # i18next parser creating moduleName folder when parsing index.ts
 moduleName
+
+# Playwright and e2e tests
+/test-results/
+/playwright-report/
+/playwright/.cache/
+e2e/storageState.json
