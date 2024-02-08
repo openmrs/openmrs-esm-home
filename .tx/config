@@ -9,4 +9,4 @@ type                   = KEYVALUEJSON
 minimum_perc           = 0
 replace_edited_strings = false
 keep_translations      = false
-
+resource_name          = esm-home-app
