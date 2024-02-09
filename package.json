@@ -8,6 +8,8 @@
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
   },
   "scripts": {
+    "ci:publish": "yarn npm publish --access public",
+    "ci:prepublish": "yarn npm publish --access public --tag next",
     "prettier": "prettier --config prettier.config.js --write \"packages/**/*.{ts,tsx}\"",
     "postinstall": "husky install",
     "start": "openmrs develop --sources 'packages/esm-*-app/'",

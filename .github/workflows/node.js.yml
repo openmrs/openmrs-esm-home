@@ -124,7 +124,7 @@ jobs:
         run: yarn turbo build --color
 
       - name: Publish
-        run: yarn config set npmAuthToken "${NODE_AUTH_TOKEN}" && yarn npm publish --access public
+        run: yarn config set npmAuthToken "${NODE_AUTH_TOKEN}" && yarn run ci:publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
