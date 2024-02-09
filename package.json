@@ -1,6 +1,6 @@
 {
   "name": "@openmrs/esm-home",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "workspaces": [
     "packages/*"
   ],
@@ -10,7 +10,7 @@
   "scripts": {
     "ci:publish": "yarn workspaces foreach --all --topological --exclude @openmrs/esm-home npm publish --access public --tag latest",
     "ci:prepublish": "yarn workspaces foreach --all --topological --exclude @openmrs/esm-home npm publish --access public --tag next",
-    "ci:release": "yarn workspaces foreach --all --topological version",
+    "release": "yarn workspaces foreach --all --topological version",
     "prettier": "prettier --config prettier.config.js --write \"packages/**/*.{ts,tsx}\"",
     "postinstall": "husky install",
     "start": "openmrs develop --sources 'packages/esm-*-app/'",
