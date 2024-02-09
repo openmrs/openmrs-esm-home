@@ -84,7 +84,7 @@ jobs:
         run: yarn turbo build --color
 
       - name: Version
-        run: yarn workspaces foreach --worktree --topological --exclude @openmrs/esm-home version "$(node -e "console.log(require('semver').inc(require('./package.json').version, 'patch'))")-pre.${{ github.run_number }}"
+        run: yarn version "$(node -e "console.log(require('semver').inc(require('./package.json').version, 'patch'))")-pre.${{ github.run_number }}"
 
       - run: git config user.email "info@openmrs.org" && git config user.name "OpenMRS CI"
       - run: git add . && git commit -m "Prerelease version" --no-verify
@@ -124,7 +124,7 @@ jobs:
         run: yarn turbo build --color
 
       - name: Publish
-        run: yarn config set npmAuthToken "${NODE_AUTH_TOKEN}" && yarn run ci:publish
+        run: yarn config set npmAuthToken "${NODE_AUTH_TOKEN}" && yarn npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
