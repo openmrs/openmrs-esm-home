@@ -33,6 +33,13 @@
       "offline": true
     },
     {
+      "name": "home-metrics-widget-dashboard",
+      "slot": "home-dashboard-slot",
+      "component": "homeMetricsWidgetDashboard",
+      "online": true,
+      "offline": true
+    },
+    {
       "name": "home-widget-dashboard",
       "slot": "home-dashboard-slot",
       "component": "homeWidgetDashboard",
