@@ -5,7 +5,7 @@ import { useSession } from '@openmrs/esm-framework';
 import { DatePicker, DatePickerInput } from '@carbon/react';
 import dayjs from 'dayjs';
 import styles from './homepage-header.scss';
-import HomepageIllustration from './appointments-illustration.component';
+import HomepageIllustration from './homepage-illustration.component';
 
 interface HomepageHeaderProps {
   title: string;
