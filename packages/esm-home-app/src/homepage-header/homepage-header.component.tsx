@@ -1,28 +1,29 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Location } from '@carbon/react/icons';
-import { useSession } from '@openmrs/esm-framework';
+import { ConfigObject, useConfig, useSession } from '@openmrs/esm-framework';
 import { DatePicker, DatePickerInput } from '@carbon/react';
 import dayjs from 'dayjs';
 import styles from './homepage-header.scss';
 import HomepageIllustration from './homepage-illustration.component';
 
 interface HomepageHeaderProps {
-  title: string;
+  dashboardTitle: string;
 }
 
-const HomepageHeader: React.FC<HomepageHeaderProps> = ({ title }) => {
+const HomepageHeader: React.FC<HomepageHeaderProps> = ({ dashboardTitle }) => {
   const { t } = useTranslation();
   const session = useSession();
   const location = session?.sessionLocation?.display;
+  const config = useConfig() as ConfigObject;
 
   return (
     <div className={styles.header} data-testid="homepage-header">
       <div className={styles['left-justified-items']}>
         <HomepageIllustration />
         <div className={styles['page-labels']}>
-          <p>{t('home', 'Home')}</p>
-          <p className={styles['page-name']}>{title}</p>
+          <p>{config.appNameLabel}</p>
+          <p className={styles['page-name']}>{dashboardTitle}</p>
         </div>
       </div>
       <div className={styles['right-justified-items']}>

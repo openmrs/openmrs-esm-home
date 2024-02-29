@@ -35,4 +35,9 @@ export const esmHomeSchema = {
       _validators: [validators.isUrlWithTemplateParameters(['patientUuid'])],
     },
   },
+  appNameLabel: {
+    _type: Type.String,
+    _default: 'Home',
+    _description: 'The name of the frontend app which is appended to the app header.',
+  },
 };

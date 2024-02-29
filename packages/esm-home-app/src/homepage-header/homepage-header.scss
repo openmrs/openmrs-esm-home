@@ -1,85 +1,85 @@
 @use '@carbon/colors';
-@use '@carbon/styles/scss/spacing';
-@use '@carbon/styles/scss/type';
+@use '@carbon/layout';
+@use '@carbon/type';
 @import '~@openmrs/esm-styleguide/src/vars';
 
 .header {
-    @include type.type-style('body-compact-02');
-    color: $text-02;
-    height: spacing.$spacing-12;
-    background-color: $ui-02;
-    border-bottom: 1px solid $ui-03;
-    display: flex;
-    justify-content: space-between;
+  @include type.type-style('body-compact-02');
+  color: $text-02;
+  height: layout.$spacing-12;
+  background-color: $ui-02;
+  border-bottom: 1px solid $ui-03;
+  display: flex;
+  justify-content: space-between;
 }
 
 .left-justified-items {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
 }
 
 .right-justified-items {
-    @include type.type-style('body-compact-02');
-    color: $text-02;
-    margin: 0.5rem;
+  @include type.type-style('body-compact-02');
+  color: $text-02;
+  margin: 0.5rem;
 }
 
 .page-name {
-    @include type.type-style('heading-04');
+  @include type.type-style('heading-04');
 }
 
 .page-labels {
-    margin: 1rem 0;
+  margin: 1rem 0;
 
-    p:first-of-type {
-        margin-bottom: 0.25rem;
-    }
+  p:first-of-type {
+    margin-bottom: 0.25rem;
+  }
 }
 
 .date-and-location {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .dropdownContainer {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .value {
-    margin-left: 0.25rem;
+  margin-left: 0.25rem;
 }
 
 .middot {
-    margin: 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
 .view {
-    @include type.type-style('label-01');
+  @include type.type-style('label-01');
 }
 
 .datePicker {
-    background-color: transparent;
-    width: 10rem;
-    border: none;
+  background-color: transparent;
+  width: 10rem;
+  border: none;
 
-    &>input {
-        color: colors.$blue-10;
-    }
+  &>input {
+    color: colors.$blue-10;
+  }
 }
 
 // Overriding styles for RTL support
 html[dir='rtl'] {
-    .date-and-location {
-        &>svg {
-            order: -1;
-        }
-
-        &>span:nth-child(2) {
-            order: -2;
-        }
+  .date-and-location {
+    &>svg {
+      order: -1;
     }
+
+    &>span:nth-child(2) {
+      order: -2;
+    }
+  }
 }
