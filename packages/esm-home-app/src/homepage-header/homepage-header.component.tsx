@@ -18,7 +18,7 @@ const HomepageHeader: React.FC<HomepageHeaderProps> = ({ dashboardTitle }) => {
   const config = useConfig() as ConfigObject;
 
   return (
-    <div className={styles.header} data-testid="homepage-header">
+    <div className={styles.header} role="banner">
       <div className={styles['left-justified-items']}>
         <HomepageIllustration />
         <div className={styles['page-labels']}>
