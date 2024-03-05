@@ -6,6 +6,7 @@ import { DatePicker, DatePickerInput } from '@carbon/react';
 import dayjs from 'dayjs';
 import styles from './homepage-header.scss';
 import HomepageIllustration from './homepage-illustration.component';
+import { HomepageHeaderDate } from '../homepage-header-date/homepage-header-date.component';
 
 interface HomepageHeaderProps {
   dashboardTitle: string;
@@ -22,7 +23,7 @@ const HomepageHeader: React.FC<HomepageHeaderProps> = ({ dashboardTitle }) => {
       <div className={styles['left-justified-items']}>
         <HomepageIllustration />
         <div className={styles['page-labels']}>
-          <p>{config.appNameLabel}</p>
+          <p>{t('home', config.appNameLabel)}</p>
           <p className={styles['page-name']}>{dashboardTitle}</p>
         </div>
       </div>
@@ -31,16 +32,7 @@ const HomepageHeader: React.FC<HomepageHeaderProps> = ({ dashboardTitle }) => {
           <Location size={16} />
           <span className={styles.value}>{location}</span>
           <span className={styles.middot}>&middot;</span>
-          <DatePicker dateFormat="d-M-Y" datePickerType="single">
-            <DatePickerInput
-              style={{ backgroundColor: 'transparent', border: 'none', maxWidth: '10rem' }}
-              id="date-picker-calendar-id"
-              placeholder="DD-MMM-YYYY"
-              labelText=""
-              type="text"
-              value={dayjs(new Date()).format('DD MMM YYYY')}
-            />
-          </DatePicker>
+          <HomepageHeaderDate />
         </div>
       </div>
     </div>
