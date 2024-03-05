@@ -45,6 +45,13 @@
       "component": "homeWidgetDashboard",
       "online": true,
       "offline": true
+    },
+    {
+      "name": "matric-tile",
+      "slot": "home-metrics-widgets-slot",
+      "component": "metricTile",
+      "online": true,
+      "offline": true
     }
   ]
 }
