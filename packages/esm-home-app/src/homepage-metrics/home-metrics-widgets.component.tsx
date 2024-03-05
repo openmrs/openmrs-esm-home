@@ -1,6 +1,6 @@
 import { ExtensionSlot } from '@openmrs/esm-framework';
 import React from 'react';
-import styles from './home-metrics-widget.scss';
+import styles from './home-metrics-widgets.scss';
 
 interface HomeMetricsWidgetProps {}
 
