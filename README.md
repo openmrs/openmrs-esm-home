@@ -1,10 +1,10 @@
-:wave:	*New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://openmrs.github.io/openmrs-esm-core/#/). You may find the [Map of the Project](https://openmrs.github.io/openmrs-esm-core/#/main/map) especially helpful.* :teacher:	
+:wave:	*New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://openmrs.github.io/openmrs-esm-core/#/ ). You may find the [Map of the Project](https://openmrs.github.io/openmrs-esm-core/#/main/map) especially helpful.* :teacher:
 
 ![Node.js CI](https://github.com/openmrs/openmrs-esm-home/workflows/Node.js%20CI/badge.svg)
 
 # OpenMRS ESM Home
 
-An [OpenMRS Microfrontend](https://wiki.openmrs.org/display/projects/Frontend+-+SPA+and+Microfrontends) for frontend modules tied to the home page.
+An [OpenMRS Microfrontend](https://openmrs.atlassian.net/wiki/spaces/projects/pages/26936899/OpenMRS+3.0+A+Frontend+Framework+that+enables+collaboration+and+better+User+Experience) for frontend modules tied to the home page.
 
 ## What is this?
 
@@ -15,8 +15,8 @@ It is responsible for rendering the UI for the landing page after the user logs 
 
 ## Contributing / Development
 
-[Setup local development environment for OpenMRS SPA](https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA)
+[Setup local development environment for OpenMRS SPA](https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA )
 
 ## Design Patterns
 
-For documentation about our design patterns, please visit our [design system](https://zeroheight.com/23a080e38/p/880723--introduction) documentation website.
+For documentation about our design patterns, please visit our [design system](https://om.rs/o3ui) documentation website.
