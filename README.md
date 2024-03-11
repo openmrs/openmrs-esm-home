@@ -1,4 +1,4 @@
-:wave:	*New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://openmrs.github.io/openmrs-esm-core/#/ ). You may find the [Map of the Project](https://openmrs.github.io/openmrs-esm-core/#/main/map) especially helpful.* :teacher:
+:wave:	*New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://o3-docs.openmrs.org/docs/introduction).
 
 ![Node.js CI](https://github.com/openmrs/openmrs-esm-home/workflows/Node.js%20CI/badge.svg)
 
@@ -15,7 +15,7 @@ It is responsible for rendering the UI for the landing page after the user logs 
 
 ## Contributing / Development
 
-[Setup local development environment for OpenMRS SPA](https://wiki.openmrs.org/display/projects/Setup+local+development+environment+for+OpenMRS+SPA )
+[Setup local development environment for OpenMRS SPA](https://o3-docs.openmrs.org/docs/frontend-modules/development)
 
 ## Design Patterns
 
