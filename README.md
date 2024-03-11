@@ -1,6 +1,6 @@
 :wave:	*New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://openmrs.github.io/openmrs-esm-core/#/). You may find the [Map of the Project](https://openmrs.github.io/openmrs-esm-core/#/main/map) especially helpful.* :teacher:	
 
-![Node.js CI](https://github.com/openmrs/openmrs-esm-home/workflows/Node.js%20CI/badge.svg)
+![Node.js CI](https://github.com/openmrs/openmrs-esm-home/actions/workflows/node.js.yml/badge.svg)
 
 # OpenMRS ESM Home
 
