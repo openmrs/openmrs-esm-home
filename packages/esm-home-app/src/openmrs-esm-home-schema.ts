@@ -35,4 +35,10 @@ export const esmHomeSchema = {
       _validators: [validators.isUrlWithTemplateParameters(['patientUuid'])],
     },
   },
+
+  // reportingUrl:{
+  //   _type: Type.String,
+  //   __description: "URL to the reporting tools to be used for this esm",
+  //   _default: "Path to mamba ETL",
+  // }
 };
