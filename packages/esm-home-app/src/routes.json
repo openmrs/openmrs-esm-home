@@ -47,9 +47,9 @@
       "offline": true
     },
     {
-      "name": "metric-tile",
+      "name": "metric-container",
       "slot": "home-metrics-widgets-slot",
-      "component": "metricTile",
+      "component": "metricContainer",
       "online": true,
       "offline": true
     }

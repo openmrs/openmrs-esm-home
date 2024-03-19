@@ -5,8 +5,6 @@ import { esmHomeSchema } from './openmrs-esm-home-schema';
 import rootComponent from './root.component';
 import homeNavMenuComponent from './side-menu/side-menu.component';
 import homeWidgetDashboardComponent from './home-page-widgets/home-page-widgets.component';
-import HomeMetricsWidgetsComponent from './homepage-metrics/home-metrics-widgets.component';
-import DataTile from './homepage-metrics/TestDataTile.component';
 
 const moduleName = '@openmrs/esm-home-app';
 const pageName = 'home';
@@ -26,9 +24,10 @@ export const homeWidgetDbLink = getSyncLifecycle(createDashboardLink(dashboardMe
 
 export const homeWidgetDashboard = getSyncLifecycle(homeWidgetDashboardComponent, options);
 
-export const homeMetricsWidgetDashboard = getSyncLifecycle(HomeMetricsWidgetsComponent, options);
-
-export const metricTile = getSyncLifecycle(DataTile, options);
+export const metricContainer = getAsyncLifecycle(
+  () => import('./homepage-metrics/metrics-container.component'),
+  options,
+);
 
 export function startupApp() {
   defineConfigSchema(moduleName, esmHomeSchema);

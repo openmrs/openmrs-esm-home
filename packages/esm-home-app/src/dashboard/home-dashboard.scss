@@ -14,12 +14,17 @@
     width: 100%;
   }
 }
+
 /*TO BE REMOVED ONCE WE IMPROVE LEFT SIDE NAVIGATION*/
-li::marker{
+li::marker {
   font-size: 0px;
 }
 
 .logoSection {
   display: flex;
   justify-content: center;
+}
+
+.homeMetricsWidgets {
+  padding: spacing.$spacing-05;
 }

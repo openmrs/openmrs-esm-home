@@ -19,6 +19,7 @@ export default function HomeDashboard() {
   return (
     <section className={isDesktop(layout) && styles.dashboardContainer}>
       {isDesktop(layout) && <ExtensionSlot name="home-sidebar-slot" key={layout} />}
+      <ExtensionSlot className={styles.homeMetricsWidgets} name="home-metrics-widgets-slot" />
       <DashboardView title={activeDashboard?.name} dashboardSlot={activeDashboard?.slot} />
     </section>
   );
