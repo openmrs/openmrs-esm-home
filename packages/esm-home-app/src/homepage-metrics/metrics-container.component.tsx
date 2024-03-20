@@ -1,15 +1,20 @@
 import React from 'react';
-import AppointmentsTile from './appointments-metric-tile/appointments-tile.component';
-import ActiveVisitTile from './visits-tile/visits-tile.component';
+import MetricTile from './metrics-tile/metrics-tile.component';
 import styles from '../homepage-metrics/home-metrics-widget.scss';
-import VisitSummary from './visit-summary-tile/visit-summary.component';
+import useAppointmentsData from '../hooks/useAppointmentsData';
+import useActiveVisits from '../hooks/useActiveVisits';
+import useVisitSummary from '../hooks/useVisitSummary';
 
 const MetricsContainer: React.FC = () => {
+  const { data: appointmentsData } = useAppointmentsData();
+  const { data: activeVisitsData } = useActiveVisits();
+  const { data: visitSummaryData } = useVisitSummary();
+
   return (
     <div className={styles.container}>
-      <AppointmentsTile />
-      <ActiveVisitTile />
-      <VisitSummary />
+      <MetricTile data={appointmentsData} header="Scheduled For Today" />
+      <MetricTile data={activeVisitsData} header="Active Visits" />
+      <MetricTile data={visitSummaryData} header="Total Visits Today" />
     </div>
   );
 };

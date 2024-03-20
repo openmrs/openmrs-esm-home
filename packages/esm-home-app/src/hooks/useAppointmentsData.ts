@@ -2,7 +2,7 @@ import { openmrsFetch } from '@openmrs/esm-framework';
 import useSWR from 'swr';
 import dayjs from 'dayjs';
 
-export const useAppointmentsData = () => {
+const useAppointmentsData = () => {
   const omrsDateFormat = 'YYYY-MM-DDTHH:mm:ss.SSSZZ';
   const appointmentDate = dayjs(new Date().setHours(0, 0, 0, 0)).format(omrsDateFormat);
 
@@ -11,5 +11,8 @@ export const useAppointmentsData = () => {
   const { data, error, isLoading } = useSWR<{ data: Array<any> }>(url, openmrsFetch);
 
   const responseData = data?.data;
-  return { responseData, error, isLoading };
+
+  return { data: responseData, error, isLoading };
 };
+
+export default useAppointmentsData;
