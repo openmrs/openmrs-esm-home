@@ -4,7 +4,7 @@ import { Location } from '@carbon/react/icons';
 import { useSession } from '@openmrs/esm-framework';
 import styles from './page-header.scss';
 import HomepageIllustration from './page-illustration.component';
-import { HomepageHeaderDate } from '../page-header-date/page-header-date.component';
+import { HomepageHeaderDate } from '../header-date/header-date.component';
 
 interface HomepageHeaderProps {
   dashboardTitle: string;

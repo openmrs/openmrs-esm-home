@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar } from '@carbon/react/icons';
-import styles from './page-header-date.scss';
+import styles from './header-date.scss';
 import { formatDate } from '@openmrs/esm-framework';
 
 export const HomepageHeaderDate = () => {
