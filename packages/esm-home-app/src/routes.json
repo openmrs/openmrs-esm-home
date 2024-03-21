@@ -33,9 +33,9 @@
       "offline": true
     },
     {
-      "name": "home-page-header",
+      "name": "page-header",
       "slot": "home-dashboard-slot",
-      "component": "homePageHeader",
+      "component": "pageHeader",
       "online": true,
       "offline": true
     },
