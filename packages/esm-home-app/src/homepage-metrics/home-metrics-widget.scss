@@ -1,0 +1,12 @@
+@use '@carbon/styles/scss/spacing';
+@use '@carbon/styles/scss/type';
+@use '@carbon/colors';
+@import '~@openmrs/esm-styleguide/src/vars';
+
+.container {
+  background-color: $ui-02;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  padding: 0.5rem 0.5rem 0 0.5rem
+}
