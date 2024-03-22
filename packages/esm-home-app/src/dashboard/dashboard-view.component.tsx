@@ -6,7 +6,7 @@ const DashboardView: React.FC<{ dashboardSlot: string; title: string }> = ({ das
   return (
     <>
       <ExtensionSlot name="home-metrics-widgets-slot" />
-      <ExtensionSlot className={styles.dashboardView} name={dashboardSlot} state={{ dashboardTitle: title }} />;
+      <ExtensionSlot className={styles.dashboardView} name={dashboardSlot} state={{ dashboardTitle: title }} />
     </>
   );
 };
