@@ -35,7 +35,7 @@
     {
       "name": "metrics-slot",
       "slot": "home-dashboard-slot",
-      "component": "metricsSlot",
+      "component": "metrics",
       "online": true,
       "offline": true
     },

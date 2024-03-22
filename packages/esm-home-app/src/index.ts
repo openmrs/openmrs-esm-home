@@ -24,7 +24,7 @@ export const homeWidgetDbLink = getSyncLifecycle(createDashboardLink(dashboardMe
 
 export const homeWidgetDashboard = getSyncLifecycle(homeWidgetDashboardComponent, options);
 
-export const metricsSlot = getAsyncLifecycle(() => import('./metrics/metrics.component'), options);
+export const metrics = getAsyncLifecycle(() => import('./metrics/metrics.component'), options);
 
 export function startupApp() {
   defineConfigSchema(moduleName, esmHomeSchema);
