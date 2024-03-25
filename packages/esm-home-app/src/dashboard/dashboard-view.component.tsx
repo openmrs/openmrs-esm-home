@@ -3,12 +3,7 @@ import { ExtensionSlot } from '@openmrs/esm-framework';
 import styles from './dashboard-view.scss';
 
 const DashboardView: React.FC<{ dashboardSlot: string; title: string }> = ({ dashboardSlot, title }) => {
-  return (
-    <>
-      <ExtensionSlot name="home-metrics-widgets-slot" />
-      <ExtensionSlot className={styles.dashboardView} name={dashboardSlot} state={{ dashboardTitle: title }} />
-    </>
-  );
+  return <ExtensionSlot className={styles.dashboardView} name={dashboardSlot} state={{ dashboardTitle: title }} />
 };
 
 export default DashboardView;
