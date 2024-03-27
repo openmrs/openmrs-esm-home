@@ -5,10 +5,10 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  // Full vertical height minus the primary navigation menu height 
+  // Full vertical height minus the primary navigation menu height
   height: calc(100vh - 3rem);
   margin-left: 16rem;
-  background-color: colors.$white-0;
+  background-color: colors.$gray-10;
 
   & a {
     width: 100%;
