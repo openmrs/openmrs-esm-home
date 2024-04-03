@@ -44,11 +44,6 @@
   align-items: center;
 }
 
-.dropdownContainer {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .value {
   margin-left: 0.25rem;
 }
@@ -57,29 +52,15 @@
   margin: 0 0.5rem;
 }
 
-.view {
-  @include type.type-style('label-01');
-}
-
-.datePicker {
-  background-color: transparent;
-  width: 10rem;
-  border: none;
-
-  &>input {
-    color: colors.$blue-10;
-  }
-}
-
 // Overriding styles for RTL support
-html[dir='rtl'] {
-  .date-and-location {
-    &>svg {
-      order: -1;
-    }
+// html[dir='rtl'] {
+//   .date-and-location {
+//     &>svg {
+//       order: -1;
+//     }
 
-    &>span:nth-child(2) {
-      order: -2;
-    }
-  }
-}
+//     &>span:nth-child(2) {
+//       order: -2;
+//     }
+//   }
+// }
