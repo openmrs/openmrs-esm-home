@@ -26,6 +26,8 @@ export const homeWidgetDashboard = getSyncLifecycle(homeWidgetDashboardComponent
 
 export const pageHeader = getAsyncLifecycle(() => import('./page-header/page-header.component'), options);
 
+export const metrics = getAsyncLifecycle(() => import('./metrics/metrics.component'), options);
+
 export function startupApp() {
   defineConfigSchema(moduleName, esmHomeSchema);
   // t('Home', 'Home');
