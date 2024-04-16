@@ -4,13 +4,13 @@ import { Location } from '@carbon/react/icons';
 import { useSession } from '@openmrs/esm-framework';
 import styles from './page-header.scss';
 import HomepageIllustration from './page-illustration.component';
-import { HomepageHeaderDate } from '../header-date/header-date.component';
+import { HeaderDate } from '../header-date/header-date.component';
 
-interface HomepageHeaderProps {
+interface PageHeaderProps {
   dashboardTitle: string;
 }
 
-const HomepageHeader: React.FC<HomepageHeaderProps> = ({ dashboardTitle }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ dashboardTitle }) => {
   const { t } = useTranslation();
   const session = useSession();
   const location = session?.sessionLocation?.display;
@@ -29,11 +29,11 @@ const HomepageHeader: React.FC<HomepageHeaderProps> = ({ dashboardTitle }) => {
           <Location size={16} />
           <span className={styles.value}>{location}</span>
           <span className={styles.middot}>&middot;</span>
-          <HomepageHeaderDate />
+          <HeaderDate />
         </div>
       </div>
     </div>
   );
 };
 
-export default HomepageHeader;
+export default PageHeader;

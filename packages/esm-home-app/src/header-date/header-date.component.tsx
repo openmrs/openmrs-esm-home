@@ -3,7 +3,7 @@ import { Calendar } from '@carbon/react/icons';
 import styles from './header-date.scss';
 import { formatDate } from '@openmrs/esm-framework';
 
-export const HomepageHeaderDate = () => {
+export const HeaderDate = () => {
   return (
     <React.Fragment>
       <Calendar size={16} />
