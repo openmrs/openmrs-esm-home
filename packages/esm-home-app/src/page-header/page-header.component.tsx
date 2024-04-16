@@ -2,9 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Location } from '@carbon/react/icons';
 import { useSession } from '@openmrs/esm-framework';
-import styles from './page-header.scss';
 import HomepageIllustration from './page-illustration.component';
-import { HeaderDate } from '../header-date/header-date.component';
+import HeaderDate from '../header-date/header-date.component';
+import styles from './page-header.scss';
 
 interface PageHeaderProps {
   dashboardTitle: string;

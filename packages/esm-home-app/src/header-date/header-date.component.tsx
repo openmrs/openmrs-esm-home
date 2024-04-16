@@ -1,13 +1,15 @@
 import React from 'react';
 import { Calendar } from '@carbon/react/icons';
-import styles from './header-date.scss';
 import { formatDate } from '@openmrs/esm-framework';
+import styles from './header-date.scss';
 
-export const HeaderDate = () => {
+const HeaderDate: React.FC = () => {
   return (
-    <React.Fragment>
+    <>
       <Calendar size={16} />
       <span className={styles.value}>{formatDate(new Date(), { mode: 'standard' })}</span>
-    </React.Fragment>
+    </>
   );
 };
+
+export default HeaderDate;

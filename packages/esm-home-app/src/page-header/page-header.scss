@@ -55,11 +55,11 @@
 // Overriding styles for RTL support
 html[dir='rtl'] {
   .date-and-location {
-    &>svg {
+    & > svg {
       order: -1;
     }
 
-    &>span:nth-child(2) {
+    & > span:nth-child(2) {
       order: -2;
     }
   }
