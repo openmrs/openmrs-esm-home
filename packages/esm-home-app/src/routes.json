@@ -33,6 +33,11 @@
       "offline": true
     },
     {
+      "name": "page-header",
+      "slot": "home-dashboard-slot",
+      "component": "pageHeader"
+    }, 
+    {
       "name": "metrics-slot",
       "slot": "home-dashboard-slot",
       "component": "metrics",
