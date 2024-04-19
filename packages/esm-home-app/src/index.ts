@@ -30,12 +30,12 @@ export const metrics = getAsyncLifecycle(() => import('./metrics/metrics.compone
 
 export function startupApp() {
   defineConfigSchema(moduleName, esmHomeSchema);
-  // t('Home', 'Home');
+  // t('home', 'Home');
 
   registerBreadcrumbs([
     {
       path: `${window.spaBase}/${pageName}`,
-      title: () => Promise.resolve(window.i18next.t('Home', { defaultValue: 'Home', ns: moduleName })),
+      title: () => Promise.resolve(window.i18next.t('home', { defaultValue: 'Home', ns: moduleName })),
     },
   ]);
 }
