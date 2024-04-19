@@ -25,7 +25,7 @@ const DashboardLink = ({ dashboardLinkConfig }: { dashboardLinkConfig: Dashboard
       to={spaBasePath}
       className={`cds--side-nav__link ${navLink === 'home' && 'active-left-nav-link'}`}
     >
-      {/* t('Home', 'Home') */}
+      {/* t('home', 'Home') */}
       {t(name)}
     </ConfigurableLink>
   );
