@@ -79,3 +79,7 @@ dist
 
 # i18next parser creating moduleName folder when parsing index.ts
 moduleName
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

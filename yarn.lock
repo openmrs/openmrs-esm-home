@@ -3302,6 +3302,7 @@ __metadata:
     "@babel/core": "npm:^7.22.17"
     "@carbon/react": "npm:^1.37.0"
     "@openmrs/esm-framework": "npm:next"
+    "@playwright/test": "npm:^1.44.0"
     "@swc/cli": "npm:^0.1.62"
     "@swc/core": "npm:^1.3.84"
     "@swc/jest": "npm:^0.2.29"
@@ -3310,6 +3311,7 @@ __metadata:
     "@testing-library/react": "npm:^14.0.0"
     "@testing-library/user-event": "npm:^14.4.3"
     "@types/jest": "npm:^29.5.4"
+    "@types/node": "npm:^20.12.11"
     "@types/react": "npm:^18.2.21"
     "@types/react-dom": "npm:^18.2.7"
     "@types/webpack-env": "npm:^1.18.1"
@@ -3318,6 +3320,7 @@ __metadata:
     concurrently: "npm:^8.2.1"
     cross-env: "npm:^7.0.3"
     css-loader: "npm:^6.8.1"
+    dotenv: "npm:^16.4.5"
     eslint: "npm:^8.49.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     husky: "npm:^8.0.3"
@@ -3499,6 +3502,17 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 10/115e8ceeec6bc69dff2048b35c0ab4f8bbee12d8bb6c1f4af758604586d802b6e669dcb02dda61d078de42c2b4ddce41b3d9e726d7daa6b4b850f4adbf7333ff
+  languageName: node
+  linkType: hard
+
+"@playwright/test@npm:^1.44.0":
+  version: 1.44.0
+  resolution: "@playwright/test@npm:1.44.0"
+  dependencies:
+    playwright: "npm:1.44.0"
+  bin:
+    playwright: cli.js
+  checksum: 10/bd34b3c3f90f3cb5ceb2e47715c36bf7f6f57f0eb2bb4e47f17be4ecfecf58833a3722b200f3fcd0f97320a9ea08aee3ed58a61fe245591fedae3c6db171743c
   languageName: node
   linkType: hard
 
@@ -5241,6 +5255,15 @@ __metadata:
   version: 16.9.1
   resolution: "@types/node@npm:16.9.1"
   checksum: 10/c144c007a42b3fbdea10dbb814b86d541197dfabcdc8b11e437ae984fd34dbac06e12b2b3a6a1d5453a8f877a505d3c269274c485cfc310ce14893094134a1d1
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.12.11":
+  version: 20.12.11
+  resolution: "@types/node@npm:20.12.11"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10/c6afe7c2c4504a4f488814d7b306ebad16bf42cbb43bf9db9fe1aed8c5fb99235593c3be5088979a64526b106cf022256688e2f002811be8273d87dc2e0d484f
   languageName: node
   linkType: hard
 
@@ -8526,6 +8549,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 10/55a3134601115194ae0f924e54473459ed0d9fc340ae610b676e248cca45aa7c680d86365318ea964e6da4e2ea80c4514c1adab5adb43d6867fb57ff068f95c8
+  languageName: node
+  linkType: hard
+
 "downshift@npm:8.1.0":
   version: 8.1.0
   resolution: "downshift@npm:8.1.0"
@@ -9745,7 +9775,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
+"fsevents@npm:2.3.2, fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
   dependencies:
@@ -9755,7 +9785,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@npm%3A^2.3.2#optional!builtin<compat/fsevents>, fsevents@patch:fsevents@npm%3A~2.3.2#optional!builtin<compat/fsevents>":
+"fsevents@patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>, fsevents@patch:fsevents@npm%3A^2.3.2#optional!builtin<compat/fsevents>, fsevents@patch:fsevents@npm%3A~2.3.2#optional!builtin<compat/fsevents>":
   version: 2.3.2
   resolution: "fsevents@patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
@@ -13954,6 +13984,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.44.0":
+  version: 1.44.0
+  resolution: "playwright-core@npm:1.44.0"
+  bin:
+    playwright-core: cli.js
+  checksum: 10/50b1741b8e4e5f053f9756846e1064d796e8e54ee0c13d4d026926338d76969fa528bddf1e563a2f30e17b92f301b06895044d1080179f2d3b5b5f68fe01387f
+  languageName: node
+  linkType: hard
+
+"playwright@npm:1.44.0":
+  version: 1.44.0
+  resolution: "playwright@npm:1.44.0"
+  dependencies:
+    fsevents: "npm:2.3.2"
+    playwright-core: "npm:1.44.0"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 10/a7d8d6c0dee6262f97ab7fe52ec80ddeff7ad21178a9b90eefae56779fb573e8a3987f27619de6e98d8b9b78e9bb66b94f3caf9fbd51c0f1964dcd744dcb3cae
+  languageName: node
+  linkType: hard
+
 "pngjs@npm:^3.0.0, pngjs@npm:^3.3.3":
   version: 3.4.0
   resolution: "pngjs@npm:3.4.0"
@@ -17011,6 +17065,13 @@ __metadata:
     sprintf-js: "npm:^1.1.1"
     util-deprecate: "npm:^1.0.2"
   checksum: 10/4de7b855ef9890e4db61f3451a86193f4ba398c9615aa78bfb663d24670c3c0614aa02ffa7bd71ec2b1bddb58f41e3f2c074e9b1599722b27d5b5d1895237bfb
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~5.26.4":
+  version: 5.26.5
+  resolution: "undici-types@npm:5.26.5"
+  checksum: 10/0097779d94bc0fd26f0418b3a05472410408877279141ded2bd449167be1aed7ea5b76f756562cb3586a07f251b90799bab22d9019ceba49c037c76445f7cddd
   languageName: node
   linkType: hard
 
