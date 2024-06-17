@@ -62,8 +62,5 @@
     "*.{ts,tsx}": "eslint --cache --fix --max-warnings 0",
     "*.{css,scss,ts,tsx}": "prettier --write --list-different"
   },
-  "packageManager": "yarn@4.2.2",
-  "resolutions": {
-    "@openmrs/esm-styleguide": "portal:/home/brandon/Code/pih/mf/openmrs-esm-core/packages/framework/esm-styleguide"
-  }
+  "packageManager": "yarn@4.2.2"
 }
