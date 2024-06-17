@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { WorkspaceOverlay, setLeftNav, unsetLeftNav } from '@openmrs/esm-framework';
+import { setLeftNav, unsetLeftNav } from '@openmrs/esm-framework';
 import HomeDashboard from './dashboard/home-dashboard.component';
 
 const Root: React.FC = () => {
@@ -13,15 +13,14 @@ const Root: React.FC = () => {
 
   return (
     <>
-      <BrowserRouter basename={window.spaBase}>
-        <main className="omrs-main-content">
+      <main className="omrs-main-content">
+        <BrowserRouter basename={window.spaBase}>
           <Routes>
             <Route path="/home" element={<HomeDashboard />} />
             <Route path="/home/:dashboard/*" element={<HomeDashboard />} />
           </Routes>
-        </main>
-      </BrowserRouter>
-      <WorkspaceOverlay contextKey="home" />
+        </BrowserRouter>
+      </main>
     </>
   );
 };
