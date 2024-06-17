@@ -18,11 +18,11 @@ export default function HomeDashboard() {
 
   return (
     <div className={styles.homePageWrapper}>
-      <section className={isDesktop(layout) && styles.dashboardContainer}>
+      <section className={isDesktop(layout) ? styles.dashboardContainer : styles.dashboardContainerTablet}>
         {isDesktop(layout) && <ExtensionSlot name="home-sidebar-slot" key={layout} />}
         <DashboardView title={activeDashboard?.name} dashboardSlot={activeDashboard?.slot} />
       </section>
-      <WorkspaceContainer overlay contextKey="home" />
+      <WorkspaceContainer overlay showSiderailAndBottomNav contextKey="home" />
     </div>
   );
 }
