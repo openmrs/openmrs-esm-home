@@ -22,7 +22,7 @@ export default function HomeDashboard() {
         {isDesktop(layout) && <ExtensionSlot name="home-sidebar-slot" key={layout} />}
         <DashboardView title={activeDashboard?.name} dashboardSlot={activeDashboard?.slot} />
       </section>
-      <WorkspaceContainer overlay showSiderailAndBottomNav contextKey="home" />
+      <WorkspaceContainer overlay contextKey="home" />
     </div>
   );
 }
