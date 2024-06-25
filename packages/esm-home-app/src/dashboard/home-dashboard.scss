@@ -1,8 +1,13 @@
 @use '@carbon/colors';
 @use '@carbon/styles/scss/spacing';
 
+.homePageWrapper {
+  display: flex;
+}
+
 .dashboardContainer {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   margin: 0;
   // Full vertical height minus the primary navigation menu height
@@ -15,7 +20,19 @@
   }
 }
 
+.dashboardContainerTablet {
+  flex-grow: 1;
+}
+
 .logoSection {
   display: flex;
   justify-content: center;
+}
+
+// set up rtl
+[dir='rtl'] {
+  .dashboardContainer {
+    margin-left: 0;
+    margin-right: 16rem;
+  }
 }
