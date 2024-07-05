@@ -28,11 +28,3 @@
   display: flex;
   justify-content: center;
 }
-
-// set up rtl
-[dir='rtl'] {
-  .dashboardContainer {
-    margin-left: 0;
-    margin-right: 16rem;
-  }
-}
