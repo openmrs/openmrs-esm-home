@@ -1,5 +1,5 @@
-import { ExtensionSlot } from '@openmrs/esm-framework';
 import React from 'react';
+import { ExtensionSlot } from '@openmrs/esm-framework';
 import styles from './home-page-widgets.scss';
 
 interface HomePageWidgetsProps {}
