@@ -24,7 +24,7 @@ export const homeWidgetDbLink = getSyncLifecycle(createDashboardLink(dashboardMe
 
 export const homeWidgetDashboard = getSyncLifecycle(homeWidgetDashboardComponent, options);
 
-export const pageHeader = getAsyncLifecycle(() => import('./page-header/page-header.component'), options);
+export const homePageHeader = getAsyncLifecycle(() => import('./page-header/page-header.component'), options);
 
 export const metrics = getAsyncLifecycle(() => import('./metrics/metrics.component'), options);
 
