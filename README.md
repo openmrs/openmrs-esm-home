@@ -1,4 +1,4 @@
-:wave:	*New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://o3-docs.openmrs.org/docs/introduction).
+:wave: *New to our project? Be sure to review the [OpenMRS 3 Frontend Developer Documentation](https://o3-docs.openmrs.org/docs/introduction)*.
 
 ![Node.js CI](https://github.com/openmrs/openmrs-esm-home/actions/workflows/node.js.yml/badge.svg)
 
@@ -19,4 +19,4 @@ It is responsible for rendering the UI for the landing page after the user logs 
 
 ## Design Patterns
 
-For documentation about our design patterns, please visit our [design system](https://om.rs/o3ui) documentation website.
+Please visit our [design system](https://om.rs/o3ui) documentation website for documentation about our design patterns.
