@@ -1,2 +1,3 @@
 src/**/*.test.tsx
 **/*.d.tsx
+node_modules
