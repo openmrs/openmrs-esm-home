@@ -1,5 +1,5 @@
 export const dashboardMeta = {
-  name: 'Home',
+  name: 'home',
   slot: 'home-dashboard-slot',
   title: '',
 };
