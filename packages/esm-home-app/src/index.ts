@@ -1,10 +1,10 @@
-import { registerBreadcrumbs, defineConfigSchema, getAsyncLifecycle, getSyncLifecycle } from '@openmrs/esm-framework';
+import { defineConfigSchema, getAsyncLifecycle, getSyncLifecycle } from '@openmrs/esm-framework';
 import { createDashboardLink } from './createDashboardLink.component';
 import { dashboardMeta } from './dashboard.meta';
 import { esmHomeSchema } from './openmrs-esm-home-schema';
-import rootComponent from './root.component';
 import homeNavMenuComponent from './side-menu/side-menu.component';
 import homeWidgetDashboardComponent from './home-page-widgets/home-page-widgets.component';
+import rootComponent from './root.component';
 
 const moduleName = '@openmrs/esm-home-app';
 const pageName = 'home';
@@ -30,12 +30,4 @@ export const metrics = getAsyncLifecycle(() => import('./metrics/metrics.compone
 
 export function startupApp() {
   defineConfigSchema(moduleName, esmHomeSchema);
-  // t('home', 'Home');
-
-  registerBreadcrumbs([
-    {
-      path: `${window.spaBase}/${pageName}`,
-      title: () => Promise.resolve(window.i18next.t('home', { defaultValue: 'Home', ns: moduleName })),
-    },
-  ]);
 }

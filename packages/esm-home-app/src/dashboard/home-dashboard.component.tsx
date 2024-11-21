@@ -1,14 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useLayoutType, isDesktop, useExtensionStore, ExtensionSlot, WorkspaceContainer } from '@openmrs/esm-framework';
-import DashboardView from './dashboard-view.component';
 import type { DashboardConfig } from '../types/index';
+import DashboardView from './dashboard-view.component';
 import styles from './home-dashboard.scss';
 
 export default function HomeDashboard() {
   const params = useParams();
   const extensionStore = useExtensionStore();
   const layout = useLayoutType();
+
   const ungroupedDashboards =
     extensionStore.slots['homepage-dashboard-slot']?.assignedExtensions
       .map((e) => e.meta)

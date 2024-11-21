@@ -1,5 +1,6 @@
 import React from 'react';
-import { PageHeader, HomePictogram } from '@openmrs/esm-framework';
+import { useTranslation } from 'react-i18next';
+import { HomePictogram, PageHeader } from '@openmrs/esm-framework';
 import styles from './page-header.scss';
 
 interface PageHeaderProps {
@@ -7,7 +8,13 @@ interface PageHeaderProps {
 }
 
 const HomePageHeader: React.FC<PageHeaderProps> = ({ dashboardTitle }) => {
-  return <PageHeader illustration={<HomePictogram />} title={dashboardTitle} className={styles.pageHeader} />;
+  const { t } = useTranslation();
+
+  /**
+   * Translation for the home page header
+   * // t('home', 'Home')
+   */
+  return <PageHeader className={styles.pageHeader} illustration={<HomePictogram />} title={t(dashboardTitle)} />;
 };
 
 export default HomePageHeader;
