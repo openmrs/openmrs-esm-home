@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[o:openmrs:p:openmrs-esm-home:r:esm-home-app]
+[o:openmrs:p:openmrs3:r:esm-home-app]
 file_filter            = packages/esm-home-app/translations/<lang>.json
 source_file            = packages/esm-home-app/translations/en.json
 source_lang            = en
