@@ -15,6 +15,5 @@
       "dependsOn": ["^typescript"]
     },
     "extract-translations": {}
-  },
-  "ui": "stream"
+  }
 }
