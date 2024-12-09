@@ -1514,7 +1514,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@carbon/react@npm:^1.72.0":
+"@carbon/react@npm:^1.71.0":
   version: 1.72.0
   resolution: "@carbon/react@npm:1.72.0"
   dependencies:
@@ -3298,7 +3298,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@openmrs/esm-home@workspace:."
   dependencies:
-    "@carbon/react": "npm:^1.72.0"
+    "@carbon/react": "npm:^1.71.0"
     "@openmrs/esm-framework": "npm:next"
     "@swc/cli": "npm:^0.1.65"
     "@swc/core": "npm:^1.7.14"
