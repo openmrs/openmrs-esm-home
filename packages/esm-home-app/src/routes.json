@@ -24,7 +24,7 @@
       "slot": "homepage-dashboard-slot",
       "component": "homeWidgetDbLink",
       "meta": {
-        "name": "Home",
+        "name": "home",
         "slot": "home-dashboard-slot",
         "title": ""
       },
