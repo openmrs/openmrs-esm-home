@@ -57,6 +57,14 @@ By default, `turbo` will cache test runs. This means that re-running tests witho
 yarn turbo run test --force
 ```
 
+## To run end-to-end tests, run:
+
+```bash
+yarn test-e2e
+```
+
+Read the [e2e testing guide](https://openmrs.atlassian.net/wiki/spaces/docs/pages/150962731/Testing+Frontend+Modules+O3) to learn more about End-to-End tests in this project.
+
 ## Troubleshooting
 
 If you notice that your local version of the application is not working or that there's a mismatch between what you see locally versus what's in [dev3](https://dev3.openmrs.org/openmrs/spa), you likely have outdated versions of core libraries. To update core libraries, run the following commands:

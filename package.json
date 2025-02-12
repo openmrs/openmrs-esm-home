@@ -10,11 +10,13 @@
     "release": "yarn workspaces foreach --all --topological version",
     "postinstall": "husky install",
     "start": "openmrs develop --sources 'packages/esm-*-app/'",
-    "verify": "turbo lint typescript test"
+    "verify": "turbo lint typescript test",
+    "test-e2e": "playwright test"
   },
   "devDependencies": {
     "@carbon/react": "^1.71.0",
     "@openmrs/esm-framework": "next",
+    "@playwright/test": "^1.50.1",
     "@swc/cli": "^0.1.65",
     "@swc/core": "^1.7.14",
     "@swc/jest": "^0.2.36",
@@ -62,5 +64,9 @@
     "*.{ts,tsx}": "eslint --cache --fix --max-warnings 0",
     "*.{css,scss,ts,tsx}": "prettier --write --list-different"
   },
-  "packageManager": "yarn@4.4.0"
+  "packageManager": "yarn@4.4.0",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "playwright": "^1.50.1"
+  }
 }
