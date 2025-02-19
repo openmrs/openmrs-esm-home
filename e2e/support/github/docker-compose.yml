@@ -22,3 +22,4 @@ services:
   # MariaDB
   db:
     image: openmrs/openmrs-reference-application-3-db:nightly-with-data
+    
