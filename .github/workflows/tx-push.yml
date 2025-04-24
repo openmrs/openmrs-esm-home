@@ -1,21 +1,29 @@
-on:
-  workflow_dispatch:
-  push:
-    branches: [main]
+# Workflow to automatically push translation source files to Transifex
+# Runs on main branch updates and manual triggers
 
 name: "Update Transifex on Push"
 
+on:
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+  push:
+    branches:
+      - main
+
 jobs:
   push-translations-to-transifex:
-    name: push-translations-to-transifex
-
+    name: Sync Source Files to Transifex
     runs-on: ubuntu-latest
+
     permissions:
-      actions: read
-    
+      actions: read  # Minimal permissions needed for this workflow
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Push source file using transifex client
+      # Step 1: Check out repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Push updated source files to Transifex
+      - name: Push source files to Transifex
         uses: transifex/cli-action@v2
         with:
           token: ${{ secrets.TRANSIFEX_TOKEN }}
