@@ -62,5 +62,5 @@
     "*.{ts,tsx}": "eslint --cache --fix --max-warnings 0",
     "*.{css,scss,ts,tsx}": "prettier --write --list-different"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.9.1"
 }
