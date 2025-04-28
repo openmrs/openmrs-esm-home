@@ -13,7 +13,7 @@
     "verify": "turbo lint typescript test"
   },
   "devDependencies": {
-    "@carbon/react": "^1.71.0",
+    "@carbon/react": "^1.76.0",
     "@openmrs/esm-framework": "next",
     "@swc/cli": "^0.1.65",
     "@swc/core": "^1.7.14",
