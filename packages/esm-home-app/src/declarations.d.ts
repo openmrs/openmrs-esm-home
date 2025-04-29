@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module '*.css';
 declare module '*.scss';
 declare module '*.png';
@@ -5,14 +6,14 @@ declare module '*.png';
 declare interface SideNavProps {}
 
 declare module 'react-aria' {
-  export const I18nProvider: (...args: unknown) => JSX.Element;
+  export const I18nProvider: (...args: any) => JSX.Element;
   export type { DateValue } from '@react-types/datepicker';
-  export const mergeProps: unknown;
-  export const useLocale: unknown;
-  export const useDateField: unknown;
-  export const useDatePicker: unknown;
-  export const useDateSegment: unknown;
-  export const useFocusRing: unknown;
-  export const useHover: unknown;
-  export const useObjectRef: unknown;
+  export const mergeProps: any;
+  export const useLocale: any;
+  export const useDateField: any;
+  export const useDatePicker: any;
+  export const useDateSegment: any;
+  export const useFocusRing: any;
+  export const useHover: any;
+  export const useObjectRef: any;
 }
