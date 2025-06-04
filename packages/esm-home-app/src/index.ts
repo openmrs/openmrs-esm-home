@@ -1,7 +1,7 @@
 import { defineConfigSchema, getAsyncLifecycle, getSyncLifecycle } from '@openmrs/esm-framework';
 import { createDashboardLink } from './createDashboardLink.component';
 import { dashboardMeta } from './dashboard.meta';
-import { esmHomeSchema } from './openmrs-esm-home-schema';
+import { esmHomeSchema } from './config-schema';
 import homeNavMenuComponent from './side-menu/side-menu.component';
 import homeWidgetDashboardComponent from './home-page-widgets/home-page-widgets.component';
 import rootComponent from './root.component';
