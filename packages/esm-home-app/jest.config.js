@@ -2,9 +2,9 @@
 module.exports = {
   clearMocks: true,
   transform: {
-    '^.+\\.tsx?$': '@swc/jest',
+    '^.+\\.[jt]sx?$': ['@swc/jest'],
   },
-  transformIgnorePatterns: ['/node_modules/(?!@openmrs)'],
+  transformIgnorePatterns: ['/node_modules/(?!@openmrs|.+\\.pnp\\.[^\\/]+$)'],
   moduleNameMapper: {
     '\\.(s?css)$': 'identity-obj-proxy',
     '@openmrs/esm-framework': '@openmrs/esm-framework/mock',
