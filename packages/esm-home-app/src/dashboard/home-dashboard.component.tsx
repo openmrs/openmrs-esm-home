@@ -1,14 +1,24 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useLayoutType, isDesktop, useExtensionStore, ExtensionSlot, WorkspaceContainer } from '@openmrs/esm-framework';
+import {
+  useLayoutType,
+  isDesktop,
+  useExtensionStore,
+  ExtensionSlot,
+  WorkspaceContainer,
+  useConfig,
+} from '@openmrs/esm-framework';
 import type { DashboardConfig } from '../types/index';
 import DashboardView from './dashboard-view.component';
 import styles from './home-dashboard.scss';
+import classNames from 'classnames';
+import { type ConfigSchema } from '../config-schema';
 
 export default function HomeDashboard() {
   const params = useParams();
   const extensionStore = useExtensionStore();
   const layout = useLayoutType();
+  const { leftNavMode } = useConfig<ConfigSchema>();
 
   const ungroupedDashboards =
     extensionStore.slots['homepage-dashboard-slot']?.assignedExtensions
@@ -19,7 +29,11 @@ export default function HomeDashboard() {
 
   return (
     <div className={styles.homePageWrapper}>
-      <section className={isDesktop(layout) ? styles.dashboardContainer : styles.dashboardContainerTablet}>
+      <section
+        className={classNames([
+          isDesktop(layout) ? styles.dashboardContainer : styles.dashboardContainerTablet,
+          leftNavMode == 'normal' ? styles.hasLeftNav : '',
+        ])}>
         {isDesktop(layout) && <ExtensionSlot name="home-sidebar-slot" key={layout} />}
         <DashboardView title={activeDashboard?.name} dashboardSlot={activeDashboard?.slot} />
       </section>

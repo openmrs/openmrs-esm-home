@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { setLeftNav, unsetLeftNav } from '@openmrs/esm-framework';
+import { useConfig, useLeftNav } from '@openmrs/esm-framework';
 import HomeDashboard from './dashboard/home-dashboard.component';
+import { type ConfigSchema } from './config-schema';
 
 const Root: React.FC = () => {
   const spaBasePath = window.spaBase;
-
-  useEffect(() => {
-    setLeftNav({ name: 'homepage-dashboard-slot', basePath: spaBasePath });
-    return () => unsetLeftNav('homepage-dashboard-slot');
-  }, [spaBasePath]);
+  const { leftNavMode } = useConfig<ConfigSchema>();
+  useLeftNav({
+    name: 'homepage-dashboard-slot',
+    basePath: spaBasePath,
+    mode: leftNavMode,
+  });
 
   return (
     <>
